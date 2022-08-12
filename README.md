@@ -20,8 +20,7 @@ git push origin feature-branch
 
 ## make a pull request on GitHub
 
-## if pull request is rejected
-## fix bugs, commit
+## if pull request is rejected then fix bugs, commit
 git add .
 git commit
 git pull --rebase upstream dev
