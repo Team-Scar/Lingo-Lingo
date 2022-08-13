@@ -7,7 +7,7 @@ import Sidebar from './components/sidebar/Sidebar.jsx';
 const App = () => {
   return (
     <div>
-      <h1>Hello Worlddd</h1>
+      <h1>Hello World</h1>
       {/* Home Page */}
       <Sidebar />
       <BrowserRouter>
