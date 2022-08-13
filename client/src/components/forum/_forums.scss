@@ -1,0 +1,27 @@
+.forumView {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 10%;
+  border: 1px solid black;
+  margin: 2%;
+  padding: 2%;
+}
+
+.content {
+  width:  100%;
+}
+
+.info {
+  width: 100%;
+}
+
+.interaction {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
