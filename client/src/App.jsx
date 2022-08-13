@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ForumView from './components/forum/ForumView.jsx';
 import Sidebar from './components/sidebar/Sidebar.jsx';
+import userProfile from './components/userprofile/UserProfile.jsx';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<ForumView />} />,
+          <Route path='/profile/:username' element={<UserProfile />} />,
         </Routes>
       </BrowserRouter>
     </div>
