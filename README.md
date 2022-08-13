@@ -2,7 +2,7 @@
 
 ## update your dev branch
 git checkout dev
-git pull --rebase upstream dev
+git pull --rebase origin dev
 git push origin dev
 
 ## start work on a feature
@@ -13,7 +13,7 @@ git add .
 git commit
 
 ## rebase before pull request
-git pull --rebase upstream dev
+git pull --rebase origin dev
 
 ## push to a feature branch on YOUR fork
 git push origin feature-branch
@@ -23,12 +23,12 @@ git push origin feature-branch
 ## if pull request is rejected then fix bugs, commit
 git add .
 git commit
-git pull --rebase upstream dev
+git pull --rebase origin dev
 git push origin feature-branch
 
 ## make a pull request on GitHub
 
 ## if pull request is accepted
 git checkout dev
-git pull --rebase upstream dev
+git pull --rebase origin dev
 git branch -d feature-branch
