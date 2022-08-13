@@ -1,17 +1,18 @@
 import React from 'react';
 import {Outlet, Link} from 'react-router-dom';
 
+// import ForumView from './components/forums/ForumView.jsx';
+
 
 const App = () => {
   return (
-    <div>
+    <div className="view">
       <nav>
-        <Link to="/home">Boards</Link> | {' '}
+        <Link to="/home">Home</Link>
         <Link to="/pageOne">Page One</Link>
       </nav>
       <Outlet />
-      {/* <h1>Hello World</h1> */}
-      {/* Home Page */}
+      {/* <ForumView /> */}
     </div>
   );
 };

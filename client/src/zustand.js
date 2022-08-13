@@ -6,9 +6,16 @@
 //   removeAllBears: () => set({ bears: 0 }),
 // }))
 
+import create from 'zustand';
+import {devtools} from 'zustand/middleware';
 
+const useStore = ((set) => ({
+  number: 0,
+  increaseNumber: () => set((state) => ({number: state.number + 1})),
+  decreaseNumber: () => set((state) => ({number: state.number - 1})),
+}));
 
-
+const devToolStore = create(devtools(useStore));
 
 // function BearCounter() {
 //   const bears = useStore((state) => state.bears)
@@ -19,3 +26,5 @@
 //   const increasePopulation = useStore((state) => state.increasePopulation)
 //   return <button onClick={increasePopulation}>one up</button>
 // }
+
+export default devToolStore;
