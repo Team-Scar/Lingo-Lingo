@@ -69,6 +69,17 @@ const useForumStore = ((set) => ({
     'user': 'David',
     'language': 'English',
     'jargon': 'Sleep, Dreams, Nightmares',
+  },
+  {
+    'title': 'Hello world',
+    'content': 'This is my first forum post!',
+    'photo': null,
+    'time': 'time ago',
+    'votes': 69,
+    'responses': 369,
+    'user': 'David',
+    'language': 'English',
+    'jargon': 'Sleep, Dreams, Nightmares',
   }],
 
 }));
