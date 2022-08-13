@@ -3,18 +3,22 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ForumView from './components/forum/ForumView.jsx';
 import Sidebar from './components/sidebar/Sidebar.jsx';
+import Header from './components/header/Header.jsx';
+import './global.scss';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
       {/* Home Page */}
+      <Header />
       <Sidebar />
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<ForumView />} />,
-        </Routes>
-      </BrowserRouter>
+      <div className='view_port'>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<ForumView />} />,
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 };
