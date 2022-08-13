@@ -1,0 +1,6 @@
+@use '../../global';
+
+.header {
+  color: global.$color-dark-blue;
+  font-family: global.$authenticationPage;
+}
