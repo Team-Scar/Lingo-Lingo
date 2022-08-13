@@ -47,6 +47,6 @@ Change what you do next below depending if your pull is accepted or rejected aft
 ## if pull request is accepted
 ```git checkout dev```  
 This is to keep your dev branch up to date  
-```git pull --rebase origin dev``` 
+```git pull --rebase origin dev```  
 It helps keeps things the repo cleaner to delete your feature branch once you are completely done with your feature. The -d is for delete.  
 ```git branch -d feature-branch```  
