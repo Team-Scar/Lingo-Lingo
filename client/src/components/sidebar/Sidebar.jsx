@@ -8,7 +8,7 @@ const Sidebar = () => {
       <BrowserRouter>
         <nav>
           <Link to='/'>Home</Link> | <Link to='/livechat'>Chat</Link> |{' '}
-          <Link to='/events'>Events</Link>|{' '}
+          <Link to='/events'>Events</Link>|
         </nav>
       </BrowserRouter>
     </div>
