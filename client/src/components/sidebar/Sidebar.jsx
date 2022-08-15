@@ -25,6 +25,12 @@ const Sidebar = () => {
         </div>
         <Link to='/events'>Events</Link>
         <Link to='/connections'>Connections</Link>
+<<<<<<< HEAD
+=======
+        <Link to='/events'>Lingo Boards</Link>
+        <Link to='signin'>Sign in</Link>
+        <Link to='signup'>Sign up</Link>
+>>>>>>> 470f09f (commit before pull)
       </nav>
     </div>
   );
