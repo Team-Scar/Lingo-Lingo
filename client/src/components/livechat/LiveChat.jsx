@@ -1,9 +1,11 @@
 import React from 'react';
+// import {bears} from '../../zustand.js';
 
 const LiveChat = () => {
+  // const bear = bears((state) => state.bears);
   return (
     <div>
-      LiveChat here I CANNOT SEE THIS
+      <p>LiveChat here I CANNOT SEE THIS</p>
     </div>
   );
 };
