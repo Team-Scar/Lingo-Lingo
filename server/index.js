@@ -20,6 +20,9 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 
 /* ==== Route Handlers === */
+app.get('/livechat', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 
 
