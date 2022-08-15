@@ -3,7 +3,7 @@ import Sidebar from '../sidebar/Sidebar.jsx';
 import Cards from './Cards.jsx';
 import './_forums.scss';
 
-import forumStore from '../../zustand.js';
+import forumStore from './_forumState.js';
 const ForumView = () => {
   const posts = forumStore((state) => state.posts);
   console.log(posts);
