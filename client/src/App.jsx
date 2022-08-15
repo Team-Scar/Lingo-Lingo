@@ -11,6 +11,7 @@ import userProfile from './components/userprofile/UserProfile.jsx';
 
 
 
+
 import LiveChat from './components/livechat/LiveChat.jsx';
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
             <Route path='/' element={<ForumView />} />
             <Route path='events' element={<Events />} />
             <Route path='/profile/:username' element={<UserProfile />} />
+            <Route path='/' element={<ForumView />} />,
             <Route path='/livechat' element={<LiveChat />} />,
           </Routes>
         </BrowserRouter>
