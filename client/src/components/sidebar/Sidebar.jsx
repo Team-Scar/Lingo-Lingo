@@ -12,11 +12,7 @@ import '../../global.scss';
 
 const Sidebar = () => {
   return (
-
-
-
     <div className='sidebar'>
-
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
         <div>
@@ -29,9 +25,7 @@ const Sidebar = () => {
         </div>
         <Link to='/events'>Events</Link>
         <Link to='/connections'>Connections</Link>
-        <Link to='/events'>Lingo Boards</Link>
       </nav>
-
     </div>
   );
 };
