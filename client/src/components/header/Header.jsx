@@ -1,10 +1,10 @@
 import React from 'react';
 import './header.scss';
-import '../../global.scss'
+import '../../global.scss';
 
 const Header = () => {
   // TODO: headerTitle should update automatically based on sidebar nav link;
-  let headerTitle = 'All Lingo Boards';
+  const headerTitle = 'All Lingo Boards';
 
   return (
     <div className='header'>
