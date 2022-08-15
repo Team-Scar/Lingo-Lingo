@@ -6,9 +6,7 @@ import Sidebar from './components/sidebar/Sidebar.jsx';
 import Events from './components/events/Events.jsx';
 import Header from './components/header/Header.jsx';
 import './global.scss';
-
-
-
+import userProfile from './components/userprofile/UserProfile.jsx';
 
 const App = () => {
   return (
@@ -22,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<ForumView />} />
           <Route path='events' element={<Events />} />
-
+          <Route path='/profile/:username' element={<UserProfile />} />
         </Routes>
         </BrowserRouter>
       </div>
