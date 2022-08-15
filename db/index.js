@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const {Client, Pool} = require('pg');
 
@@ -8,12 +9,14 @@ const client = new Pool({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
+
 });
 
 client
     .connect()
     .then(() => console.log('connected'))
     .catch((err) => console.error('connection error', err.stack));
+
 
 const testing = () => {
   return client.query(`select * from events`);
@@ -56,4 +59,7 @@ module.exports = {
   allLangs,
   allJargons,
 };
+
+
+module.exports = client;
 
