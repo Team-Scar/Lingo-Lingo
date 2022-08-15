@@ -12,23 +12,25 @@ import '../../global.scss';
 
 const Sidebar = () => {
   return (
+
+
     <div className='sidebar'>
+
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
-      <BrowserRouter>
-        <nav className='sidebar_navigation'>
-          <div>
-            <img className='home_icon' src={HomeSVG} alt="home icon" />
-            <Link to='/'>Home</Link>
-          </div>
-          <div>
-            <img className='chat_icon' src={ChatSVG} alt="chat icon" />
-            <Link to='/livechat'>Chat</Link>
-          </div>
-          <Link to='/events'>Events</Link>
-          <Link to='/connections'>Connections</Link>
-          <Link to='/events'>Lingo Boards</Link>
-        </nav>
-      </BrowserRouter>
+      <nav className='sidebar_navigation'>
+        <div>
+          <img className='home_icon' src={HomeSVG} alt="home icon" />
+          <Link to='/'>Home</Link>
+        </div>
+        <div>
+          <img className='chat_icon' src={ChatSVG} alt="chat icon" />
+          <Link to='/livechat'>Chat</Link>
+        </div>
+        <Link to='/events'>Events</Link>
+        <Link to='/connections'>Connections</Link>
+        <Link to='/events'>Lingo Boards</Link>
+      </nav>
+
     </div>
   );
 };
