@@ -1,8 +1,11 @@
 import React from 'react';
 
-const UserAuth = () => {
+const SignIn = () => {
   return (
     <div>
+      <div>
+        <p>Need an account?</p><button>Sign Up</button>
+      </div>
       <h1>Welcome Back!</h1>
       <form>
         <input type='text' placeholder='Your Email Address' />
@@ -13,4 +16,4 @@ const UserAuth = () => {
   );
 };
 
-export default UserAuth;
+export default SignIn;
