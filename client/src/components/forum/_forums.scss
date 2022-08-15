@@ -1,7 +1,7 @@
 .forumView {
   display: flex;
   position: relative;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 .card {
@@ -15,7 +15,7 @@
 }
 
 .content {
-  width:  100%;
+  width: 100%;
 }
 
 .info {
@@ -34,10 +34,11 @@
   width: 20%
 }
 
-.caretUp{
+.caretUp {
   position: absolute;
   top: 10px;
 }
+
 .caretDown {
   position: absolute;
   top: 40px;

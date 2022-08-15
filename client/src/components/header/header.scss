@@ -40,4 +40,8 @@
 
 .header_filter {
   padding-right: 1em;
+
+  &:hover {
+    color: global.$color-light-blue
+  }
 }
