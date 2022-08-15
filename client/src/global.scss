@@ -7,3 +7,22 @@ $color-grey: #4E5C6E;
 // Default Fonts
 $authenticationPage: 'Lato', sans-serif;
 $mainBody: 'Roboto', sans-serif;
+
+// Elements
+#root {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  background: #F7F7F7;
+  mix-blend-mode: normal;
+}
+
+.view_port {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  // left: 25vw;
+  background: #F7F7F7;
+}

@@ -106,3 +106,6 @@ dist
 
 # Bundle.js
 bundle.js
+
+# Mac OS System File
+.DS_Store
