@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
+import TimeAgo from 'react-timeago';
 import './_forums.scss';
 
 import {AiFillCaretUp} from 'react-icons/ai';
@@ -9,7 +10,7 @@ import {RiShareLine} from 'react-icons/ri';
 
 function Cards(props) {
   const {post} = props;
-  console.log(post);
+  // console.log(post);
   return (
     <div className="card">
       <div className="content">
@@ -17,14 +18,15 @@ function Cards(props) {
         <p className="cardContent">{post.content}</p>
       </div>
       <div className="info">
-        <h6>{post.time} by {post.user}</h6>
-        <h5>Lingo: {post.language}</h5>
+        <h5><TimeAgo date={post.timestamp} /> by <em>{post.username}</em></h5>
+        <h5>Lingo: <em>{post.language_name}</em></h5>
+        <h5>Jargon: <em>{post.jargon_name}</em></h5>
       </div>
       <div className="interaction">
         <div className="votes">
           <AiFillCaretUp className='caretUp'/>
           <AiFillCaretDown className='caretDown' />
-          <p>{post.votes}</p>
+          <p>{post.vote}</p>
         </div>
         <div className="comments">
           <MdOutlineComment className="commentIcon" />

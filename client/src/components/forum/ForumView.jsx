@@ -2,11 +2,22 @@ import React from 'react';
 import Sidebar from '../sidebar/Sidebar.jsx';
 import Cards from './Cards.jsx';
 import './_forums.scss';
+const axios = require('axios');
 
 import forumStore from './_forumState.js';
 const ForumView = () => {
   const posts = forumStore((state) => state.posts);
-  console.log(posts);
+  const fetched = forumStore((state) => state.fetched);
+  const setFetched = forumStore((state) => state.setFetched);
+  const loadPosts = forumStore((state) => state.loadPosts);
+  if (fetched === false) {
+    axios.get('http://localhost:3005/posts')
+        .then((results) => {
+          loadPosts(results.data);
+          setFetched();
+        });
+  }
+  // console.log(posts);
   return (
     <div className="forumView">
       {posts.map((post, x) => {
