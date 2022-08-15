@@ -18,72 +18,33 @@ import {devtools} from 'zustand/middleware';
 //   return <button onClick={increasePopulation}>one up</button>
 // }
 
-const useForumStore = ((set) => ({
-  posts: [{
-    'title': 'Hello world',
-    'content': 'This is my first forum post!',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'David',
-    'language': 'English',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  }, {
-    'title': 'Hola Mundo',
-    'content': 'Esta es mi primera publicación en el foro.',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'Davíd',
-    'language': 'Spanish',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  }, {
-    'title': 'Hello world',
-    'content': 'This is my first forum post!',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'David',
-    'language': 'English',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  }, {
-    'title': 'Hello world',
-    'content': 'This is my first forum post!',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'David',
-    'language': 'English',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  }, {
-    'title': 'Hello world',
-    'content': 'This is my first forum post!',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'David',
-    'language': 'English',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  },
-  {
-    'title': 'Hello world',
-    'content': 'This is my first forum post!',
-    'photo': null,
-    'time': 'time ago',
-    'votes': 69,
-    'responses': 369,
-    'user': 'David',
-    'language': 'English',
-    'jargon': 'Sleep, Dreams, Nightmares',
-  }],
-
+const useGlobalStore = ((set) => ({
+  userName: '',
+  userId: 0,
+  currentFilters: {},
+  userLanguages: ['English', 'Spanish', 'German'],
+  userProficiencies: [],
+  userTopics: ['Medicine', 'Tech', 'Space'],
+  userConnections: [],
+  clearFilters: () =>
+    set((state) => ({
+      currentFilters: {},
+    })),
+  addFilter: (filter) =>
+    set((state) => ({
+      currentFilters: {
+        ...state.currentFilters,
+        [filter]: filter,
+      },
+    })),
+  deleteFilter: (filter) =>
+    set((state) => ({
+      currentFilters: {
+        [filter]: false,
+      },
+    })),
 }));
 
-const forumStore = create(devtools(useForumStore));
+const globalStore = create(devtools(useGlobalStore));
 
-export default forumStore;
+export default globalStore;

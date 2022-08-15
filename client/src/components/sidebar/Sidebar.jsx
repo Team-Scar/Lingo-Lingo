@@ -1,5 +1,6 @@
-import React, {useContext, useState} from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
 
