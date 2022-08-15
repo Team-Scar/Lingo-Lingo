@@ -7,7 +7,8 @@ require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 /* ==== Internal Modules === */
 const app = express();
 const PORT = process.env.PORT || 3000;
-const {getPosts} = require('./controllers/forums.js');
+const bodyParser = require('body-parser');
+const controllers = require('./controllers/index.js');
 
 
 /* ==== Middleware === */
@@ -19,13 +20,15 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, '../client/public')));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+app.use(bodyParser.json());
 
 
 /* ==== Route Handlers === */
-app.get('/posts', () => {
-  console.log(controllers);
-  getPosts();
-});
+app.get('/posts', controllers.getPosts);
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
