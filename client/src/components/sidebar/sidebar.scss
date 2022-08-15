@@ -1,6 +1,20 @@
 @use '../../global';
 
-.header {
-  color: global.$color-dark-blue;
-  font-family: global.$authenticationPage;
+.sidebar {
+  position: absolute;
+  width: 25vw;
+  max-width: 256px;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #FAFAFA;
+}
+
+.sidebar_navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.lingo_logo {
+  transform: scale(0.8);
 }
