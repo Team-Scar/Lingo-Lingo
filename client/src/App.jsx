@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ForumView from './components/forum/ForumView.jsx';
 import Sidebar from './components/sidebar/Sidebar.jsx';
+
 import Header from './components/header/Header.jsx';
 import './global.scss';
+
+import Events from './components/events/Events.jsx';
+
 
 const App = () => {
   return (
@@ -14,7 +18,8 @@ const App = () => {
       <div className='view_port'>
         <Sidebar />
         <Routes>
-          <Route path='/' element={<ForumView />} />,
+          <Route path='/' element={<ForumView />} />
+          {/* <Route path='/' element={<Events />} /> */}
         </Routes>
       </div>
     </div>
