@@ -12,10 +12,12 @@ const App = () => {
       {/* Home Page */}
       <Header />
       <div className='view_port'>
-        <Sidebar />
-        <Routes>
-          <Route path='/' element={<ForumView />} />,
-        </Routes>
+        <BrowserRouter>
+          <Sidebar />
+          <Routes>
+            <Route path='/' element={<ForumView />} />,
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
