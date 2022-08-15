@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 import LogoFull from '../../../assets/LogoFull.svg';
@@ -16,7 +16,7 @@ const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
 
-  const handleSignOut = async() => {
+  const handleSignOut = async () => {
     setError('');
     try {
       await signout();

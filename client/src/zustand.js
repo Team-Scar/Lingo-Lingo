@@ -34,12 +34,13 @@ const useGlobalStore = ((set) => ({
     set((state) => ({
       currentFilters: {
         ...state.currentFilters,
-        [filter]: filter,
+        [filter]: true,
       },
     })),
   deleteFilter: (filter) =>
     set((state) => ({
       currentFilters: {
+        ...state.currentFilters,
         [filter]: false,
       },
     })),
