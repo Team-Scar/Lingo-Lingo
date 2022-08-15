@@ -21,7 +21,6 @@ const App = () => {
             <Route path='events' element={<Events />} />
             {/* <Route path='/profile/:username'
              element={<UserProfile />} /> */}
-            <Route path='/' element={<ForumView />} />,
             <Route path='/livechat' element={<LiveChat />} />,
           </Routes>
         </BrowserRouter>
