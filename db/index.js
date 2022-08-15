@@ -15,7 +15,6 @@ const client = new Pool({
 
 client
     .connect()
-<<<<<<< HEAD
     .then(() => console.log('connected'))
     .catch((err) => console.error('connection error', err.stack));
 
@@ -65,13 +64,6 @@ module.exports = {
 
 module.exports = client;
 
-=======
-    .then(() => console.log(`Connected at Port ${port}`))
-    .catch(() => console.error(`DB Connection error`, err.stack));
-=======
-    .then(() => console.log(`Connected at Port ${process.env.DB_PORT}`))
-    .catch((err) => console.error('DB Connection error', err.stack));
->>>>>>> 0875f5e (saved work on userprofile)
 =======
     .then(() => console.log(`Connected at Port ${process.env.DB_PORT}`))
     .catch((err) => console.error('DB Connection error', err.stack));
