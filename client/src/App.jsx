@@ -14,13 +14,18 @@ const App = () => {
   return (
     <div>
       {/* Home Page */}
+
       <Header />
       <div className='view_port'>
-        <Sidebar />
+
+      <BrowserRouter>
+      <Sidebar />
+
         <Routes>
           <Route path='/' element={<ForumView />} />
-          {/* <Route path='/' element={<Events />} /> */}
+          <Route path='events' element={<Events />} />
         </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
