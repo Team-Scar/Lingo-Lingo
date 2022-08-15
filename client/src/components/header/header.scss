@@ -40,4 +40,9 @@
 
 .header_filter {
   padding-right: 1em;
+  color: rgba(0, 0, 0, .53);
+
+  &:hover {
+    color: global.$color-light-blue
+  }
 }
