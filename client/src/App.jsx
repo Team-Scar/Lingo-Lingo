@@ -11,13 +11,11 @@ const App = () => {
     <div>
       {/* Home Page */}
       <Header />
-      <Sidebar />
       <div className='view_port'>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<ForumView />} />,
-          </Routes>
-        </BrowserRouter>
+        <Sidebar />
+        <Routes>
+          <Route path='/' element={<ForumView />} />,
+        </Routes>
       </div>
     </div>
   );
