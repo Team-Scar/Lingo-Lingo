@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import React, {useContext, useState} from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import LogoFull from '../../../assets/LogoFull.svg';
 
 // Icons
@@ -24,6 +24,7 @@ const Sidebar = () => {
           <Link to='/livechat'>Chat</Link>
         </div>
         <Link to='/events'>Events</Link>
+        {/* <Link to='/profile'>Profile</Link> */}
         <Link to='/connections'>Connections</Link>
       </nav>
     </div>

@@ -24,6 +24,10 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+app.get('/profile', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
 
 /* ==== Server Binding === */
 app.listen(PORT, () => {
