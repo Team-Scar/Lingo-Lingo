@@ -110,3 +110,5 @@ bundle.js
 # Mac OS System File
 .DS_Store
 
+#firebase config file
+client/src/firebaseConf.js
