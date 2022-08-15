@@ -1,13 +1,19 @@
 /* ==== External Modules === */
-const express = require('express');
-const path = require('path');
-require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 
 
+const express = require("express");
+const path = require("path");
+require("dotenv").config({path: path.resolve(__dirname, '../.env')});
+const db = require('../db');
+
+
+
+const eventRouter=require('./routes/events.js');
 /* ==== Internal Modules === */
 const app = express();
 const PORT = process.env.PORT || 3000;
-const {getPosts} = require('./controllers/forums.js');
+const bodyParser = require('body-parser');
+const controllers = require('./controllers/index.js');
 
 
 /* ==== Middleware === */
@@ -19,15 +25,35 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, '../client/public')));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+app.use(bodyParser.json());
 
 
 /* ==== Route Handlers === */
-app.get('/posts', () => {
-  console.log(controllers);
-  getPosts();
-});
+app.get('/posts', controllers.getPosts);
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+
+app.get('/events', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+app.use(eventRouter);
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+app.post('/signup', (req, res) => {
+  console.log(req.body);
 });
 
 

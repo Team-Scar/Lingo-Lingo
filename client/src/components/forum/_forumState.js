@@ -64,7 +64,9 @@ const useForumStore = ((set) => ({
     'language': 'English',
     'jargon': 'Sleep, Dreams, Nightmares',
   }],
-
+  fetched: false,
+  setFetched: () => set({fetched: true}),
+  loadPosts: (queryResults) => set({posts: queryResults, fetched: true}),
 }));
 
 const forumStore = create(devtools(useForumStore));
