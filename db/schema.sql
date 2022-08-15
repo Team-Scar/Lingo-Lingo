@@ -167,14 +167,14 @@ create index connectioninfo_idx on connections (user_id,friend_id);
 
 create index eveninfo_idx on events (user_id,lang_id,jargon_id);
 
-create index user_event_idx on user_event (event_id,attendee_id)
+create index user_event_idx on user_event (event_id,attendee_id);
 
 create index postinfo_idx on posts (user_id,lang_id,jargon_id);
 
-create index responseinfo_idx on responses (user_id,post_id,response_to_id)
+create index responseinfo_idx on responses (user_id,post_id,response_to_id);
 
 create index chatroominfo_idx on chatrooms (creator_id);
 
-create index chatroom_user_idx on chatroom_user (user_id,chatroom_id)
+create index chatroom_user_idx on chatroom_user (user_id,chatroom_id);
 
-create index messageinfo_idx on messages (user_id,chatroom_id)
+create index messageinfo_idx on messages (user_id,chatroom_id);
