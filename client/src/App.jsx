@@ -15,13 +15,13 @@ const App = () => {
 
       <Header />
       <div className='view_port'>
-      <BrowserRouter>
-      <Sidebar />
-        <Routes>
-          <Route path='/' element={<ForumView />} />
-          <Route path='events' element={<Events />} />
-          <Route path='/profile/:username' element={<UserProfile />} />
-        </Routes>
+        <BrowserRouter>
+          <Sidebar />
+          <Routes>
+            <Route path='/' element={<ForumView />} />
+            <Route path='events' element={<Events />} />
+            <Route path='/profile/:username' element={<UserProfile />} />
+          </Routes>
         </BrowserRouter>
       </div>
     </div>
