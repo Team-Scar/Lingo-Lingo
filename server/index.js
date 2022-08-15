@@ -1,7 +1,10 @@
 /* ==== External Modules === */
-const express = require('express');
-const path = require('path');
-require('dotenv').config({path: path.resolve(__dirname, '../.env')});
+
+const express = require("express");
+const path = require("path");
+require("dotenv").config({path: path.resolve(__dirname, '../.env')});
+const db = require('../db');
+
 
 
 /* ==== Internal Modules === */
@@ -33,6 +36,17 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+app.post('/signup', (req, res) => {
+  console.log(req.body);
+});
 
 /* ==== Server Binding === */
 app.listen(PORT, () => {

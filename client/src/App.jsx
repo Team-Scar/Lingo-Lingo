@@ -5,28 +5,38 @@ import ForumView from './components/forum/ForumView.jsx';
 import Sidebar from './components/sidebar/Sidebar.jsx';
 import Events from './components/events/Events.jsx';
 import Header from './components/header/Header.jsx';
+import SignUp from './components/userauth/SignUp.jsx';
+import SignIn from './components/userauth/SignIn.jsx';
+import {AuthProvider} from './components/userauth/AuthContext.jsx';
+
+
 // import UserProfile from './components/userprofile/UserProfile.jsx';
 import LiveChat from './components/livechat/LiveChat.jsx';
 import './global.scss';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <div className='view_port'>
-        <BrowserRouter>
-          <Sidebar />
-          <Routes>
-            <Route path='/' element={<ForumView />} />
-            <Route path='events' element={<Events />} />
-            {/* <Route path='/profile/:username'
-             element={<UserProfile />} /> */}
-            <Route path='/' element={<ForumView />} />,
-            <Route path='/livechat' element={<LiveChat />} />,
-          </Routes>
-        </BrowserRouter>
+    <AuthProvider>
+      <div>
+        {/* Home Page */}
+        <Header />
+        <div className='view_port'>
+          <BrowserRouter>
+            <Sidebar />
+            <Routes>
+              <Route path='/' element={<ForumView />} />
+              <Route path='events' element={<Events />} />
+              {/* <Route path='/profile/:username'
+              element={<UserProfile />} /> */}
+              <Route path='/' element={<ForumView />} />,
+              <Route path='/livechat' element={<LiveChat />} />,
+              <Route path='signup' element={<SignUp />} />
+              <Route path='signin' element={<SignIn />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 };
 
