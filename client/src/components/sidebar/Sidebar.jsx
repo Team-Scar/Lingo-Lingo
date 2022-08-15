@@ -13,6 +13,7 @@ import '../../global.scss';
 const Sidebar = () => {
   return (
 
+
     <div className='sidebar'>
 
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
@@ -29,6 +30,7 @@ const Sidebar = () => {
         <Link to='/connections'>Connections</Link>
         <Link to='/events'>Lingo Boards</Link>
       </nav>
+
     </div>
   );
 };
