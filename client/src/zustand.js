@@ -20,7 +20,7 @@ import {devtools} from 'zustand/middleware';
 
 const useGlobalStore = ((set) => ({
   userName: '',
-  userId: 0,
+  userId: 1,
   currentFilters: {},
   userLanguages: ['English', 'Spanish', 'German'],
   userProficiencies: [],
