@@ -40,10 +40,10 @@ const App = () => {
         </div>
 =======
     <div>
-      {/* <Header /> */}
+      <Header />
       <div className='view_port'>
         <BrowserRouter>
-          {/* <Sidebar /> */}
+          <Sidebar />
           <Routes>
             <Route path='/' element={<ForumView />} />
             <Route path='events' element={<Events />} />
