@@ -1,0 +1,64 @@
+.forumView {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 10%;
+  border: 1px solid black;
+  margin: 2%;
+  padding: 0% 1% 0% 1%;
+}
+
+.content {
+  width:  100%;
+}
+
+.info {
+  width: 100%;
+}
+
+.interaction {
+  position: relative;
+  width: 100%;
+  display: flex;
+  font-size: 1.5em;
+  // justify-content: space-between;
+}
+
+.votes {
+  width: 20%
+}
+
+.caretUp{
+  position: absolute;
+  top: 10px;
+}
+.caretDown {
+  position: absolute;
+  top: 40px;
+}
+
+.comments {
+  margin-left: 15%;
+  display: flex;
+  width: 20%;
+}
+
+.commentIcon {
+  position: relative;
+  transform: scale(2);
+  top: 25px;
+  left: -5px;
+}
+
+.share {
+  margin-left: 20%;
+}
+
+.shareIcon {
+  position: relative;
+  top: 17%
+}
