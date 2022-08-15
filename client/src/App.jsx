@@ -19,8 +19,8 @@ const App = () => {
           <Routes>
             <Route path='/' element={<ForumView />} />
             <Route path='events' element={<Events />} />
-            {/* <Route path='/profile/:username'
-             element={<UserProfile />} /> */}
+            <Route path='/profile/:username'
+             element={<UserProfile />} />
             <Route path='/livechat' element={<LiveChat />} />,
           </Routes>
         </BrowserRouter>
