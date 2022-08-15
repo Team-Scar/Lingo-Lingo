@@ -17,6 +17,7 @@ import './global.scss';
 
 const App = () => {
   return (
+<<<<<<< HEAD
     <AuthProvider>
       <div>
         {/* Home Page */}
@@ -37,6 +38,22 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </div>
+=======
+    <div>
+      {/* <Header /> */}
+      <div className='view_port'>
+        <BrowserRouter>
+          {/* <Sidebar /> */}
+          <Routes>
+            <Route path='/' element={<ForumView />} />
+            <Route path='events' element={<Events />} />
+            {/* <Route path='/profile/:username'
+             element={<UserProfile />} /> */}
+            <Route path='/' element={<ForumView />} />,
+            <Route path='/livechat' element={<LiveChat />} />,
+          </Routes>
+        </BrowserRouter>
+>>>>>>> fc162bf (installed socket io)
       </div>
     </AuthProvider>
   );

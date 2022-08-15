@@ -30,7 +30,11 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "6",
+<<<<<<< HEAD
     "react-timeago": "^7.1.0",
+=======
+    "socket.io": "^4.5.1",
+>>>>>>> fc162bf (installed socket io)
     "zustand": "^4.0.0"
   },
   "devDependencies": {
