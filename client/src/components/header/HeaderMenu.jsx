@@ -8,9 +8,9 @@ const HeaderMenu = () => {
   const filters = globalStore((state) => state.currentFilters);
   const addFilters = globalStore((state) => state.addFilter);
   const deleteFilters = globalStore((state) => state.deleteFilter);
-
   const languages = globalStore((state) => state.userLanguages);
   const jargon = globalStore((state) => state.userTopics);
+
 
   // Join filters and jargon arrays from state into one
   const filterArray = languages.concat(jargon);
@@ -23,6 +23,7 @@ const HeaderMenu = () => {
     }
     console.log(filters);
   };
+
   return (
     // Map over the joined array
     filterArray.map((item) => {
@@ -31,7 +32,10 @@ const HeaderMenu = () => {
           key={`1${item}`}
           className='header_filter'
           id={item}
-          onClick={handleClick}>
+          onClick={(e) => {
+            handleTextColor(e);
+            handleClick(e);
+          }}>
           {item}
         </li>
       );
