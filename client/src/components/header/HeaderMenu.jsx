@@ -33,7 +33,6 @@ const HeaderMenu = () => {
           className='header_filter'
           id={item}
           onClick={(e) => {
-            handleTextColor(e);
             handleClick(e);
           }}>
           {item}
