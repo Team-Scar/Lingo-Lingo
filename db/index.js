@@ -72,7 +72,4 @@ module.exports = client;
 module.exports = {
   client,
 };
-<<<<<<< HEAD
->>>>>>> ac1cdce (worked on profile)
-=======
->>>>>>> 0875f5e778176df62d6e243e2815e7218e26f3d4
+
