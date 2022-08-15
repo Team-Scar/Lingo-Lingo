@@ -8,6 +8,11 @@ import Header from './components/header/Header.jsx';
 import './global.scss';
 import userProfile from './components/userprofile/UserProfile.jsx';
 
+
+
+
+import LiveChat from './components/livechat/LiveChat.jsx';
+
 const App = () => {
   return (
     <div>
@@ -15,13 +20,14 @@ const App = () => {
 
       <Header />
       <div className='view_port'>
-      <BrowserRouter>
-      <Sidebar />
-        <Routes>
-          <Route path='/' element={<ForumView />} />
-          <Route path='events' element={<Events />} />
-          <Route path='/profile/:username' element={<UserProfile />} />
-        </Routes>
+        <BrowserRouter>
+          <Sidebar />
+          <Routes>
+            <Route path='/' element={<ForumView />} />
+            <Route path='events' element={<Events />} />
+            <Route path='/profile/:username' element={<UserProfile />} />
+            <Route path='/livechat' element={<LiveChat />} />,
+          </Routes>
         </BrowserRouter>
       </div>
     </div>
