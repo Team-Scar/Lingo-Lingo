@@ -1,21 +1,10 @@
 /* ==== External Modules === */
-<<<<<<< HEAD
-
-
 const express = require("express");
 const path = require("path");
 require("dotenv").config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
-
-
-=======
-const express = require('express');
-const path = require('path');
-require('dotenv').config({path: path.resolve(__dirname, '../.env')});
-const client = require('../db/index.js');
->>>>>>> ac1cdce (worked on profile)
-
 const eventRouter=require('./routes/events.js');
+
 /* ==== Internal Modules === */
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -49,8 +38,6 @@ app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-
-<<<<<<< HEAD
 app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -69,8 +56,6 @@ app.post('/signup', (req, res) => {
 });
 
 
-=======
->>>>>>> ac1cdce (worked on profile)
 /* ==== Server Binding === */
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
