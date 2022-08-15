@@ -1,5 +1,6 @@
 /* ==== External Modules === */
 
+
 const express = require("express");
 const path = require("path");
 require("dotenv").config({path: path.resolve(__dirname, '../.env')});
@@ -7,6 +8,7 @@ const db = require('../db');
 
 
 
+const eventRouter=require('./routes/events.js');
 /* ==== Internal Modules === */
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -36,6 +38,12 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+
+app.get('/events', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+app.use(eventRouter);
+
 app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -47,6 +55,7 @@ app.get('/signin', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log(req.body);
 });
+
 
 /* ==== Server Binding === */
 app.listen(PORT, () => {
