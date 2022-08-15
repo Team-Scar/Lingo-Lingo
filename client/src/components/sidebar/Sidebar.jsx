@@ -10,12 +10,12 @@ const Sidebar = () => {
     <div>
       <h1 className='header'>Sidebar</h1>
 
-      <BrowserRouter>
+
         <nav>
           <Link to='/'>Home</Link> | <Link to='/livechat'>Chat</Link> |{' '}
-          <Link to='/events'>Events</Link>|
+          <Link to='events'>Events</Link>|
         </nav>
-      </BrowserRouter>
+
     </div>
   );
 };

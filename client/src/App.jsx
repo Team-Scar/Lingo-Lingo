@@ -10,11 +10,11 @@ const App = () => {
     <div>
       <h1>Hello World</h1>
       {/* Home Page */}
-      <Sidebar />
       <BrowserRouter>
+      <Sidebar />
         <Routes>
           <Route path='/' element={<ForumView />} />
-          {/* <Route path='/' element={<Events />} /> */}
+          <Route path='events' element={<Events />} />
         </Routes>
       </BrowserRouter>
     </div>
