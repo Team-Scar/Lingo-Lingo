@@ -14,6 +14,7 @@ const Sidebar = () => {
   return (
 
 
+
     <div className='sidebar'>
 
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
