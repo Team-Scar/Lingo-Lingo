@@ -1,7 +1,7 @@
 /* ==== External Modules === */
-const express = require("express");
-const path = require("path");
-require("dotenv").config({path: path.resolve(__dirname, '../.env')});
+const express = require('express');
+const path = require('path');
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
 
@@ -30,6 +30,9 @@ app.use(bodyParser.json());
 
 /* ==== Route Handlers === */
 app.get('/posts', controllers.getPosts);
+
+app.post('/posts', controllers.addPost);
+
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });

@@ -1,7 +1,7 @@
-const {pool} = require('../index.js');
+const {client} = require('../index.js');
 
 module.exports.queryPosts = () => {
-  return pool.query(`
+  return client.query(`
   with responseCount as (
     select p.id, count(r.id)
     from posts p left outer join responses r on p.id=r.post_id
@@ -21,6 +21,14 @@ module.exports.queryPosts = () => {
   );
 };
 
-module.exports.addPosts = () => {
-
+module.exports.submitPost = (post) => {
+  console.log(post);
+  const text = `insert into posts(title, content, photo, timestamp, vote,
+    user_id, lang_id, jargon_id) values($1, $2, $3, $4, $5, $6, $7, $8)
+    returning *`;
+  const values = [post.title, post.content, post.photo, post.timestamp,
+    post.vote, post.user, post.language, post.jargon];
+  return client.query(
+      text, values,
+  );
 };

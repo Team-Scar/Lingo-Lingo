@@ -2,12 +2,10 @@ require('dotenv').config();
 const {Client, Pool} = require('pg');
 
 
-
-
 const client = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
 });
@@ -62,9 +60,4 @@ module.exports = {
 };
 
 
-module.exports = client;
-
-
-module.exports = {
-  client,
-};
+module.exports.client = client;
