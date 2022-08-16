@@ -47,6 +47,13 @@ const Sidebar = () => {
           <img className='chat_icon' src={ChatSVG} alt="chat icon" />
           <Link to='/livechat'>Chat</Link>
         </div>
+        <Link to='/events'>Events</Link>
+        <Link to='/profile'>Profile</Link>
+        <Link to='/connections'>Connections</Link>
+        <Link to='signin'>Sign In</Link>
+        <Link to='signup'>Sign Up</Link>
+        <Link to='/'>Sign Out</Link>
+
 
         <Link to='/create-account'>Create Account</Link>
         {currentUser ? (
