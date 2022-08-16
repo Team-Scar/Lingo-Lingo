@@ -2,30 +2,32 @@
 import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+
+import {useNavigate} from 'react-router-dom';
+
 import globalStore from '../../zustand.js';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
-
 // Icons
 import HomeSVG from '../../../assets/sidebar_icons/Home_Icon.svg';
 import ChatSVG from '../../../assets/sidebar_icons/Chat_Icon.svg';
-
 // Styles
 import './sidebar.scss';
 import '../../global.scss';
-
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
 
-  const handleSignOut = async () => {
-    console.log('click!!');
+
+  const navigate = useNavigate();
+
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
 
   const handleSignOut = async () => {
+    console.log('click!!');
 
     setError('');
     try {
@@ -39,6 +41,7 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar'>
+
       {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
@@ -71,11 +74,11 @@ const Sidebar = () => {
         <div onClick={setCurrentPage}>
           <Link to='/connections'>Connections</Link>
         </div>
-      
+
         <div onClick={setCurrentPage}>
           <Link to='signup'>Sign Up</Link>
         </div>
-        
+
 
       </nav>
     </div>

@@ -87,3 +87,12 @@ label input {
   align-items: center;
 }
 
+.startTime{
+  display: flex;
+}
+
+.allEvents{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
