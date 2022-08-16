@@ -72,7 +72,7 @@ const AddEventModal = (props) => {
               const t4 = e.target.value;
               setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
               const start = t2 + '/' + t3 + '/' + t1 + ' ' + t4 + ':00:00';
-              setNewEvent({...newEvent, allDay: false, start: new Date(start)});
+              setNewEvent({...newEvent, start: new Date(start)});
             }}>
               {hr.map((item) => {
                 return <option>{item}</option>;
@@ -98,7 +98,7 @@ const AddEventModal = (props) => {
               const t4 = e.target.value;
               setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
               const end = t2 + '/' + t3 + '/' + t1 + ' ' + t4 + ':00:00';
-              setNewEvent({...newEvent, allDay: false, end: new Date(end)});
+              setNewEvent({...newEvent, end: new Date(end)});
             }}>
               {hr.map((item) => {
                 return <option>{item}</option>;

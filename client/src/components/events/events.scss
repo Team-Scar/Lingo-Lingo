@@ -90,3 +90,9 @@ label input {
 .startTime{
   display: flex;
 }
+
+.allEvents{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

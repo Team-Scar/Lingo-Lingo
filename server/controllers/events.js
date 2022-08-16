@@ -33,10 +33,31 @@ const addEvent = (req, res) => {
     res.sendStatus(201);
   });
 };
+
+const removeEvent=(req, res)=>{
+  queries.removeEvent(req.params.eventID).then(()=>{
+    res.sendStatus(200);
+  });
+};
+const updateAttend=(req, res)=>{
+  queries.updateAttend(req.params.eventID, req.params.userID).then(()=>{
+    res.sendStatus(200);
+  });
+};
+const addAttend=(req, res)=>{
+  console.log(req.params.eventID);
+  console.log(req.params.userID);
+  queries.addAttend(req.params.eventID, req.params.userID).then(()=>{
+    res.sendStatus(200);
+  });
+};
 module.exports = {
   getAllEvents,
   getAttendEvents,
   getAllLanguages,
   getAllJargons,
   addEvent,
+  removeEvent,
+  updateAttend,
+  addAttend,
 };

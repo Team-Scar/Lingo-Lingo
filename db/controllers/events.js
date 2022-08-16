@@ -25,11 +25,11 @@ module.exports.selectJargons = (userID) => {
 };
 
 module.exports.allLangs = () => {
-  return client.query(`select * from languages limit 15`);
+  return client.query(`select * from languages`);
 };
 
 module.exports.allJargons = () => {
-  return client.query(`select * from jargons limit 15`);
+  return client.query(`select * from jargons`);
 };
 
 module.exports.addEvent = (userID, newEvent) => {
@@ -47,4 +47,20 @@ module.exports.addEvent = (userID, newEvent) => {
   select eventID, ${userID}
   from ins3
     `);
+};
+
+module.exports.removeEvent = (eventID) => {
+  return client.query(`with del as (
+    delete from user_event u where u.event_id=${eventID}
+  )
+  delete from events e where e.id=${eventID}`);
+};
+
+module.exports.updateAttend = (eventID, userID) => {
+  return client.query(`delete from user_event where event_id=${eventID} and attendee_id=${userID}`);
+};
+
+module.exports.addAttend = (eventID, userID) => {
+  return client.query(`insert into user_event (event_id,attendee_id)
+  values (${eventID},${userID})`);
 };
