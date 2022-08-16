@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Sidebar from '../sidebar/Sidebar.jsx';
 import Cards from './Cards.jsx';
 import './_forums.scss';
@@ -17,11 +17,43 @@ const ForumView = () => {
           setFetched();
         });
   }
-  // console.log(posts);
+
+  const handleClick = (e) => {
+    console.log(e);
+    console.log(e.target.className);
+  };
+
+  useEffect(() => {
+    // console.log('use effect');
+    if (annyang) {
+      const cards = document.getElementsByClassName('cardTitle');
+      const titles = [];
+      for (let x = 0; x < cards.length; x++) {
+        const currentTitle = cards[x].innerHTML;
+        titles.push(currentTitle);
+      }
+      const commands = {
+        'hello': () => console.log('hello'),
+      };
+      titles.map((title) => {
+        if (title !== 'Hello world' && title !== 'Hola Mundo') {
+          commands[title] = () => (
+            console.log(title),
+            document.getElementById(title).click()
+          );
+        }
+      });
+
+      console.log(commands);
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  });
+
   return (
     <div className="forumView">
       {posts.map((post, x) => {
-        return <Cards key={x + post} post={post} />;
+        return <Cards key={x + post} post={post} handleClick={handleClick} />;
       })}
     </div>
   );
