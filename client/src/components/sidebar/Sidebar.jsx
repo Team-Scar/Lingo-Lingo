@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
@@ -15,18 +16,23 @@ import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleSignOut = async() => {
+  const handleSignOut = async () => {
+    console.log('click!!');
     setError('');
     try {
       await signout();
+      navigate('/');
     } catch (e) {
+      console.log('err in log out', e);
       setError('Failed to sign out');
     }
   };
 
   return (
     <div className='sidebar'>
+      {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
         <div>
@@ -39,9 +45,16 @@ const Sidebar = () => {
         </div>
         <Link to='/events'>Events</Link>
         <Link to='/connections'>Connections</Link>
+        <Link to='/create-account'>Create Account</Link>
+        {/* <Link to='signup'>Sign Up</Link> */}
+        {currentUser ? (
+          <>
+            <button onClick={handleSignOut}>Sign Out</button>
+            <Link to='change-password'>Change Password</Link>
+          </>
+        ) :
         <Link to='signin'>Sign In</Link>
-        <Link to='signup'>Sign Up</Link>
-        <Link to='/'>Sign Out</Link>
+        }
       </nav>
     </div>
   );
