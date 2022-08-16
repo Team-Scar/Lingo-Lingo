@@ -7,9 +7,10 @@ CREATE DATABASE lingo;
 -- USER --
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(500) NOT NULL,
-  username VARCHAR(500) NOT NULL,
-  email VARCHAR(500) NOT NULL,
+  uid VARCHAR(500),
+  name VARCHAR(500),
+  username VARCHAR(500),
+  email VARCHAR(500),
   profile_photo TEXT,
   bio TEXT,
   login BOOLEAN DEFAULT FALSE
