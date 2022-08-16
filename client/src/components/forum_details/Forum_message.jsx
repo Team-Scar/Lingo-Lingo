@@ -1,24 +1,33 @@
 import React from 'react';
 
 // import forumStore from '../forum/_forumState.js';
+import ForumReply from './Forum_responseform.jsx';
 
-const ForumMessage = () => {
+const ForumMessage = (props) => {
   return (
-    <div className="forumMessage">
-      <>IMAGE </>
-      <>Username   </>
-      <>timeago..</>
-      <div>TEXT</div>
-      <>UPvote</>
-      <>DOWNvote</>
-      <>REPLY</>
+    <>
+      <div className="forumMessage">
+        <div className="messageHeader">
+          <img className="userImage" src={props.response.photo} />
+          <p>{ 'UserNameHere' }</p>
+          <p>{ props.response.timestamp }</p>
+        </div>
 
+        <div className="messageText">{ props.response.content }</div>
 
-    </div>
+        <div className="messageFooter">
+          <div className="upArrow">UPvote</div>
+          <div>{ props.response.vote }</div>
+          <div className="downArrow">DOWNvote</div>
+          <div onClick={() => {
+            document.getElementById('replyTo' + props.response.id).style.display='block';
+          }}>REPLY</div>
+        </div>
+
+      </div>
+      <ForumReply id={'replyTo' + props.response.id} />
+    </>
   );
 };
 
 export default ForumMessage;
-
-
-// flex flex-col items-center justify-start space-y-1 rounded-l-md bg-gray-50 p-4
