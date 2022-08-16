@@ -24,6 +24,7 @@ export const AuthProvider = ({children}) => {
     return methods.signOut(auth);
   };
 
+
   const resetPassword = (email) => {
     return methods.sendPasswordResetEmail(auth, email);
   };

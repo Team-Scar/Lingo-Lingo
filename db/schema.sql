@@ -8,9 +8,9 @@ CREATE DATABASE lingo;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   uid VARCHAR(500),
-  name VARCHAR(500),
+  name VARCHAR(500) ,
   username VARCHAR(500),
-  email VARCHAR(500),
+  email VARCHAR(500) NOT NULL,
   profile_photo TEXT,
   bio TEXT,
   login BOOLEAN DEFAULT FALSE
@@ -56,8 +56,10 @@ CREATE TABLE connections (
 CREATE TABLE events (
   id SERIAL PRIMARY KEY,
   location VARCHAR(500),
-  timestamp TIMESTAMPTZ DEFAULT NOW(),
+  startTime TIMESTAMPTZ DEFAULT NOW(),
+  endTime TIMESTAMPTZ DEFAULT NOW(),
   description Text,
+  photo TEXT,
   user_id INTEGER NOT NULL,
   lang_id INTEGER NOT NULL,
   jargon_id INTEGER NOT NULL,
@@ -125,6 +127,23 @@ CREATE TABLE messages (
   chatroom_id INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id),
   FOREIGN KEY (chatroom_id) REFERENCES chatrooms (id)
+);
+CREATE TABLE post_vote (
+  id SERIAL PRIMARY KEY,
+  post_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
+  vote INTEGER NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES posts (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE response_vote (
+  id SERIAL PRIMARY KEY,
+  response_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
+  vote INTEGER NOT NULL,
+  FOREIGN KEY (response_id) REFERENCES responses (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 -- DROP TABLE IF EXISTS `review`;
 

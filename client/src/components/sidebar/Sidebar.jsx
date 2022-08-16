@@ -6,15 +6,12 @@ import globalStore from '../../zustand.js';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
-
 // Icons
 import HomeSVG from '../../../assets/sidebar_icons/Home_Icon.svg';
 import ChatSVG from '../../../assets/sidebar_icons/Chat_Icon.svg';
-
 // Styles
 import './sidebar.scss';
 import '../../global.scss';
-
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
@@ -29,9 +26,10 @@ const Sidebar = () => {
       setError('Failed to sign out');
     }
   };
-
+  const setCurrentPage = globalStore((state) => state.updateCurrentPage);
   return (
     <div className='sidebar'>
+
       {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
