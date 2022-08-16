@@ -19,14 +19,7 @@ const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
-
-
   const handleSignOut = async () => {
-    console.log('click!!');
-  const setCurrentPage = globalStore((state) => state.updateCurrentPage);
-
-  const handleSignOut = async () => {
-
     setError('');
     try {
       await signout();
@@ -55,14 +48,14 @@ const Sidebar = () => {
         {currentUser ? (
           <>
             <div onClick={setCurrentPage}>
-          <Link to='/'>Sign Out</Link>
-        </div>
+              <Link to='/'>Sign Out</Link>
+            </div>
             <Link to='change-password'>Change Password</Link>
           </>
         ) :
           <div onClick={setCurrentPage}>
-          <Link to='signin'>Sign In</Link>
-        </div>
+            <Link to='signin'>Sign In</Link>
+          </div>
         }
 
         <div onClick={setCurrentPage}>
@@ -71,11 +64,11 @@ const Sidebar = () => {
         <div onClick={setCurrentPage}>
           <Link to='/connections'>Connections</Link>
         </div>
-      
+
         <div onClick={setCurrentPage}>
           <Link to='signup'>Sign Up</Link>
         </div>
-        
+
 
       </nav>
     </div>
