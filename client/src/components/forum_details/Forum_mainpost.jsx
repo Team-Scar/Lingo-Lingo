@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import forumStore from '../forum/_forumState.js';
+import forumStore from '../forum/_forumState.js';
 
 const ForumMainPost = () => {
   const postExample = {
