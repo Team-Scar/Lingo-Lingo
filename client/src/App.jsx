@@ -9,19 +9,26 @@ import Header from './components/header/Header.jsx';
 import SignUp from './components/userauth/SignUp.jsx';
 import SignIn from './components/userauth/SignIn.jsx';
 import {AuthProvider} from './components/userauth/AuthContext.jsx';
-
-
+import globalStore from './zustand.js';
+import Modal from './components/Modal/Modal.jsx';
+import MfnBtn from './components/mfn_btn/MfnBtn.jsx';
 // import UserProfile from './components/userprofile/UserProfile.jsx';
 import LiveChat from './components/livechat/LiveChat.jsx';
 import './global.scss';
 
 const App = () => {
+  const modalState = globalStore((state) => state.showModal);
+  const showModal = globalStore((state) => state.modalOn);
+  const hideModal = globalStore((state) => state.modalOff);
   return (
     <AuthProvider>
       <div>
         {/* Home Page */}
+        <Modal classname='mfn_modal'show={modalState}/>
         <Header />
-        <div className='view_port'>
+        <MfnBtn />
+        <div className='view_port'
+          style={modalState ? {filter: 'blur(5px)'} : null}>
           <BrowserRouter>
             <Sidebar />
             <Routes>
