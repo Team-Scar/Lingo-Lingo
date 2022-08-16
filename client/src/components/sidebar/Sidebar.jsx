@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-
+import globalStore from '../../zustand.js';
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
 
@@ -15,7 +15,7 @@ import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
-
+  const setCurrentPage = globalStore((state) => state.updateCurrentPage);
   const handleSignOut = async () => {
     setError('');
     try {
@@ -29,19 +29,29 @@ const Sidebar = () => {
     <div className='sidebar'>
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
-        <div>
+        <div onClick={setCurrentPage}>
           <img className='home_icon' src={HomeSVG} alt="home icon" />
           <Link to='/'>Home</Link>
         </div>
-        <div>
+        <div onClick={setCurrentPage}>
           <img className='chat_icon' src={ChatSVG} alt="chat icon" />
           <Link to='/livechat'>Chat</Link>
         </div>
-        <Link to='/events'>Events</Link>
-        <Link to='/connections'>Connections</Link>
-        <Link to='signin'>Sign In</Link>
-        <Link to='signup'>Sign Up</Link>
-        <Link to='/'>Sign Out</Link>
+        <div onClick={setCurrentPage}>
+          <Link to='/events'>Events</Link>
+        </div>
+        <div onClick={setCurrentPage}>
+          <Link to='/connections'>Connections</Link>
+        </div>
+        <div onClick={setCurrentPage}>
+          <Link to='signin'>Sign In</Link>
+        </div>
+        <div onClick={setCurrentPage}>
+          <Link to='signup'>Sign Up</Link>
+        </div>
+        <div onClick={setCurrentPage}>
+          <Link to='/'>Sign Out</Link>
+        </div>
       </nav>
     </div>
   );
