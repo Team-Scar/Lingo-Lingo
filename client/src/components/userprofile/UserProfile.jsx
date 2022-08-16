@@ -60,7 +60,6 @@ import {useParams} from 'react-router-dom';
 
 const UserProfile = () => {
   const { username } = useParams();
-  console.log(username);
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
       <div>{username}</div>
