@@ -17,11 +17,17 @@ const ForumView = () => {
           setFetched();
         });
   }
+
+  const handleClick = (e) => {
+    console.log(e);
+    console.log(e.target.className);
+  };
+
   // console.log(posts);
   return (
     <div className="forumView">
       {posts.map((post, x) => {
-        return <Cards key={x + post} post={post} />;
+        return <Cards key={x + post} post={post} handleClick={handleClick} />;
       })}
     </div>
   );

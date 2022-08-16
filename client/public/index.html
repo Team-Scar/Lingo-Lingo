@@ -11,9 +11,21 @@
   <title>React App</title>
 </head>
 <body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
   <!-- This element is where our react application will be mounted -->
   <div id="root"></div>
   <!-- This script will be created with webpack-->
   <script src="./bundle.js"></script>
+  <script>
+    if (annyang) {
+      var commands = {
+        'hello': function() {
+          console.log('hello');
+        }
+      }
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  </script>
 </body>
 </html>
