@@ -17,13 +17,16 @@ const SignIn = () => {
     try {
       setError('');
       setLoading(true);
+
       const userCredential = await signin(emailRef.current.value, passwordRef.current.value);
       console.log(userCredential);
       // await axios.post('/signup')
       navigate('/');
     } catch (e) {
       console.log('err in sign in', e.message);
-      setError(e.message);
+      setError('Wrong email or password, please try again!');
+      emailRef.current.value = '';
+      passwordRef.current.value = '';
     };
     setLoading(false);
   };
@@ -31,9 +34,10 @@ const SignIn = () => {
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
       <div>
-        <p>Need an account?</p><Link to='signup'>Sign Up</Link>
+        <p>Need an account?</p><Link to='/signup'>Sign Up</Link>
       </div>
       <h1>Welcome Back!</h1>
+      {error && <h3>{error}</h3>}
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -49,6 +53,9 @@ const SignIn = () => {
         />
         <button>Sign In</button>
       </form>
+      <div>
+        <Link to='/forgot-password'>Forgot Password?</Link>
+      </div>
     </div>
   );
 };

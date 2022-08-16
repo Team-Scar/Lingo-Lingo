@@ -1,3 +1,5 @@
+
+import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
@@ -16,6 +18,9 @@ import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+
 
   const navigate = useNavigate();
 
@@ -23,6 +28,7 @@ const Sidebar = () => {
 
   const handleSignOut = async () => {
     console.log('click!!');
+
     setError('');
     try {
       await signout();
@@ -35,7 +41,8 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar'>
-      {currentUser&&<p>There is a current user {currentUser.email}</p>}
+
+      {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <nav className='sidebar_navigation'>
         <div onClick={setCurrentPage}>
@@ -47,21 +54,32 @@ const Sidebar = () => {
           <Link to='/livechat'>Chat</Link>
         </div>
 
+        <Link to='/create-account'>Create Account</Link>
+        {currentUser ? (
+          <>
+            <div onClick={setCurrentPage}>
+          <Link to='/'>Sign Out</Link>
+        </div>
+            <Link to='change-password'>Change Password</Link>
+          </>
+        ) :
+          <div onClick={setCurrentPage}>
+          <Link to='signin'>Sign In</Link>
+        </div>
+        }
+
         <div onClick={setCurrentPage}>
           <Link to='/events'>Events</Link>
         </div>
         <div onClick={setCurrentPage}>
           <Link to='/connections'>Connections</Link>
         </div>
-        <div onClick={setCurrentPage}>
-          <Link to='signin'>Sign In</Link>
-        </div>
+
         <div onClick={setCurrentPage}>
           <Link to='signup'>Sign Up</Link>
         </div>
-        <div onClick={setCurrentPage}>
-          <Link to='/'>Sign Out</Link>
-        </div>
+
+
       </nav>
     </div>
   );

@@ -37,6 +37,14 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+
+app.get('/signup', controllers.userAuth.signUpGet);
+app.get('/signin', controllers.userAuth.signIn);
+app.post('/signup', controllers.userAuth.signUpPost);
+app.post('/create-account', controllers.userAuth.createAccount);
+app.get('/allLanguages', controllers.userAuth.getAllLanguages);
+app.get('/allJargons', controllers.userAuth.getAllJargons);
+
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -46,17 +54,7 @@ app.get('/events', (req, res) => {
 });
 app.use(eventRouter);
 
-app.get('/signup', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
-});
 
-app.get('/signin', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
-});
-
-app.post('/signup', (req, res) => {
-  console.log(req.body);
-});
 
 
 /* ==== Server Binding === */

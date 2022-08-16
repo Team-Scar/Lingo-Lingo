@@ -8,8 +8,8 @@ CREATE DATABASE lingo;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   uid VARCHAR(500),
-  name VARCHAR(500) NOT NULL,
-  username VARCHAR(500) NOT NULL,
+  name VARCHAR(500) ,
+  username VARCHAR(500),
   email VARCHAR(500) NOT NULL,
   profile_photo TEXT,
   bio TEXT,
