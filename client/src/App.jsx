@@ -10,6 +10,10 @@ import SignUp from './components/userauth/SignUp.jsx';
 import SignIn from './components/userauth/SignIn.jsx';
 import {AuthProvider} from './components/userauth/AuthContext.jsx';
 
+
+import User from './components/userprofile/User.jsx';
+import UserProfile from './components/userprofile/UserProfile.jsx';
+
 import ForgotPassword from './components/userauth/ForgotPassword.jsx';
 import ChangePassword from './components/userauth/ChangePassword.jsx';
 import CreateAccount from './components/userauth/CreateAccount.jsx';
@@ -18,7 +22,7 @@ import globalStore from './zustand.js';
 import Modal from './components/Modal/Modal.jsx';
 import MfnBtn from './components/mfn_btn/MfnBtn.jsx';
 
-// import UserProfile from './components/userprofile/UserProfile.jsx';
+
 import LiveChat from './components/livechat/LiveChat.jsx';
 import './global.scss';
 
@@ -41,8 +45,8 @@ const App = () => {
               <Route path='/' element={<ForumView />} />
               <Route path='/discussions' element={<ForumDetails />} />
               <Route path='events' element={<Events />} />
-              {/* <Route path='/profile/:username'
-              element={<UserProfile />} /> */}
+              <Route path='/profile' element={<User />} />
+              <Route path='/profile/:username' element={<UserProfile />} />
               {/* <Route path='/' element={<ForumView />} />, */}
               <Route path='/livechat' element={<LiveChat />} />,
               <Route path='signup' element={<SignUp />} />
