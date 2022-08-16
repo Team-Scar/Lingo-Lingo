@@ -1,11 +1,15 @@
 import React from 'react';
-// import {bears} from '../../zustand.js';
+import './livechat.scss';
 
 const LiveChat = () => {
   // const bear = bears((state) => state.bears);
   return (
     <div>
-      <p>LiveChat here I CANNOT SEE THIS</p>
+      <div id="message-container"></div>
+      <form id="send-container">
+        <input type="text" id="message-input" />
+        <button type="submit" id="send-button">Send</button>
+      </form>
     </div>
   );
 };
