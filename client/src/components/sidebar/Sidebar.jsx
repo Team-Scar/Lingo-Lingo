@@ -3,8 +3,6 @@ import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
-import {useNavigate} from 'react-router-dom';
-
 import globalStore from '../../zustand.js';
 
 import LogoFull from '../../../assets/LogoFull.svg';
@@ -18,10 +16,6 @@ import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
-  const navigate = useNavigate();
-
-
-
   const navigate = useNavigate();
 
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
@@ -58,14 +52,14 @@ const Sidebar = () => {
         {currentUser ? (
           <>
             <div onClick={setCurrentPage}>
-          <Link to='/'>Sign Out</Link>
-        </div>
+              <Link to='/'>Sign Out</Link>
+            </div>
             <Link to='change-password'>Change Password</Link>
           </>
         ) :
           <div onClick={setCurrentPage}>
-          <Link to='signin'>Sign In</Link>
-        </div>
+            <Link to='signin'>Sign In</Link>
+          </div>
         }
 
         <div onClick={setCurrentPage}>
