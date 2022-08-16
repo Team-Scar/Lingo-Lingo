@@ -59,11 +59,15 @@ import {useParams} from 'react-router-dom';
 // };
 
 const UserProfile = () => {
-  const {username} = useParams();
+  const { username } = useParams();
+  console.log(username);
   return (
-    <div>
+    <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
       <div>{username}</div>
+      <div>This is antoher user profile</div>
     </div>
   );
 };
+
+
 export default UserProfile;

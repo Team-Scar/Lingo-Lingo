@@ -1,7 +1,7 @@
 /* ==== External Modules === */
-const express = require("express");
-const path = require("path");
-require("dotenv").config({path: path.resolve(__dirname, '../.env')});
+const express = require('express');
+const path = require('path');
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
 
@@ -38,6 +38,10 @@ app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+app.get('/profile/:username', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
 app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -55,6 +59,9 @@ app.post('/signup', (req, res) => {
   console.log(req.body);
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 /* ==== Server Binding === */
 app.listen(PORT, () => {
