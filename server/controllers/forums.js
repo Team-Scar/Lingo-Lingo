@@ -1,4 +1,5 @@
 const {queryPosts} = require('../../db/controllers/forums.js');
+const {submitPost} = require('../../db/controllers/forums.js');
 
 const getPosts = (req, res) => {
   // console.log(req);
@@ -8,6 +9,16 @@ const getPosts = (req, res) => {
       });
 };
 
-// export default getPosts;
+const addPost = (req, res) => {
+  submitPost(req.body)
+      .then((results) => {
+        res.send(results.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send('upload failed');
+      });
+};
 
 module.exports.getPosts = getPosts;
+module.exports.addPost = addPost;

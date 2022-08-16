@@ -39,7 +39,7 @@ const ForumView = () => {
         if (title !== 'Hello world' && title !== 'Hola Mundo') {
           commands[title] = () => (
             console.log(title),
-            document.getElementById(title)
+            document.getElementById(title).click()
           );
         }
       });
@@ -50,7 +50,6 @@ const ForumView = () => {
     }
   });
 
-  // console.log(posts);
   return (
     <div className="forumView">
       {posts.map((post, x) => {

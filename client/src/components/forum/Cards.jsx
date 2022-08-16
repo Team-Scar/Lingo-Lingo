@@ -20,6 +20,12 @@ function Cards(props) {
   return (
     <div className="card" id={post.title} onClick={props.handleClick}>
       <div className="content">
+        {/* <img src={post.photo}></img> */}
+        <img
+          className="image"
+          src={post.photo}
+          // style={{height: '100px', width: '100px'}}
+        />
         <h3 className="cardTitle">{post.title}</h3>
         <p className="cardContent">{post.content}</p>
       </div>
