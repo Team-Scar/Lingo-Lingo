@@ -22,10 +22,12 @@ const useGlobalStore = ((set) => ({
   userName: '',
   userId: 1,
   currentFilters: {},
+  currentPage: window.location.href,
   userLanguages: ['English', 'Spanish', 'German'],
   userProficiencies: [],
   userTopics: ['Medicine', 'Tech', 'Space'],
   userConnections: [],
+  showModal: false,
   clearFilters: () =>
     set((state) => ({
       currentFilters: {},
@@ -34,15 +36,31 @@ const useGlobalStore = ((set) => ({
     set((state) => ({
       currentFilters: {
         ...state.currentFilters,
-        [filter]: filter,
+        [filter]: true,
       },
     })),
   deleteFilter: (filter) =>
     set((state) => ({
       currentFilters: {
+        ...state.currentFilters,
         [filter]: false,
       },
     })),
+  modalOn: () => {
+    set((state) => ({
+      showModal: true,
+    }));
+  },
+  modalOff: () => {
+    set((state) => ({
+      showModal: false,
+    }));
+  },
+  updateCurrentPage: () => {
+    set((state) => ({
+      currentPage: window.location.href,
+    }));
+  },
 }));
 
 const globalStore = create(devtools(useGlobalStore));

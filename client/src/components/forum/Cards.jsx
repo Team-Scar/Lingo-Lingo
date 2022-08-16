@@ -8,12 +8,24 @@ import {AiFillCaretDown} from 'react-icons/ai';
 import {MdOutlineComment} from 'react-icons/md';
 import {RiShareLine} from 'react-icons/ri';
 
+
 function Cards(props) {
   const {post} = props;
   // console.log(post);
+
+  // handleClick = (e) => {
+  //   console.log(e.target.value);
+  // };
+
   return (
-    <div className="card">
+    <div className="card" id={post.title} onClick={props.handleClick}>
       <div className="content">
+        {/* <img src={post.photo}></img> */}
+        <img
+          className="image"
+          src={post.photo}
+          // style={{height: '100px', width: '100px'}}
+        />
         <h3 className="cardTitle">{post.title}</h3>
         <p className="cardContent">{post.content}</p>
       </div>

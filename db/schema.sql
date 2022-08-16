@@ -7,8 +7,9 @@ CREATE DATABASE lingo;
 -- USER --
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(500) NOT NULL,
-  username VARCHAR(500) NOT NULL,
+  uid VARCHAR(500),
+  name VARCHAR(500) ,
+  username VARCHAR(500),
   email VARCHAR(500) NOT NULL,
   profile_photo TEXT,
   bio TEXT,
@@ -55,8 +56,10 @@ CREATE TABLE connections (
 CREATE TABLE events (
   id SERIAL PRIMARY KEY,
   location VARCHAR(500),
-  timestamp TIMESTAMPTZ DEFAULT NOW(),
+  startTime TIMESTAMPTZ DEFAULT NOW(),
+  endTime TIMESTAMPTZ DEFAULT NOW(),
   description Text,
+  photo TEXT,
   user_id INTEGER NOT NULL,
   lang_id INTEGER NOT NULL,
   jargon_id INTEGER NOT NULL,
