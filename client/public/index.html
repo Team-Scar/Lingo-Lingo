@@ -16,7 +16,7 @@
   <div id="root"></div>
   <!-- This script will be created with webpack-->
   <script src="./bundle.js"></script>
-  <script>
+  <!-- <script>
     if (annyang) {
       var commands = {
         'hello': function() {
@@ -29,12 +29,9 @@
       annyang.start();
     }
     let cards = document.getElementsByClassName('card')
-
-    let titles = [];
-    // for (var x = 0; x < cards.length; x++) {
-    //   titles.push(cards[x].innerText)
-    // }
     console.log(cards);
-  </script>
+    cards = JSON.parse(JSON.stringify(cards))
+    console.log(cards);
+  </script> -->
 </body>
 </html>
