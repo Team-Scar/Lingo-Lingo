@@ -1,7 +1,7 @@
-const {pool} = require('../index.js');
+const {client} = require('../index.js');
 
 module.exports.queryPosts = () => {
-  return pool.query(`
+  return client.query(`
   with responseCount as (
     select p.id, count(r.id)
     from posts p left outer join responses r on p.id=r.post_id
