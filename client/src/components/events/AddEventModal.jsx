@@ -10,11 +10,15 @@ const min = (new Array(12).fill(0)).map((val, ind) => {
 });
 
 const AddEventModal = (props) => {
-  const [newEvent, setNewEvent] = React.useState({title: '', allDay: true, start: '', end: ''});
+  const [newEvent, setNewEvent] = React.useState({title: '', allDay: true, start: props.startDate, end: '', language: 'English', jargon: 'Culture', photo: 'https://images.unsplash.com/photo-1527431016-15eb83515018?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'});
   const [temp, setTemp] = React.useState();
 
   const handleSubmit = () => {
-    console.log(newEvent);
+    console.log(props.userID);
+    props.addEvent(newEvent);
+    axios.post(`/addEvent/${props.userID}`, newEvent).then((result) => {
+      props.closeModal();
+    });
   };
   return (
 
@@ -35,7 +39,7 @@ const AddEventModal = (props) => {
             setNewEvent({...newEvent, location: e.target.value});
           }} />
           <input type="text" placeholder="Add Description" value={newEvent.description} onChange={(e) => {
-            setNewEvent({...newEvent, description: e.target.description});
+            setNewEvent({...newEvent, description: e.target.value});
           }} />
           <select onChange={(e) => {
             setNewEvent({...newEvent, language: e.target.value});
@@ -60,27 +64,58 @@ const AddEventModal = (props) => {
 
           <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start) => setNewEvent({...newEvent, start})} />
 
-          <select onChange={(e) => {
-            const t1 = newEvent.start.getFullYear();
-            const t2 = newEvent.start.getMonth() + 1;
-            const t3 = newEvent.start.getDate();
-            const t4 = e.target.value;
-            setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
-          }}>
-            {hr.map((item) => {
-              return <option>{item}</option>;
-            })}
-          </select>
-          <select onChange={(e) => {
-            console.log(temp);
-            const t6 = temp + ':' + (e.target.value || '00') + ':00';
-            console.log(t6);
-            setNewEvent({...newEvent, start: new Date(t6), end: new Date(t6)});
-          }}>
-            {min.map((item) => {
-              return <option>{item}</option>;
-            })}
-          </select>
+          <div className="startTime">Start Time
+            <select onChange={(e) => {
+              const t1 = newEvent.start.getFullYear();
+              const t2 = newEvent.start.getMonth() + 1;
+              const t3 = newEvent.start.getDate();
+              const t4 = e.target.value;
+              setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
+              const start = t2 + '/' + t3 + '/' + t1 + ' ' + t4 + ':00:00';
+              setNewEvent({...newEvent, allDay: false, start: new Date(start)});
+            }}>
+              {hr.map((item) => {
+                return <option>{item}</option>;
+              })}
+            </select>
+            <select onChange={(e) => {
+              console.log(temp);
+              const t6 = temp + ':' + (e.target.value || '00') + ':00';
+              console.log(t6);
+              setNewEvent({...newEvent, start: new Date(t6), end: new Date(t6)});
+            }}>
+              {min.map((item) => {
+                return <option>{item}</option>;
+              })}
+            </select>
+          </div>
+
+          <div className="startTime">End Time
+            <select onChange={(e) => {
+              const t1 = newEvent.start.getFullYear();
+              const t2 = newEvent.start.getMonth() + 1;
+              const t3 = newEvent.start.getDate();
+              const t4 = e.target.value;
+              setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
+              const end = t2 + '/' + t3 + '/' + t1 + ' ' + t4 + ':00:00';
+              setNewEvent({...newEvent, allDay: false, end: new Date(end)});
+            }}>
+              {hr.map((item) => {
+                return <option>{item}</option>;
+              })}
+            </select>
+            <select onChange={(e) => {
+              console.log(temp);
+              const t6 = temp + ':' + (e.target.value || '00') + ':00';
+              console.log(t6);
+              setNewEvent({...newEvent, allDay: false, end: new Date(t6)});
+            }}>
+              {min.map((item) => {
+                return <option>{item}</option>;
+              })}
+            </select>
+          </div>
+
         </div>
         <div className="footer">
           <button onClick={handleSubmit}>Submit</button>

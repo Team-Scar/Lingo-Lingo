@@ -55,8 +55,10 @@ CREATE TABLE connections (
 CREATE TABLE events (
   id SERIAL PRIMARY KEY,
   location VARCHAR(500),
-  timestamp TIMESTAMPTZ DEFAULT NOW(),
+  startTime TIMESTAMPTZ DEFAULT NOW(),
+  endTime TIMESTAMPTZ DEFAULT NOW(),
   description Text,
+  photo TEXT,
   user_id INTEGER NOT NULL,
   lang_id INTEGER NOT NULL,
   jargon_id INTEGER NOT NULL,

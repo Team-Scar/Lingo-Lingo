@@ -6,6 +6,7 @@ router.get('/allEvents', controllers.getAllEvents);
 router.get('/attendEvents/:userID', controllers.getAttendEvents);
 router.get('/allLanguages', controllers.getAllLanguages);
 router.get('/allJargons', controllers.getAllJargons);
+router.post('/addEvent/:userID', controllers.addEvent);
 // //get an answer
 // router.get("/:questions_id/answers", controllers.getLiveChat)
 
