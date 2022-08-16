@@ -15,7 +15,9 @@ import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
+
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
+
   const handleSignOut = async () => {
     setError('');
     try {
@@ -37,6 +39,7 @@ const Sidebar = () => {
           <img className='chat_icon' src={ChatSVG} alt="chat icon" />
           <Link to='/livechat'>Chat</Link>
         </div>
+
         <div onClick={setCurrentPage}>
           <Link to='/events'>Events</Link>
         </div>
