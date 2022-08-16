@@ -128,6 +128,7 @@ CREATE TABLE messages (
   FOREIGN KEY (user_id) REFERENCES users (id),
   FOREIGN KEY (chatroom_id) REFERENCES chatrooms (id)
 );
+
 CREATE TABLE post_vote (
   id SERIAL PRIMARY KEY,
   post_id INTEGER NOT NULL,
@@ -145,6 +146,7 @@ CREATE TABLE response_vote (
   FOREIGN KEY (response_id) REFERENCES responses (id),
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
 -- DROP TABLE IF EXISTS `review`;
 
 copy languages FROM '/home/ubuntu/lingo_data - languages.csv' DELIMITER ',' CSV HEADER;
@@ -160,6 +162,8 @@ copy responses FROM '/home/ubuntu/lingo_data - responses.csv' DELIMITER ',' CSV 
 copy messages FROM '/home/ubuntu/lingo_data - messages.csv' DELIMITER ',' CSV HEADER;
 copy chatrooms FROM '/home/ubuntu/lingo_data - chatrooms.csv' DELIMITER ',' CSV HEADER;
 copy chatroom_user FROM '/home/ubuntu/lingo_data - chatroom_user.csv' DELIMITER ',' CSV HEADER;
+copy post_vote FROM '/home/ubuntu/lingo_data - post_vote.csv' DELIMITER ',' CSV HEADER;
+copy response_vote FROM '/home/ubuntu/lingo_data - response_vote.csv' DELIMITER ',' CSV HEADER;
 
 
 -- not sure if we need this
@@ -176,6 +180,8 @@ SELECT setval(pg_get_serial_sequence('responses', 'id'), (SELECT MAX(id) FROM re
 SELECT setval(pg_get_serial_sequence('messages', 'id'), (SELECT MAX(id) FROM messages)+1);
 SELECT setval(pg_get_serial_sequence('chatroom_user', 'id'), (SELECT MAX(id) FROM chatroom_user)+1);
 SELECT setval(pg_get_serial_sequence('chatrooms', 'id'), (SELECT MAX(id) FROM chatrooms)+1);
+SELECT setval(pg_get_serial_sequence('post_vote', 'id'), (SELECT MAX(id) FROM post_vote)+1);
+SELECT setval(pg_get_serial_sequence('response_vote', 'id'), (SELECT MAX(id) FROM response_vote)+1);
 
 
 
@@ -198,3 +204,7 @@ create index chatroominfo_idx on chatrooms (creator_id);
 create index chatroom_user_idx on chatroom_user (user_id,chatroom_id);
 
 create index messageinfo_idx on messages (user_id,chatroom_id);
+
+create index postvote_idx on post_vote (post_id,user_id);
+
+create index responsevote_idx on response_vote (response_id,user_id);
