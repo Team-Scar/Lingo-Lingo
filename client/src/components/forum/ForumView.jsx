@@ -37,7 +37,10 @@ const ForumView = () => {
       };
       titles.map((title) => {
         if (title !== 'Hello world' && title !== 'Hola Mundo') {
-          commands[title] = () => console.log(title);
+          commands[title] = () => (
+            console.log(title),
+            document.getElementById(title)
+          );
         }
       });
 

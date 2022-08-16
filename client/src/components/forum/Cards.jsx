@@ -18,7 +18,7 @@ function Cards(props) {
   // };
 
   return (
-    <div className="card" onClick={props.handleClick}>
+    <div className="card" id={post.title} onClick={props.handleClick}>
       <div className="content">
         <h3 className="cardTitle">{post.title}</h3>
         <p className="cardContent">{post.content}</p>
