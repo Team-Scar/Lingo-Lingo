@@ -1,6 +1,7 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import TimeAgo from 'react-timeago';
+const axios = require('axios');
 import './_forums.scss';
 
 import {AiFillCaretUp} from 'react-icons/ai';
@@ -13,8 +14,27 @@ function Cards(props) {
   const {post} = props;
   // console.log(post);
 
-  const handleClick = (e) => {
+  const upvote = (e) => {
+    console.log(post.vote);
+    axios.post('http://0.0.0.0:3005/upvote', {'id': post.id})
+        .then(() => {
+          console.log('upvoted');
+          document.getElementById('vote').innerHTML = post.vote + 1;
+          // v.value = post.vote + 1;
+        });
+  };
+
+  const downvote = (e) => {
     console.log(post.id);
+    axios.post('http://0.0.0.0:3005/downvote', {'id': post.id})
+        .then(() => {
+          console.log('downvoted');
+          document.getElementById('vote').innerHTML = post.vote - 1;
+        });
+  };
+
+  const showDetails = () => {
+
   };
 
   return (
@@ -38,13 +58,13 @@ function Cards(props) {
         <div className="votes">
           <AiFillCaretUp
             className='caretUp'
-            onClick={handleClick}
+            onClick={upvote}
           />
           <AiFillCaretDown
             className='caretDown'
-            onClick={handleClick}
+            onClick={downvote}
           />
-          <p>{post.vote}</p>
+          <p id="vote">{post.vote}</p>
         </div>
         <div className="comments" id={post.title} onClick={props.handleClick} >
           <MdOutlineComment className="commentIcon" />

@@ -1,4 +1,5 @@
 const {queryPosts} = require('../../db/controllers/forums.js');
+const {filteredQuery} = require('../../db/controllers/forums.js');
 const {submitPost} = require('../../db/controllers/forums.js');
 const {upvotePost} = require('../../db/controllers/forums.js');
 const {downvotePost} = require('../../db/controllers/forums.js');
@@ -8,6 +9,18 @@ const getPosts = (req, res) => {
   queryPosts()
       .then((results) => {
         res.send(results.rows);
+      });
+};
+
+const getFilteredPosts = (req, res) => {
+  const filters = req.query.filter.split('&');
+  filteredQuery(filters)
+      .then((results) => {
+        res.send(results.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
       });
 };
 
@@ -45,6 +58,7 @@ const downvote = (req, res) => {
 };
 
 module.exports.getPosts = getPosts;
+module.exports.getFilteredPosts = getFilteredPosts;
 module.exports.addPost = addPost;
 module.exports.upvote = upvote;
 module.exports.downvote = downvote;
