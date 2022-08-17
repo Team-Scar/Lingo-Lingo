@@ -4,6 +4,7 @@ import {AuthContext} from './AuthContext.jsx';
 import {useNavigate} from 'react-router-dom';
 import PhotoUpload from './PhotoUpload.jsx';
 import axios from 'axios';
+import globalStore from '../../zustand.js';
 
 const CreateAccount = () => {
   const [photoUrl, setPhotosUrl] = useState('');
@@ -21,10 +22,10 @@ const CreateAccount = () => {
   const navigate = useNavigate();
   const [chosenLang, setChosenLan] = useState([]);
   const [chosenJargon, setChosenJargon] = useState([]);
-
+  const gotToken = globalStore((state) => state.token);
 
   const fetchLanguage = async () => {
-    const res = await axios.get('/allLanguages');
+    const res = await axios.get('/allLanguages', {headers: {authorization: `Bearer ${gotToken}`}});
     setLanguages(res.data);
   };
 
@@ -113,7 +114,6 @@ const CreateAccount = () => {
 
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
-
       <h2>Create account</h2>
       <form onSubmit={handleSubmit}>
         <div>

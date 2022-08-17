@@ -13,6 +13,7 @@ export const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [loading, setLoading] = useState(true);
   const changeUserID = globalStore((state )=> state.setUserId);
+  const getJWToken = globalStore((state) => state.setToken);
 
   const signup = (email, password) => {
     return methods.createUserWithEmailAndPassword(auth, email, password);
@@ -38,11 +39,11 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = methods.onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      console.log(user);
       if (user) {
+        user.getIdToken().then((token) => getJWToken(token));
         axios.get('/getUserId', {params: {email: user.email}})
-            .then(res => changeUserID(res.data.rows[0].id))
-            .catch(e => console.log(e));
+            .then((res) => changeUserID(res.data.rows[0].id))
+            .catch((e) => console.log(e));
       }
 
       setLoading(false);
