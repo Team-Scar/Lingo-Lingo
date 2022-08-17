@@ -13,7 +13,7 @@ import './events.scss';
 const moment = require('moment');
 import {DateTimePickerComponent} from '@syncfusion/ej2-react-calendars';
 import AddEventModal from './AddEventModal.jsx';
-import EventDetail from './EventDetail.jsx';
+import EventDetail from './EventDetail2.jsx';
 
 import {AuthContext} from '../userauth/AuthContext.jsx';
 import {useNavigate} from 'react-router-dom';
@@ -33,6 +33,7 @@ const localizer = dateFnsLocalizer({
 
 
 const user_id = 2;// just to assume it is passed in from props
+const user_email='sharonhw888@gmail.com';
 const Events = () => {
   const navigate = useNavigate();
   const {currentUser} = useContext(AuthContext);
@@ -42,6 +43,8 @@ const Events = () => {
   const [allJargon, setAllJargon] = React.useState();
   const [date, setDate] = React.useState(new Date());
   const [show, setShow] = React.useState(false);
+  const [showDetail, setShowDetail]=React.useState(false);
+  const [select, setSelect]=React.useState();
 
   const buildEvent = (array) => {
     console.log(array);
@@ -116,10 +119,13 @@ const Events = () => {
           }}
           onSelectEvent={(e) => {
             console.log(e);
+            setSelect(e);
+            setShowDetail(true);
           }} />
       </div>
       <div className="eventDetails">
-        {(oldEvent&&allLang&&allJargon) ? <EventDetail add={fetchData}allLang={allLang} allJargon={allJargon} allEvents={oldEvent} selectEvent={attend||[]}/>:<></>}
+        {/* {(oldEvent&&allLang&&allJargon) ? <EventDetail add={fetchData} allLang={allLang} allJargon={allJargon} allEvents={oldEvent} selectEvent={attend||[]}/>:<></>} */}
+        {showDetail&&<EventDetail info={select} add={fetchData} allLang={allLang} allJargon={allJargon} selectEvent={attend||[]}/>}
         <MfnBtn/>
       </div>
     </div>
