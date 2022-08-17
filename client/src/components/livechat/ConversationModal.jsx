@@ -1,23 +1,13 @@
 import React, {useState} from 'react';
+import {useContacts} from './contexts/ContactsProvider.jsx';
 import './modal.scss';
 
 const ConversationModal = ({closeModal}) => {
-  const [idText, setIdText] = useState('');
-  const [nameText, setNameText] = useState('');
+  const {contacts} = useContacts();
   const handleSubmit = (event) => {
     event.preventDefault();
-    // createConversation(idText, nameText);
+
     closeModal();
-  };
-
-  const idListener = (event) => {
-    const payload = event.target.value;
-    setIdText(payload);
-  };
-
-  const nameListener = (event) => {
-    const payload = event.target.value;
-    setNameText(payload);
   };
 
   return (
@@ -32,24 +22,15 @@ const ConversationModal = ({closeModal}) => {
           <h1>Create Conversation</h1>
         </div>
         <div className="body">
-          <p>ID: </p>
-          <input
-            type="text"
-            placeholder="Enter Your ID"
-            value={idText}
-            onChange={idListener}>
-          </input>
-          <p>Name: </p>
-          <input
-            type="text"
-            placeholder="Enter Your name"
-            value={nameText}
-            onChange={nameListener}>
-          </input>
+          {contacts.map(((contact, index) => {
+            return (<div key={contact.id}>
+              <input type="checkbox" />
+            </div>);
+          }))}
         </div>
         <div className="footer">
           <button onClick={() => {
-            handleSubmit;
+            handleSubmit(event);
           }}>Submit</button>
         </div>
       </div>

@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-import {useContacts, ContactsProvider} from './contexts/ContactsProvider.jsx';
+import {useContacts} from './contexts/ContactsProvider.jsx';
 import './modal.scss';
 
 const ContactModal = ({closeModal}) => {
   const [idText, setIdText] = useState('');
   const [nameText, setNameText] = useState('');
+  const {createContact} = useContacts();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     createContact(idText, nameText);
@@ -50,7 +52,7 @@ const ContactModal = ({closeModal}) => {
         </div>
         <div className="footer">
           <button onClick={() => {
-            handleSubmit;
+            handleSubmit(event);
           }}>Submit</button>
         </div>
       </div>
