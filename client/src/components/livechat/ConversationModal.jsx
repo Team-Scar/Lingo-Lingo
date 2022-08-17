@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useContacts} from './contexts/ContactsProvider.jsx';
+import ConversationModalCheckBox from './ConversationModalCheckBox.jsx';
 import './modal.scss';
 
 const ConversationModal = ({closeModal}) => {
@@ -23,9 +24,7 @@ const ConversationModal = ({closeModal}) => {
         </div>
         <div className="body">
           {contacts.map(((contact, index) => {
-            return (<div key={contact.id}>
-              <input type="checkbox" />
-            </div>);
+            return (<ConversationModalCheckBox />);
           }))}
         </div>
         <div className="footer">
