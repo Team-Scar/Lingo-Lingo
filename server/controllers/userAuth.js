@@ -49,7 +49,6 @@ module.exports = {
         const jargonResult = await client.query('select jargons.id from jargons where jargons.jargon_name = $1', [jargon]);
         const userJargonQuery = 'insert into user_jargon (user_id, jargon_id) values ($1, $2)';
         await client.query(userJargonQuery, [userId, jargonResult.rows[0].id]);
-        console.log('jargon info is', jargonResult);
       }
 
       // store user_language into db

@@ -12,7 +12,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [loading, setLoading] = useState(true);
-  const {setUserId} = globalStore;
+  const changeUserID = globalStore((state )=> state.setUserId);
 
   const signup = (email, password) => {
     return methods.createUserWithEmailAndPassword(auth, email, password);
@@ -38,9 +38,10 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = methods.onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      console.log(user);
       if (user) {
         axios.get('/getUserId', {params: {email: user.email}})
-            .then(res => setUserId(res.data.rows[0].id))
+            .then(res => changeUserID(res.data.rows[0].id))
             .catch(e => console.log(e));
       }
 

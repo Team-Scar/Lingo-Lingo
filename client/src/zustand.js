@@ -63,7 +63,7 @@ const useGlobalStore = ((set) => ({
   },
   setUserId: (newId) => {
     set((state) => ({
-      userId: newID,
+      userId: newId,
     }));
   },
 }));

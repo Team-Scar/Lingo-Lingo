@@ -40,6 +40,7 @@ const Sidebar = () => {
       {error && <h3>{error}</h3>}
       {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
+      <h3>{globalStore.userId}</h3>
       <nav className='sidebar_navigation'>
         <div onClick={setCurrentPage}>
           <img className='home_icon' src={HomeSVG} alt="home icon" />
