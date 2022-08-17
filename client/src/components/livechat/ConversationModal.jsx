@@ -1,11 +1,10 @@
 import React from 'react';
-import './modalstyle.scss';
+import './modal.scss';
 
-const ConversationModal = ({id}) => {
+const ConversationModal = ({closeModal}) => {
   return (
     <div className="modalBackgroundDF">
       <div className="modalContainerDF">
-        <button>X</button>
         <div className = "title">
           <h1>This is the Conversation Modal</h1>
         </div>
@@ -13,7 +12,9 @@ const ConversationModal = ({id}) => {
           <p>The next page is awesome!</p>
         </div>
         <div className="footer">
-          <button>Cancel</button><button>Continue</button>
+          <button onClick={() => {
+            closeModal(false);
+          }}>Cancel</button><button>Continue</button>
         </div>
       </div>
     </div>

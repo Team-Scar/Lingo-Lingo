@@ -2,12 +2,17 @@ import React, {useState} from 'react';
 import Conversation from './Conversation.jsx';
 import Contacts from './Contacts.jsx';
 import ConversationModal from './ConversationModal.jsx';
+import ContactModal from './ContactModal.jsx';
 
 
 const Sidebar = ({id}) => {
   const [currentTab, setCurrentTab] = useState('Conversation');
+  const [modalOpen, setModalOpen] = useState(false);
   const tabHandler = (event) => {
     setCurrentTab(event.target.innerHTML);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
   };
   return (
     <div>
@@ -16,12 +21,19 @@ const Sidebar = ({id}) => {
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
       <div>Your id is {id}</div>
       {currentTab === 'Conversation' ?
-      <button>New Conversation</button> : <button>New Contact</button>
+      <button
+        className="openModalBtn"
+        onClick={() => {
+          setModalOpen(true);
+        }}>New Conversation</button>:
+        <button onClick={() => {
+          setModalOpen(true);
+        }}>New Contact</button>
       }
-      {/* <button>
-        New {currentTab === 'Conversation' ? 'Conversation' : 'Contact'}
-      </button> */}
-      <ConversationModal />
+      {(modalOpen && currentTab === 'Conversation') &&
+        <ConversationModal closeModal={closeModal}/>}
+      {(modalOpen && currentTab === 'Contacts') &&
+        <ContactModal closeModal={closeModal}/>}
     </div>
   );
 };
