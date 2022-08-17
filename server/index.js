@@ -10,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const controllers = require('./controllers/index.js');
+const routes = require('./routes');
 
 
 /* ==== Middleware === */
@@ -37,14 +38,6 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-
-app.get('/signup', controllers.userAuth.signUpGet);
-app.get('/signin', controllers.userAuth.signIn);
-app.post('/signup', controllers.userAuth.signUpPost);
-app.post('/create-account', controllers.userAuth.createAccount);
-app.get('/allLanguages', controllers.userAuth.getAllLanguages);
-app.get('/allJargons', controllers.userAuth.getAllJargons);
-
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -57,7 +50,7 @@ app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 app.use(eventRouter);
-
+app.use(routes);
 
 
 app.get('/discussions', (req, res) => {
