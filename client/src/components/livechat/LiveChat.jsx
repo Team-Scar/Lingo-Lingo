@@ -4,6 +4,7 @@ import Messages from './Messages.jsx';
 import './livechat.scss';
 import {useLocalStorage} from './hooks/useLocalStorage.js';
 import {ContactsProvider} from './contexts/ContactsProvider.jsx';
+import {ConversationsProvider} from './contexts/ConversationsProvider.jsx';
 
 
 const LiveChat = () => {
@@ -11,7 +12,9 @@ const LiveChat = () => {
 
   const messagebox = (
     <ContactsProvider>
-      <Messages id={id}/>
+      <ConversationsProvider>
+        <Messages id={id}/>
+      </ConversationsProvider>
     </ContactsProvider>
   );
   return (
