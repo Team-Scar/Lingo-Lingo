@@ -18,7 +18,7 @@ function Cards(props) {
   };
 
   return (
-    <div className="card" id={post.title} onClick={props.handleClick}>
+    <div className="card">
       <div className="content">
         {/* <img src={post.photo}></img> */}
         <img
@@ -46,7 +46,7 @@ function Cards(props) {
           />
           <p>{post.vote}</p>
         </div>
-        <div className="comments">
+        <div className="comments" id={post.title} onClick={props.handleClick} >
           <MdOutlineComment className="commentIcon" />
           <p>{post.responses}</p>
         </div>
