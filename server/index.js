@@ -9,6 +9,7 @@ const eventRouter=require('./routes/events.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const controllers = require('./controllers/index.js');
 
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
@@ -31,7 +33,13 @@ app.use(bodyParser.json());
 /* ==== Route Handlers === */
 app.get('/posts', controllers.getPosts);
 
+app.get('/posts/filter', controllers.getFilteredPosts);
+
 app.post('/posts', controllers.addPost);
+
+app.post('/upvote', controllers.upvote);
+
+app.post('/downvote', controllers.downvote);
 
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
@@ -57,7 +65,6 @@ app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 app.use(eventRouter);
-
 
 
 app.get('/discussions', (req, res) => {
