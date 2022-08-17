@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import Map4 from './Map4.jsx';
 
 const user_id = 2;
 const EventDetail = (props) => {
+  const [showMap, setShowMap]=React.useState(false);
   const handleCancel = (e) => {
     const eventID = e.target.attributes.data.value;
     const creatorID = e.target.attributes[1].value;
@@ -27,14 +29,19 @@ const EventDetail = (props) => {
       {props.allEvents && props.allEvents.map((item, index) => {
         return (
           <div className="allEvents">
-            <div data={item.id}>
+            <div data={item.id} onClick={()=>{
+              setShowMap(true);
+            }}>
+              <img className="eventPhoto"src={item.photo}/>
               <h3>{item.title}</h3>
-              <div>{props.allLang[item.langID-1].language_name}</div>
-              {/* <div>{props.allJargon[item.jargonID-1].jargon_name}</div> */}
+              <div>{props.allLang[item.langID - 1].language_name}</div>
+              <div>{props.allJargon[item.jargonID - 1].jargon_name}</div>
               <p>{item.descriptiÍon}</p>
               <div>Start time: {String(item.start)}</div>
               {item.allDay ? <div>All Day Event</div> : <div>End time: {String(item.end)}</div>}
               {props.selectEvent.includes(item.eventID) ? <button data={item.eventID} data-creator={item.creatorID} onClick={handleCancel}>Cancel</button> : <button data={item.eventID} onClick={handleAdd}>Add to your event</button>}
+
+              {item.location.includes('http') ? <a href={item.location}>online event</a> : <Map4 location={item.location} />}
             </div>
           </div>
 

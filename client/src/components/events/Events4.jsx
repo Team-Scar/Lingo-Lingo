@@ -17,6 +17,8 @@ import EventDetail from './EventDetail.jsx';
 
 import {AuthContext} from '../userauth/AuthContext.jsx';
 import {useNavigate} from 'react-router-dom';
+import Modal from '../Modal/Modal.jsx';
+import MfnBtn from '../mfn_btn/MfnBtn.jsx';
 
 const locales = {
   'en-US': enUS,
@@ -63,56 +65,64 @@ const Events = () => {
   const fetchData=()=>{
     if (currentUser) {
       axios.get(`/attendEvents/${user_id}`).then((result) => {
-        console.log(result);
         setAttend(result.data);
       });
     }
     axios.get('/allEvents').then((res) => {
-      console.log(res);
       setAllEvent(buildEvent(res.data));
     });
-    axios.get('/allLanguages').then((res) => {
-      console.log(res);
-      console.log(res.data);
+    axios.get('/allLanguagess').then((res) => {
       setAllLang(res.data);
     });
-    axios.get('/allJargons').then((res) => {
-      console.log(res.data);
+    axios.get('/allJargonss').then((res) => {
       setAllJargon(res.data);
     });
+  };
+
+  const modalContent=()=>{
+    return (<AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
+      setAllEvent([...oldEvent, newEvent]);
+    }} closeModal={() => {
+      setShow(false);
+    }} />);
   };
 
   React.useEffect(fetchData, []);
 
   return (
-    <>
-      {currentUser ? <p>user {currentUser.email} is logged in</p> : <p>You are currently logged in as visitor</p>}
-      <div>This is an event</div>
-      <button onClick={() => {
+    <div className="eventContainer">
+
+
+      {/* <button onClick={() => {
         setShow(true);
-      }}>Add New Event</button>
-      {show && <AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
-        setAllEvent([...oldEvent, newEvent]);
-      }} closeModal={() => {
+      }}>Add New Event</button> */}
+      <Modal children={modalContent()}/>
+
+      {show && <AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={fetchData} closeModal={() => {
         setShow(false);
       }} />}
-      <Calendar
-        localizer={localizer}
-        events={oldEvent}
-        startAccessor="start"
-        endAccessor="end"
-        style={{height: '70%'}}
-        selectable={true}
-        onSelectSlot={(e) => {
-          console.log(e.start);
-          setShow(true);
-          setDate(new Date(e.start));
-        }}
-        onSelectEvent={(e) => {
-          console.log(e);
-        }} />
-      {(oldEvent&&allLang&&allJargon) ? <EventDetail add={fetchData}allLang={allLang} allJargon={allJargon} allEvents={oldEvent} selectEvent={attend||[]}/>:<></>}
-    </>
+      <div className="eventCalendar">
+        <Calendar
+          localizer={localizer}
+          events={oldEvent}
+          startAccessor="start"
+          endAccessor="end"
+          style={{height: '70%'}}
+          selectable={true}
+          onSelectSlot={(e) => {
+            console.log(e.start);
+            setShow(true);
+            setDate(new Date(e.start));
+          }}
+          onSelectEvent={(e) => {
+            console.log(e);
+          }} />
+      </div>
+      <div className="eventDetails">
+        {(oldEvent&&allLang&&allJargon) ? <EventDetail add={fetchData}allLang={allLang} allJargon={allJargon} allEvents={oldEvent} selectEvent={attend||[]}/>:<></>}
+        <MfnBtn/>
+      </div>
+    </div>
   );
 };
 
