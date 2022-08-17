@@ -4,3 +4,5 @@ module.exports.userAuth = require('./userAuth.js');
 
 module.exports.getPosts = forums.getPosts;
 module.exports.addPost = forums.addPost;
+module.exports.upvote = forums.upvote;
+module.exports.downvote = forums.downvote;

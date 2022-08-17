@@ -13,9 +13,9 @@ function Cards(props) {
   const {post} = props;
   // console.log(post);
 
-  // handleClick = (e) => {
-  //   console.log(e.target.value);
-  // };
+  const handleClick = (e) => {
+    console.log(post.id);
+  };
 
   return (
     <div className="card" id={post.title} onClick={props.handleClick}>
@@ -36,8 +36,14 @@ function Cards(props) {
       </div>
       <div className="interaction">
         <div className="votes">
-          <AiFillCaretUp className='caretUp'/>
-          <AiFillCaretDown className='caretDown' />
+          <AiFillCaretUp
+            className='caretUp'
+            onClick={handleClick}
+          />
+          <AiFillCaretDown
+            className='caretDown'
+            onClick={handleClick}
+          />
           <p>{post.vote}</p>
         </div>
         <div className="comments">

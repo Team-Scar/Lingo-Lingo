@@ -32,3 +32,22 @@ module.exports.submitPost = (post) => {
       text, values,
   );
 };
+
+
+module.exports.upvotePost = (id) => {
+  const text = `update posts set vote = vote + 1 where id=$1`;
+  const values = [id];
+  console.log(id);
+  return client.query(
+      text, values,
+  );
+};
+
+module.exports.downvotePost = (id) => {
+  const text = `update posts set vote = vote - 1 where id=$1`;
+  const values = [id];
+  console.log(id);
+  return client.query(
+      text, values,
+  );
+};

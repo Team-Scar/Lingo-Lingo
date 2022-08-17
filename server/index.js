@@ -33,6 +33,10 @@ app.get('/posts', controllers.getPosts);
 
 app.post('/posts', controllers.addPost);
 
+app.post('/upvote', controllers.upvote);
+
+app.post('/downvote', controllers.downvote);
+
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -57,7 +61,6 @@ app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 app.use(eventRouter);
-
 
 
 app.get('/discussions', (req, res) => {
