@@ -35,13 +35,13 @@ const App = () => {
       <div>
         {/* Home Page */}
         {/* <Modal classname='mfn_modal'show={modalState}/> */}
-        {/* <Header /> */}
+        <Header />
         {/* <MfnBtn /> */}
         <div className='view_port'
           // style={modalState ? {filter: 'blur(5px)'} : null}
         >
           <BrowserRouter>
-            {/* <Sidebar /> */}
+            <Sidebar />
             <Routes>
               <Route path='/' element={<ForumView />} />
               <Route path='/discussions' element={<ForumDetails />} />
