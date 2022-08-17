@@ -43,3 +43,13 @@ module.exports.queryPost = (postID) => {
       and p.jargon_id = j.id and p.id = ($1)
       `, [postID]);
 };
+
+module.exports.queryResponses = (postID) => {
+  return client.query(`
+      select
+        r.id, r.response_to_id, r.content, r.photo, r.timestamp,
+        r.vote, u.username
+      from responses r, users u
+      where u.id = r.user_id and r.post_id = ($1)
+      `, [postID]);
+};

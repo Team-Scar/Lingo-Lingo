@@ -8,15 +8,32 @@ const ForumMainPost = () => {
   const postID = 7;
 
   const postData = postStore((state) => state.postData);
+  const responsesData = postStore((state) => state.responsesData);
   const fetched = postStore((state) => state.fetched);
   const setFetched = postStore((state) => state.setFetched);
   const loadPost = postStore((state) => state.loadPost);
+  const loadResponses = postStore((state) => state.loadResponses);
+
   if (fetched === false) {
     axios.get('http://localhost:3005/posts/' + postID)
-        .then((results) => {
-          loadPost(results.data[0]);
+        .then((post) => {
+          loadPost(post.data[0]);
           setFetched();
+        })
+        .catch((err) => {
+          console.log(err);
         });
+
+
+    // axios.get('http://localhost:3005/responses/' + postID)
+    //     .then((postResponses) => {
+    //       console.log(postResponses.data);
+    //       loadResponses(postResponses.data);
+    //       // setFetched();
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
   }
 
   return (
@@ -28,7 +45,6 @@ const ForumMainPost = () => {
       <div>{ postData.timestamp }</div>
       <div>{ postData.content }</div>
       <img className="postImage" src={postData.photo} />
-      <div>REPLY</div>
     </div>
   );
 };
