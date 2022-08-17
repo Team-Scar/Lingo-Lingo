@@ -32,3 +32,14 @@ module.exports.submitPost = (post) => {
       text, values,
   );
 };
+
+module.exports.queryPost = (postID) => {
+  return client.query(`
+      select
+        p.id, p.title, p.content, p.photo, p.timestamp,
+        p.vote, u.username, l.language_name, j.jargon_name
+      from posts p, users u, languages l, jargons j
+      where u.id = p.user_id and p.lang_id = l.id
+      and p.jargon_id = j.id and p.id = ($1)
+      `, [postID]);
+};

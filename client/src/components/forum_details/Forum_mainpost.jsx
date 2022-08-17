@@ -1,29 +1,33 @@
 import React from 'react';
+const axios = require('axios');
+import TimeAgo from 'react-timeago';
 
-import forumStore from '../forum/_forumState.js';
+import postStore from './_postState.js';
 
 const ForumMainPost = () => {
-  const postExample = {
-    id: 5,
-    title: 'THIS IS A TITLE',
-    content: 'POST TEXT POST TEXT POST TEXT POST TEXT',
-    photo: 'https://picsum.photos/id/1012/200/300',
-    timestamp: '08/15/2022 11:22:33',
-    vote: 7,
-    user_id: 5,
-    lang_id: 6,
-    jargon_id: 7,
-  };
+  const postID = 7;
+
+  const postData = postStore((state) => state.postData);
+  const fetched = postStore((state) => state.fetched);
+  const setFetched = postStore((state) => state.setFetched);
+  const loadPost = postStore((state) => state.loadPost);
+  if (fetched === false) {
+    axios.get('http://localhost:3005/posts/' + postID)
+        .then((results) => {
+          loadPost(results.data[0]);
+          setFetched();
+        });
+  }
 
   return (
     <div className="forumMainPost">
-      <div>{ postExample.title }</div>
-      <div>userName</div>
-      <div>Language</div>
-      <div>Jargon</div>
-      <div>{ postExample.timestamp }</div>
-      <div>{ postExample.content }</div>
-      <img className="postImage" src={postExample.photo} />
+      <div>{ postData.title }</div>
+      <div>{ postData.username }</div>
+      <div>{ postData.language_name }</div>
+      <div>{ postData.jargon_name }</div>
+      <div>{ postData.timestamp }</div>
+      <div>{ postData.content }</div>
+      <img className="postImage" src={postData.photo} />
       <div>REPLY</div>
     </div>
   );
