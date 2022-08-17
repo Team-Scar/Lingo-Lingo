@@ -21,17 +21,21 @@ module.exports.queryPosts = () => {
   );
 };
 
-module.exports.filteredQuery = (filter) => {
-  console.log(filter);
-  let filters = '(';
-  filter.map((choice, x) => {
-    filters+=`'` + choice + `'`;
-    if (x !== filter.length-1) {
-      filters += ', ';
-    }
-  });
-  filters += ')';
-  console.log(filters);
+module.exports.filterLanguage = (filter) => {
+  console.log('filter:', filter);
+  let filters = `(`;
+  if (Array.isArray(filter)) {
+    filter.map((choice, x) => {
+      filters+=`'` + choice + `'`;
+      if (x !== filter.length-1) {
+        filters += ', ';
+      }
+    });
+    filters += ')';
+  } else {
+    filters = `('` + filter + `')`;
+  }
+  console.log('filters:', filters);
   return client.query(`
   with responseCount as (
     select p.id, count(r.id)
@@ -51,6 +55,85 @@ module.exports.filteredQuery = (filter) => {
   order by p.timestamp desc
   `,
   );
+};
+
+module.exports.filterJargon = (filter) => {
+  console.log('filter:', filter);
+  let filters = `(`;
+  if (Array.isArray(filter)) {
+    filter.map((choice, x) => {
+      filters+=`'` + choice + `'`;
+      if (x !== filter.length-1) {
+        filters += ', ';
+      }
+    });
+    filters += ')';
+  } else {
+    filters = `('` + filter + `')`;
+  }
+  console.log('filters:', filters);
+  return client.query(`
+  with responseCount as (
+    select p.id, count(r.id)
+    from posts p left outer join responses r on p.id=r.post_id
+    group by p.id
+    order by p.id
+  )
+
+  select
+    p.id, p.title, p.content, p.photo, p.timestamp,
+    p.vote, u.username, l.language_name, j.jargon_name, responseCount.count
+    as responses
+  from posts p, users u, languages l, jargons j, responseCount
+  where u.id = p.user_id and p.lang_id = l.id
+  and p.jargon_id = j.id and p.id = responseCount.id
+  and j.jargon_name in ${filters}
+  order by p.timestamp desc
+  `,
+  );
+};
+
+module.exports.filterBoth = (language, jargon) => {
+  let languages = '(';
+  let jargons = '(';
+
+  language.map((choice, x) => {
+    languages +=`'` + choice + `'`;
+    if (x !== language.length-1) {
+      languages += ', ';
+    }
+  });
+  languages += ')';
+
+  jargon.map((choice, x) => {
+    jargons +=`'` + choice + `'`;
+    if (x !== jargon.length-1) {
+      jargons += ', ';
+    }
+  });
+  jargons += ')';
+
+  return client.query(`
+  with responseCount as (
+    select p.id, count(r.id)
+    from posts p left outer join responses r on p.id=r.post_id
+    group by p.id
+    order by p.id
+  )
+
+  select
+    p.id, p.title, p.content, p.photo, p.timestamp,
+    p.vote, u.username, l.language_name, j.jargon_name, responseCount.count
+    as responses
+  from posts p, users u, languages l, jargons j, responseCount
+  where u.id = p.user_id and p.lang_id = l.id
+  and p.jargon_id = j.id and p.id = responseCount.id
+  and l.language_name in ${languages} and j.jargon_name in ${jargons}
+  order by p.timestamp desc
+  `,
+  );
+
+  console.log(languages, jargons);
 };
 
 module.exports.submitPost = (post) => {
