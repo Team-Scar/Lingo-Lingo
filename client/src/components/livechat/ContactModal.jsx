@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useContacts, ContactsProvider} from './contexts/ContactsProvider.jsx';
 import './modal.scss';
 
 const ContactModal = ({closeModal}) => {
@@ -6,7 +7,7 @@ const ContactModal = ({closeModal}) => {
   const [nameText, setNameText] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
-    // createContact(idText, nameText);
+    createContact(idText, nameText);
     closeModal();
   };
 
