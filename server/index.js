@@ -59,7 +59,6 @@ app.get('/events', (req, res) => {
 app.use(eventRouter);
 
 
-
 app.get('/discussions', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
