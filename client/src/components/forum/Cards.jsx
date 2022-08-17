@@ -1,6 +1,7 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import TimeAgo from 'react-timeago';
+const axios = require('axios');
 import './_forums.scss';
 
 import {AiFillCaretUp} from 'react-icons/ai';
@@ -13,12 +14,31 @@ function Cards(props) {
   const {post} = props;
   // console.log(post);
 
-  // handleClick = (e) => {
-  //   console.log(e.target.value);
-  // };
+  const upvote = (e) => {
+    console.log(post.vote);
+    axios.post('http://0.0.0.0:3005/upvote', {'id': post.id})
+        .then(() => {
+          console.log('upvoted');
+          document.getElementById('vote').innerHTML = post.vote + 1;
+          // v.value = post.vote + 1;
+        });
+  };
+
+  const downvote = (e) => {
+    console.log(post.id);
+    axios.post('http://0.0.0.0:3005/downvote', {'id': post.id})
+        .then(() => {
+          console.log('downvoted');
+          document.getElementById('vote').innerHTML = post.vote - 1;
+        });
+  };
+
+  const showDetails = () => {
+
+  };
 
   return (
-    <div className="card" id={post.title} onClick={props.handleClick}>
+    <div className="card">
       <div className="content">
         {/* <img src={post.photo}></img> */}
         <img
@@ -36,11 +56,17 @@ function Cards(props) {
       </div>
       <div className="interaction">
         <div className="votes">
-          <AiFillCaretUp className='caretUp'/>
-          <AiFillCaretDown className='caretDown' />
-          <p>{post.vote}</p>
+          <AiFillCaretUp
+            className='caretUp'
+            onClick={upvote}
+          />
+          <AiFillCaretDown
+            className='caretDown'
+            onClick={downvote}
+          />
+          <p id="vote">{post.vote}</p>
         </div>
-        <div className="comments">
+        <div className="comments" id={post.title} onClick={props.handleClick} >
           <MdOutlineComment className="commentIcon" />
           <p>{post.responses}</p>
         </div>
