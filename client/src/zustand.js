@@ -66,6 +66,11 @@ const useGlobalStore = ((set) => ({
       userName: value,
     }));
   },
+  setUserId: (newId) => {
+    set((state) => ({
+      userId: newId,
+    }));
+  },
 }));
 
 const globalStore = create(devtools(useGlobalStore));
