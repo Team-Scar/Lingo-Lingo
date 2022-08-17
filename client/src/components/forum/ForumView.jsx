@@ -14,6 +14,8 @@ const ForumView = () => {
   const setFetched = forumStore((state) => state.setFetched);
   const loadPosts = forumStore((state) => state.loadPosts);
   const filter = globalStore((state) => state.currentFilters);
+  const filterLang = globalStore((state) => state.userLanguages);
+  const filterTopics = globalStore((state) => state.userTopics);
 
   if (fetched === false) {
     axios.get('http://localhost:3005/posts')
@@ -57,11 +59,64 @@ const ForumView = () => {
       });
 
       console.log(commands);
-      console.log(filter);
       annyang.addCommands(commands);
       annyang.start();
     }
   });
+
+  useEffect(() => {
+    const languageArr = [];
+    const jargonArr = [];
+    for (const key in filter) {
+      if (filter[key] && filterLang.includes(key)) {
+        languageArr.push(key);
+      } else if (filter[key] && filterTopics.includes(key)) {
+        jargonArr.push(key);
+      }
+    }
+    let languageMap = '';
+    let jargonMap = '';
+    languageArr.map((lang, x) => {
+      languageMap += lang;
+      if (x !== languageArr.length-1) {
+        languageMap += '&';
+      }
+    });
+
+    jargonArr.map((jargon, x) => {
+      jargonMap += jargon;
+      if (x !== jargonArr.length - 1) {
+        jargonMap += '&';
+      }
+    });
+    console.log('languages:', languageMap);
+    console.log('jargons:', jargonMap);
+
+    // axios request
+    const params = {};
+    if (jargonMap.length > 3 && languageMap.length > 3) {
+      params.languages = languageMap;
+      params.jargons = jargonMap;
+    } else if (languageMap.length > 3) {
+      params.languages = languageMap;
+    } else if (jargonMap.length > 3) {
+      params.jargons = jargonMap;
+    }
+    if (Object.keys(params).length > 0) {
+      console.log('making filtered request');
+      axios.get('http://localhost:3005/posts/filter', {params: params})
+          .then((res) => {
+            console.log(res.data);
+            loadPosts(res.data);
+          });
+    } else {
+      axios.get('http://localhost:3005/posts')
+          .then((res) => {
+            console.log(res.data);
+            loadPosts(res.data);
+          });
+    }
+  }, [filter]);
 
   const Form = () => {
     return (<form style={{display: 'grid'}}>

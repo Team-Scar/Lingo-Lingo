@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 /* ==== Route Handlers === */
 app.get('/posts', controllers.getPosts);
 
-app.get('/posts/filter', controllers.getFilteredPosts);
+app.get('/posts/filter', controllers.filtered);
 
 app.post('/posts', controllers.addPost);
 
