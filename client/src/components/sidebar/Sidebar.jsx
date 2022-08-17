@@ -2,8 +2,9 @@
 import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-
+import axios from 'axios';
 import globalStore from '../../zustand.js';
+import {getUserName} from '../../../../server/controllers/sidebar.js';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
@@ -17,7 +18,11 @@ const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
-
+  // useEffect(() => {
+  //   axios.get('/userName', globalStore.userId).then((res) => {
+  //     console.log(res);
+  //   });
+  // }, [globalStore.userId]);
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
 
   const handleSignOut = async () => {

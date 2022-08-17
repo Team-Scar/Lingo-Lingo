@@ -7,10 +7,12 @@ import '../../global.scss';
 const Header = () => {
   // TODO: headerTitle should update automatically based on sidebar nav link;
   const [headerTitle, setHeaderTitle] = useState('Home');
+
   useEffect(() => {
     const headerArray = headerState.split('/');
     setHeaderTitle(headerArray[headerArray.length-1]);
   }, [window.location.href]);
+
   const headerState = globalStore((state) => state.currentPage);
 
   // console.log(headerTitle);

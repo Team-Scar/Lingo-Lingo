@@ -1,27 +1,27 @@
-const path = require("path");
+const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./client/src/index.jsx",
+  mode: 'development',
+  entry: './client/src/index.jsx',
   output: {
     path: path.join(__dirname, './client/public'),
-    filename: "bundle.js"
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(jsx|js)$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader',
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -31,15 +31,15 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
-    ]
+    ],
   },
   plugins: [new ESLintPlugin()],
   // [devtool] this is an additional source map that will let the browser know what files are running our code.
   // Helps with error tracing. Without it we will not know where our errors are coming from because it will state that everything inside the bundle file.
-  devtool: "eval-cheap-module-source-map",
+  devtool: 'eval-cheap-module-source-map',
   // [devServer] configuration for the live server including port
   devServer: {
     // [static] config for how what to serve
@@ -49,5 +49,5 @@ module.exports = {
     compress: true,
     // [port] what port on our local machine to run the dev server
     port: 3000,
-  }
-}
+  },
+};

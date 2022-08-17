@@ -61,6 +61,11 @@ const useGlobalStore = ((set) => ({
       currentPage: window.location.href,
     }));
   },
+  updateUserName: (value) => {
+    set((state) => ({
+      userName: value,
+    }));
+  },
   setUserId: (newId) => {
     set((state) => ({
       userId: newId,
