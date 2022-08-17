@@ -9,16 +9,30 @@ const min = (new Array(12).fill(0)).map((val, ind) => {
   return ind * 5;
 });
 
+
 const AddEventModal = (props) => {
   const [newEvent, setNewEvent] = React.useState({title: '', allDay: true, start: props.startDate, end: '', language: 'English', jargon: 'Culture', photo: 'https://images.unsplash.com/photo-1527431016-15eb83515018?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'});
   const [temp, setTemp] = React.useState();
-
+  const [photo, setPhoto]=React.useState();
   const handleSubmit = () => {
-    console.log(props.userID);
-    props.addEvent(newEvent);
     axios.post(`/addEvent/${props.userID}`, newEvent).then((result) => {
+      props.addEvent();
       props.closeModal();
     });
+  };
+  const preview=(e)=>{
+    const source=URL.createObjectURL(Object.values(e.target.files)[0]);
+    setPhoto(<img className="previewPhoto" src={source} />);
+    const formData=new FormData();
+    formData.append('file', Object.values(e.target.files)[0]);
+    formData.append('upload_preset', 'ap4g9ume');
+
+    axios.post('https://api.cloudinary.com/v1_1/dls2rxfqj/image/upload', formData).then(
+        (response)=>{
+          console.log(response);
+          setNewEvent({...newEvent, photo: response[0]});
+        },
+    );
   };
   return (
 
@@ -32,15 +46,19 @@ const AddEventModal = (props) => {
         <div className="title">Create a new event</div>
         <div className="body">
 
-          <input type="text" placeholder="Add Title" value={newEvent.title} onChange={(e) => {
-            setNewEvent({...newEvent, title: e.target.value});
-          }} />
-          <input type="text" placeholder="Add Location" value={newEvent.location} onChange={(e) => {
-            setNewEvent({...newEvent, location: e.target.value});
-          }} />
           <input type="text" placeholder="Add Description" value={newEvent.description} onChange={(e) => {
             setNewEvent({...newEvent, description: e.target.value});
           }} />
+
+
+          <input type="text" placeholder="Add Location" value={newEvent.location} onChange={(e) => {
+            setNewEvent({...newEvent, location: e.target.value});
+          }} />
+
+          <input className="addImg" type='file' onChange={preview}/>
+          {photo}
+
+
           <select onChange={(e) => {
             setNewEvent({...newEvent, language: e.target.value});
           }}>
@@ -98,7 +116,7 @@ const AddEventModal = (props) => {
               const t4 = e.target.value;
               setTemp(t2 + '/' + t3 + '/' + t1 + ' ' + t4);
               const end = t2 + '/' + t3 + '/' + t1 + ' ' + t4 + ':00:00';
-              setNewEvent({...newEvent, end: new Date(end)});
+              setNewEvent({...newEvent, allDay: false, end: new Date(end)});
             }}>
               {hr.map((item) => {
                 return <option>{item}</option>;

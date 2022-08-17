@@ -50,10 +50,14 @@ module.exports.addEvent = (userID, newEvent) => {
 };
 
 module.exports.removeEvent = (eventID) => {
-  return client.query(`with del as (
-    delete from user_event u where u.event_id=${eventID}
-  )
-  delete from events e where e.id=${eventID}`);
+  return client.query(`delete from user_event u where u.event_id=${eventID}`).then(() => {
+    client.query(`delete from events e where e.id=${eventID}`);
+  });
+
+  // return client.query(`with del as (
+  //   delete from user_event u where u.event_id=${eventID}
+  // )
+  // delete from events e where e.id=${eventID}`);
 };
 
 module.exports.updateAttend = (eventID, userID) => {

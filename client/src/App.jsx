@@ -38,7 +38,8 @@ const App = () => {
         <Header />
         {/* <MfnBtn /> */}
         <div className='view_port'
-          style={modalState ? {filter: 'blur(5px)'} : null}>
+          // style={modalState ? {filter: 'blur(5px)'} : null}
+        >
           <BrowserRouter>
             <Sidebar />
             <Routes>
