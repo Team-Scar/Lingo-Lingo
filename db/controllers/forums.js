@@ -97,21 +97,29 @@ module.exports.filterBoth = (language, jargon) => {
   let languages = '(';
   let jargons = '(';
 
-  language.map((choice, x) => {
-    languages +=`'` + choice + `'`;
-    if (x !== language.length-1) {
-      languages += ', ';
-    }
-  });
-  languages += ')';
+  if (Array.isArray(language)) {
+    language.map((choice, x) => {
+      languages +=`'` + choice + `'`;
+      if (x !== language.length-1) {
+        languages += ', ';
+      }
+    });
+    languages += ')';
+  } else {
+    languages = `('` + language + `')`;
+  }
 
-  jargon.map((choice, x) => {
-    jargons +=`'` + choice + `'`;
-    if (x !== jargon.length-1) {
-      jargons += ', ';
-    }
-  });
-  jargons += ')';
+  if (Array.isArray(jargon)) {
+    jargon.map((choice, x) => {
+      jargons +=`'` + choice + `'`;
+      if (x !== jargon.length-1) {
+        jargons += ', ';
+      }
+    });
+    jargons += ')';
+  } else {
+    jargons = `('` + jargon + `')`;
+  }
 
   return client.query(`
   with responseCount as (

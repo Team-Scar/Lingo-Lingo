@@ -107,6 +107,13 @@ const ForumView = () => {
       axios.get('http://localhost:3005/posts/filter', {params: params})
           .then((res) => {
             console.log(res.data);
+            loadPosts(res.data);
+          });
+    } else {
+      axios.get('http://localhost:3005/posts')
+          .then((res) => {
+            console.log(res.data);
+            loadPosts(res.data);
           });
     }
   }, [filter]);
