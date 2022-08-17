@@ -36,6 +36,7 @@ const Sidebar = () => {
       {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
       <hr className='divider'></hr>
+
       <nav className='sidebar_navigation'>
         <div className='link_container' onClick={setCurrentPage}>
           <img className='home_icon icon' src={HomeSVG} alt="home icon" />
@@ -51,15 +52,18 @@ const Sidebar = () => {
         <div className='link_container' onClick={setCurrentPage}>
           <Link className={'links'} to='/create-account'>Create Account</Link>
         </div>
+
+        <Link to='/profile'>Profile</Link>
+
         {currentUser ? (
           <>
-            <div className='link_container' onClick={setCurrentPage}>
+           <div className='link_container' onClick={setCurrentPage && handleSignOut}>
               <Link className={'links'} to='/'>Sign Out</Link>
             </div>
             <Link className={'links'} to='change-password'>Change Password</Link>
           </>
         ) :
-          <div className='link_container' onClick={setCurrentPage}>
+           <div className='link_container' onClick={setCurrentPage}>
             <Link className={'links'} to='signin'>Sign In</Link>
           </div>
         }
