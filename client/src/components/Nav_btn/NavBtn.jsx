@@ -13,7 +13,7 @@ const NavBtn = (props) => {
   return (
     <button className={style} onClick={(e) => {
       navigate(path);
-    }}>{icon}</button>
+    }}>{plusIcon}</button>
   );
 };
 
