@@ -7,6 +7,7 @@ import './_forums.scss';
 const axios = require('axios');
 
 import forumStore from './_forumState.js';
+import postStore from '../forum_details/_postState.js';
 import globalStore from '../../zustand.js';
 const ForumView = () => {
   const posts = forumStore((state) => state.posts);
@@ -28,8 +29,9 @@ const ForumView = () => {
   const updateUserName = globalStore((state) => state.updateUserName);
   const setUserLanguages = globalStore((state) => state.setUserLanguages);
   const setUserTopics = globalStore((state) => state.setUserTopics);
-  const setCurrentPost = forumStore((state) => state.setCurrentPost);
-  const navigate = useNavigate();
+  const resetFetched = postStore((state) => state.resetFetched);
+
+  resetFetched();
 
   if (fetched === false) {
     const languages = [];
@@ -57,14 +59,15 @@ const ForumView = () => {
               });
         });
   }
-
+  const navigate = useNavigate();
   const handleClick = (e) => {
     console.log(e);
     console.log(e.target.getAttribute('name'));
     const id = e.target.getAttribute('name');
-    setCurrentPost(id);
 
-    navigate('/discussions');
+    // setCurrentPost(Number(id), () => {});
+
+    // navigate('/discussions');
   };
 
   useEffect(() => {

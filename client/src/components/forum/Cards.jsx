@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import TimeAgo from 'react-timeago';
 const axios = require('axios');
 import './_forums.scss';
@@ -9,10 +10,15 @@ import {AiFillCaretDown} from 'react-icons/ai';
 import {MdOutlineComment} from 'react-icons/md';
 import {RiShareLine} from 'react-icons/ri';
 
+import forumStore from './_forumState.js';
+
 
 function Cards(props) {
   const {post} = props;
-  // console.log(post);
+
+  const setCurrentPost = forumStore((state) => state.setCurrentPost);
+  const navigate = useNavigate();
+
 
   const upvote = (e) => {
     console.log(post.vote);
@@ -33,8 +39,11 @@ function Cards(props) {
         });
   };
 
-  const showDetails = () => {
-
+  const showDetails = (e) => {
+    console.log(post);
+    props.handleClick(e);
+    setCurrentPost(post.id);
+    navigate('/discussions');
   };
 
   return (
@@ -66,7 +75,7 @@ function Cards(props) {
           />
           <p id="vote">{post.vote}</p>
         </div>
-        <div className="comments" id={post.title} onClick={props.handleClick} name={post.id} >
+        <div className="comments" id={post.title} onClick={showDetails} name={post.id} >
           <MdOutlineComment className="commentIcon" />
           <p>{post.responses}</p>
         </div>

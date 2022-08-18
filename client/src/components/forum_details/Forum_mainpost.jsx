@@ -8,11 +8,12 @@ import forumStore from '../forum/_forumState.js';
 const ForumMainPost = () => {
   // const postID = 7;
   const postID = forumStore((state) => state.currentPost);
-
+  const setCurrentPost = forumStore((state) => state.setCurrentPost);
   const postData = postStore((state) => state.postData);
   const responsesData = postStore((state) => state.responsesData);
   const fetched = postStore((state) => state.fetched);
   const setFetched = postStore((state) => state.setFetched);
+
   const loadPost = postStore((state) => state.loadPost);
   const loadResponses = postStore((state) => state.loadResponses);
 
@@ -26,6 +27,7 @@ const ForumMainPost = () => {
           axios.get('http://localhost:3005/responses/' + postID)
               .then((postResponses) => {
                 loadResponses(postResponses.data);
+                // resetFetched();
               })
               .catch((err) => {
                 console.log(err);
