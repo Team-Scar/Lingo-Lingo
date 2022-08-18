@@ -109,7 +109,7 @@ const CreateAccount = () => {
 
   const handleAddJargon = () => {
     setChosenJargon([...chosenJargon, jargonRef.current.value]);
-    jargonRef.current.value = '------------    Jargons    ------------';
+    jargonRef.current.value = '';
   };
 
 
@@ -150,7 +150,7 @@ const CreateAccount = () => {
             <label htmlFor='jargon' className='label'>Choose a jargon</label>
             <ul>
               {chosenJargon.length > 0 && chosenJargon.map((jargon, i) => {
-                return <li key={i}>{jargon}</li>;
+                return <li key={i} className='show_list'>{jargon}</li>;
               })}
             </ul>
             <select
@@ -170,7 +170,7 @@ const CreateAccount = () => {
           <label id='language' className='label'>Add a language (Max is three)</label>
           <ul>
             {chosenLang.length > 0 && chosenLang.map((lang, i) => {
-              return <li key={i}>{lang.language} - {lang.role}</li>;
+              return <li key={i} className='show_list'>{lang.language} - {lang.role}</li>;
             })}
           </ul>
           <AddNewLanguage />
