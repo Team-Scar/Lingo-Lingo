@@ -147,6 +147,16 @@ CREATE TABLE response_vote (
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+-- create table jarggnames as
+-- select a.*, b.jargon_name
+-- from user_jargon a, jargons b
+-- where a.jargon_id = b.id;
+
+-- create table langnames as
+-- select a.*, b.language_name
+-- from user_language a, languages b
+-- where a.lang_id = b.id;
+
 -- DROP TABLE IF EXISTS `review`;
 
 copy languages FROM '/home/ubuntu/lingo_data - languages.csv' DELIMITER ',' CSV HEADER;

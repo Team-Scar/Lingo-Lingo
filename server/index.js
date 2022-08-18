@@ -49,6 +49,9 @@ app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+// app.get('/profile/:userID', controllers.getUserProfile);
+
+
 app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });

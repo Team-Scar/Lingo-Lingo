@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 
 // const user = {
 //   name: 'John Doe',
+//   username: 'Something',
 //   photo: 'https://i.imgur.com/tigb3PX.jpg',
 //   bio: 'xyz',
 //   speaks: [
