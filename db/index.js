@@ -16,6 +16,5 @@ client
     .then(() => console.log('connected'))
     .catch((err) => console.error('connection error', err.stack));
 
-
 module.exports.client = client;
 

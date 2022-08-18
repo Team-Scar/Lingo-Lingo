@@ -1,3 +1,4 @@
-// const router = require('express').Router();
+const router = require('express').router();
+const controllers = require('../controllers/forums.js');
 
-// router.get('/userName', controllers.sidebar.getUserName);
+router.get('/userName', controllers.getName);

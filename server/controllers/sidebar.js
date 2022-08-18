@@ -1,8 +1,8 @@
-// const queries = require('../../db/controllers/sidebar.js');
+// const {client} = require('../../db');
 
 // module.exports.getUserName = (req, res) => {
-//   queries.userName(req.params.userID).then(() => {
-//     res.sendStatus(201);
+//   client.query(`SELECT username FROM users WHERE id = 2`).then((res) => {
+//     console.log(res);
 //   });
 // };
 

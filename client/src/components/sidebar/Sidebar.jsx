@@ -16,13 +16,16 @@ import './sidebar.scss';
 import '../../global.scss';
 const Sidebar = () => {
   const [error, setError] = useState('');
+  const currentUserName = globalStore((state) => {
+    state.userId;
+  });
   const {signout, currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   axios.get('/userName', globalStore.userId).then((res) => {
-  //     console.log(res);
-  //   });
-  // }, [globalStore.userId]);
+  useEffect(() => {
+    axios.get('/userName', currentUserName).then((res) => {
+      console.log(res);
+    });
+  }, [currentUserName]);
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
 
   const handleSignOut = async () => {
@@ -57,9 +60,6 @@ const Sidebar = () => {
         <div className='link_container' onClick={setCurrentPage}>
           <Link className={'links'} to='/create-account'>Create Account</Link>
         </div>
-
-        <Link to='/profile'>Profile</Link>
-
         {currentUser ? (
           <>
             <div className='link_container' onClick={setCurrentPage && handleSignOut}>
@@ -70,7 +70,6 @@ const Sidebar = () => {
         ) :
            <div className='link_container' onClick={setCurrentPage}>
              <Link className={'links'} to='signin'>Sign In</Link>
-             {/* >>>>>>> 6f7eddab77ed45daef16ebdc3c75351ee2765102 */}
            </div>
         }
 
