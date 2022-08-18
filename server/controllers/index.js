@@ -4,6 +4,9 @@ module.exports.userAuth = require('./userAuth.js');
 
 module.exports.languages = forums.languages;
 module.exports.jargons = forums.jargons;
+module.exports.profile = forums.profile;
+module.exports.userLanguages = forums.userLanguages;
+module.exports.userJargons = forums.userJargons;
 module.exports.getPosts = forums.getPosts;
 module.exports.filtered = forums.filtered;
 module.exports.addPost = forums.addPost;

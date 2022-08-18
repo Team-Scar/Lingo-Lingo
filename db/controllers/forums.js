@@ -12,6 +12,28 @@ module.exports.getJargons = () => {
   `);
 };
 
+module.exports.getProfile = (id) => {
+  return client.query(`
+    select * from users where id = ${id}
+  `);
+};
+
+module.exports.getUserLanguages = (id) => {
+  return client.query(`
+    select ul.user_id, l.language_name
+    from user_language ul, languages l
+    where ul.user_id = ${id} and ul.lang_id = l.id
+  `);
+};
+
+module.exports.getUserJargons = (id) => {
+  return client.query(`
+    select uj.user_id, j.jargon_name
+    from user_jargon uj, jargons j
+    where uj.user_id = ${id} and uj.jargon_id = j.id
+  `);
+};
+
 module.exports.queryPosts = () => {
   return client.query(`
   with responseCount as (
