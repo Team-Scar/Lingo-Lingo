@@ -96,3 +96,26 @@ label input {
   flex-direction: column;
   flex-wrap: wrap;
 }
+.leaflet-tile-container img{
+  z-index: 1;
+  opacity:1;
+}
+.map-container{
+  z-index: 2;
+  display: block;
+}
+.eventContainer{
+  display: flex;
+  flex-direction: row;
+  margin-top: 18vh;
+
+}
+// .mfn_modal_content{
+//   z-index: 1000;
+// }
+.previewPhoto{
+  max-height: 50px;
+}
+.eventPhoto{
+  max-width: 20vw;
+}

@@ -25,7 +25,7 @@ const useGlobalStore = ((set) => ({
   currentPage: window.location.href,
   userLanguages: ['English', 'Spanish', 'German'],
   userProficiencies: [],
-  userTopics: ['Medicine', 'Tech', 'Space'],
+  userTopics: ['Medicine', 'Tech', 'Sports'],
   userConnections: [],
   showModal: false,
   token: '',
@@ -60,6 +60,11 @@ const useGlobalStore = ((set) => ({
   updateCurrentPage: () => {
     set((state) => ({
       currentPage: window.location.href,
+    }));
+  },
+  updateUserName: (value) => {
+    set((state) => ({
+      userName: value,
     }));
   },
   setUserId: (newId) => {

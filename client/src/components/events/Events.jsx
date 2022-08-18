@@ -54,6 +54,8 @@ const Events = () => {
   const [oldEvent, setAllEvent] = React.useState(myEventsList);
 
   const [temp, setTemp] = React.useState();
+
+
   const handleAddEvent = () => {
     console.log(newEvent);
     setAllEvent([...myEventsList, newEvent]);

@@ -1,3 +1,5 @@
+require('dotenv').config();
+const axios = require('axios');
 const queries = require('../../db/controllers/events.js');
 
 const getAllEvents = (req, res) => {
@@ -51,6 +53,19 @@ const addAttend=(req, res)=>{
     res.sendStatus(200);
   });
 };
+
+const getLocation=(req, res)=>{
+  console.log(req.query.address);
+  axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+    params: {
+      address: req.query.address,
+      key: process.env.Google_API_KEY,
+    },
+  }).then((result) => {
+    res.json(result.data.results[0].geometry.location);
+  });
+};
+
 module.exports = {
   getAllEvents,
   getAttendEvents,
@@ -60,4 +75,5 @@ module.exports = {
   removeEvent,
   updateAttend,
   addAttend,
+  getLocation,
 };
