@@ -36,12 +36,12 @@ const EventDetail = (props) => {
     });
   };
 
-  const time=new Date(props.info.start);
-  const year=time.getFullYear();
-  const month=time.getMonth()+1;
-  const day=time.getDate();
-  const hr=time.getHours();
-  const min=time.getMinutes();
+  const time = new Date(props.info.start);
+  const year = time.getFullYear();
+  const month = time.getMonth() + 1;
+  const day = time.getDate();
+  const hr = time.getHours();
+  const min = time.getMinutes();
   // const weekday=time.getDayOfWeek();
 
   return (
@@ -55,10 +55,10 @@ const EventDetail = (props) => {
 
             <ul>Language: {props.allLang[props.info.langID - 1].language_name}</ul>
             <ul>Jargon: {props.allJargon[props.info.jargonID - 1].jargon_name}</ul>
-            <ul>Date: {month+'/'+day+'/'+year+' ('+String(props.info.start).slice(0, 3)+')'} </ul>
-            <ul>Time: {hr+':'+min}</ul>
+            <ul>Date: {month + '/' + day + '/' + year + ' (' + String(props.info.start).slice(0, 3) + ')'} </ul>
+            <ul>Time: {hr + ':' + min}</ul>
             <ul>Location:{props.info.location.includes('http') ? <a href={props.info.location}>online event</a> : props.info.location}</ul>
-            {props.info.location.includes('http') ?<></>:<Map4 location={props.info.location} />}
+            {props.info.location.includes('http') ? <></> : <Map4 location={props.info.location} />}
 
 
             {props.selectEvent.includes(props.info.eventID) ? <button data={props.info.eventID} data-creator={props.info.creatorID} onClick={handleCancel}>Cancel</button> : <button data={props.info.eventID} onClick={handleAdd}>Add to your event</button>}
