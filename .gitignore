@@ -112,3 +112,4 @@ bundle.js
 
 #firebase config file
 client/src/firebaseConf.js
+client/public/158.bundle.js
