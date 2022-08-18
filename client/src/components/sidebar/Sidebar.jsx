@@ -12,6 +12,7 @@ import {AuthContext} from '../userauth/AuthContext.jsx';
 // Icons
 import HomeSVG from '../../../assets/sidebar_icons/Home_Icon.svg';
 import ChatSVG from '../../../assets/sidebar_icons/Chat_Icon.svg';
+import TileIcon from '../../../assets/sidebar_icons/TileIcon.svg';
 // Styles
 import './sidebar.scss';
 import '../../global.scss';
@@ -89,6 +90,7 @@ const Sidebar = () => {
           <Link className={'links chat'} to='/livechat'>Chat</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
+          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
           <Link className={'links'} to='/events'>Events</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
