@@ -51,16 +51,16 @@ app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 app.use(profileRouter);
-// app.get('/profile', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/public/index.html'));
-// });
+app.get('/profile', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 // // app.get('/profile/:userID', controllers.getUserProfile);
 
 
-// app.get('/profile/:username', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/public/index.html'));
-// });
+app.get('/profile/:userID', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
