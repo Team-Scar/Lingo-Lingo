@@ -6,13 +6,14 @@ const MfnBtn = (props) => {
   const modalState = globalStore((state) => state.showModal);
   const showModal = globalStore((state) => state.modalOn);
   const hideModal = globalStore((state) => state.modalOff);
+  const style = props.style || 'mfn_btn';
 
   const icon = props.icon || (()=> {
     return <img className='icon' src={plusIcon} />;
   })();
 
   return (
-    <button className='mfn_btn' onClick={(e) => {
+    <button className={style} onClick={(e) => {
       if (!modalState) {
         showModal();
       } else {
