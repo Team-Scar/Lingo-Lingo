@@ -175,6 +175,29 @@ module.exports.downvotePost = (id) => {
   );
 };
 
+
+module.exports.queryPost = (postID) => {
+  return client.query(`
+      select
+        p.id, p.title, p.content, p.photo, p.timestamp,
+        p.vote, u.username, l.language_name, j.jargon_name
+      from posts p, users u, languages l, jargons j
+      where u.id = p.user_id and p.lang_id = l.id
+      and p.jargon_id = j.id and p.id = ($1)
+      `, [postID]);
+};
+
+module.exports.queryResponses = (postID) => {
+  return client.query(`
+      select
+        r.id, r.response_to_id, r.content, r.photo, r.timestamp,
+        r.vote, u.username
+      from responses r, users u
+      where u.id = r.user_id and r.post_id = ($1)
+      order by r.timestamp
+      `, [postID]);
+};
+
 module.exports.getUserName = (id) => {
   const text = `SELECT username FROM users WHERE id = $1`;
   const values = [id];

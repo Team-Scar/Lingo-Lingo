@@ -42,6 +42,10 @@ app.post('/upvote', controllers.upvote);
 
 app.post('/downvote', controllers.downvote);
 
+app.get('/posts/:postID', controllers.getPost);
+
+app.get('/responses/:postID', controllers.getResponses);
+
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
