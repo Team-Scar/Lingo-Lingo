@@ -1,10 +1,13 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
+import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
+import Modal from '..//Modal/Modal.jsx';
+import globalStore from '../../zustand.js';
 
 //   //     //userprofle
 //   //     //add connection button
-//   //       //axios.put
+//   //       //axios.post to connections table
 //   //     //message button
 //   //       //react-route to messages
 //   // )
@@ -12,6 +15,7 @@ import axios from 'axios';
 
 const UserProfile = () => {
   const {userID} = useParams();
+  const userId = globalStore((state) => state.userId);
   const [user, setUser] = useState(null);
   useEffect(() => {
     axios.get(`http://localhost:3005/profile/${userID}`).then((res)=> {
@@ -19,6 +23,21 @@ const UserProfile = () => {
       setUser(res.data);
     });
   }, [userID]);
+
+  const Form = () => {
+    return (<form style={{display: 'grid'}}>
+      Add this user to your connections list?
+      <button onClick = {() => {
+        const obj = {userID: userId, friendID: Number(userID)};
+        axios.post('http://localhost:3005/profile/connections', {obj}).then(()=> {
+          console.log('Successfully added');
+        }).catch((err) => console.log(err));
+      }} >Add User</button>
+      <button>Cancel</button>
+    </form>
+    );
+  };
+
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
       <div>This is another user's profile</div>
@@ -37,19 +56,11 @@ const UserProfile = () => {
       <div>Interests: {user && user.interests && user.interests.map((item) => {
         return (<div>{item}</div>);
       })}</div>
+      <Modal children={Form()}/>
+      <MfnBtn />
     </div>
   );
 };
-
-// const UserProfile = () => {
-//   return (<div>This is another profle </div>);
-// };
-
-//   //     //userprofle
-//   //     //add connection button
-//   //       //axios.put
-//   //     //message button
-//   //       //react-route to messages
 
 
 export default UserProfile;

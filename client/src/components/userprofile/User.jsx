@@ -8,7 +8,6 @@ const User = () => {
   // let navigate = useNavigate();
   const [user, setUser] = useState(null);
   const userId = globalStore((state) => state.userId);
-  // const {currentUser} = useContext(AuthContext);
   console.log(userId);
   useEffect(() => {
     axios.get(`http://localhost:3005/profile/${userId}`).then((res)=> {

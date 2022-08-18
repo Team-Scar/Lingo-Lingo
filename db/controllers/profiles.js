@@ -27,7 +27,7 @@ module.exports.getProfile = (userID) => {
 };
 
 
-module.exports.addConnect = (userID, friendID) => {
-  return client.query(`insert into connections (user_id,friend_id)
+module.exports.addConnect = ({userID, friendID}) => {
+  return client.query(`insert into connections (user_id, friend_id)
   values (${userID},${friendID})`);
 };

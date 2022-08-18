@@ -6,6 +6,14 @@ const getUserProfile = (req, res) => {
   });
 };
 
+const addUser = (req, res) => {
+  console.log(req.body);
+  db.addConnect(req.body.obj).then(() => {
+    res.status(201);
+  });
+};
+
 module.exports = {
   getUserProfile,
+  addUser,
 };
