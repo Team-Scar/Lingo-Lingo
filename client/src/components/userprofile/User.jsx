@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 // import {AuthContext} from '../userauth/AuthContext.jsx';
 import axios from 'axios';
 import globalStore from '../../zustand.js';
+import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
+import Modal from '..//Modal/Modal.jsx';
 
 const User = () => {
   // let navigate = useNavigate();
@@ -33,6 +35,8 @@ const User = () => {
       <div>Interests: {user && user.interests && user.interests.map((item) => {
         return (<div>{item}</div>);
       })}</div>
+      <Modal children={Form()}/>
+      <MfnBtn />
     </div>
   );
 };
