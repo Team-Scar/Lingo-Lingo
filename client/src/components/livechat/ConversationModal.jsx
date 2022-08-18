@@ -10,17 +10,17 @@ const ConversationModal = ({closeModal}) => {
 
   const [selectedContactIds, setSelectedContactIds] = useState([]);
 
-  const handleCheckboxChange = (contactId) => {
+  const handleCheckboxChange = (id, name) => {
     setSelectedContactIds((prevSelectedContactIds) => {
-      if (prevSelectedContactIds.includes(contactId)) {
+      if (prevSelectedContactIds.includes(id)) {
         return prevSelectedContactIds.filter((prevId) => {
-          return contactId !== prevId;
+          return id !== prevId;
         });
       } else {
-        return [...prevSelectedContactIds, contactId];
+        return [...prevSelectedContactIds, id];
       }
     });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,7 +45,9 @@ const ConversationModal = ({closeModal}) => {
               selectedContactIds={selectedContactIds}
               handleCheckboxChange={handleCheckboxChange}
               controlId={contact.id}
-              contactName={contact.name}/>);
+              name={contact.name}
+              contactIdSelect={selectedContactIds.includes(contact.id)}
+              id={contact.id}/>);
           }))}
         </div>
         <div className="footer">

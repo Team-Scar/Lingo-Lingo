@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 // eslint-disable-next-line max-len
-const ConversationModalCheckBox = ({contactName, controlId, selectedContactIds, handleCheckboxChange}) => {
+const ConversationModalCheckBox = ({name, controlId, selectedContactIds, handleCheckboxChange, contactIdSelect, id}) => {
   return (
     <div>
       <input
         type="checkbox"
-        value={selectedContactIds.includes(controlId)}
-        onChange={() => handleCheckboxChange(controlId)}></input>
-      {contactName}
+        value={contactIdSelect}
+        onChange={() => handleCheckboxChange(id, name)}></input>
+      {name}
     </div>
   );
 };
