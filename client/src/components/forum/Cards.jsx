@@ -66,7 +66,7 @@ function Cards(props) {
           />
           <p id="vote">{post.vote}</p>
         </div>
-        <div className="comments" id={post.title} onClick={props.handleClick} >
+        <div className="comments" id={post.title} onClick={props.handleClick} name={post.id} >
           <MdOutlineComment className="commentIcon" />
           <p>{post.responses}</p>
         </div>

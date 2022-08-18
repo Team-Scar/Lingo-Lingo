@@ -6,6 +6,8 @@ const useForumStore = ((set) => ({
   fetched: false,
   setFetched: () => set({fetched: true}),
   loadPosts: (queryResults) => set({posts: queryResults, fetched: true}),
+  currentPost: null,
+  setCurrentPost: (postId) => set({currentPost: postId}),
   newPost: {},
   createPost: (postObject) => set({newPost: postObject}),
 }));

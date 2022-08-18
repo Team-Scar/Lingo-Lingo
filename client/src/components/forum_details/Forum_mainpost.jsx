@@ -3,9 +3,11 @@ const axios = require('axios');
 import TimeAgo from 'react-timeago';
 
 import postStore from './_postState.js';
+import forumStore from '../forum/_forumState.js';
 
 const ForumMainPost = () => {
-  const postID = 7;
+  // const postID = 7;
+  const postID = forumStore((state) => state.currentPost);
 
   const postData = postStore((state) => state.postData);
   const responsesData = postStore((state) => state.responsesData);

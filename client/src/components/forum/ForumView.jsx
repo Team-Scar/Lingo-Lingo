@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import Sidebar from '../sidebar/Sidebar.jsx';
+import {useNavigate} from 'react-router-dom';
 import Modal from '..//Modal/Modal.jsx';
 import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
 import Cards from './Cards.jsx';
@@ -28,6 +28,8 @@ const ForumView = () => {
   const updateUserName = globalStore((state) => state.updateUserName);
   const setUserLanguages = globalStore((state) => state.setUserLanguages);
   const setUserTopics = globalStore((state) => state.setUserTopics);
+  const setCurrentPost = forumStore((state) => state.setCurrentPost);
+  const navigate = useNavigate();
 
   if (fetched === false) {
     const languages = [];
@@ -58,14 +60,11 @@ const ForumView = () => {
 
   const handleClick = (e) => {
     console.log(e);
-    console.log(e.target.className);
-    const filterArr = [];
-    for (const key in filter) {
-      if (filter[key]) {
-        filterArr.push(key);
-      }
-    }
-    // console.log(filter);
+    console.log(e.target.getAttribute('name'));
+    const id = e.target.getAttribute('name');
+    setCurrentPost(id);
+
+    navigate('/discussions');
   };
 
   useEffect(() => {
