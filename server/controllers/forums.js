@@ -5,6 +5,7 @@ const {filterBoth} = require('../../db/controllers/forums.js');
 const {submitPost} = require('../../db/controllers/forums.js');
 const {upvotePost} = require('../../db/controllers/forums.js');
 const {downvotePost} = require('../../db/controllers/forums.js');
+const {getUserName} = require('../../db/controllers/forums.js');
 
 const getPosts = (req, res) => {
   // console.log(req);
@@ -101,8 +102,15 @@ const downvote = (req, res) => {
       });
 };
 
+const getName = (req, res) => {
+  getUserName(req.body.id).then((res) => {
+    console.log(res);
+  });
+};
+
 module.exports.getPosts = getPosts;
 module.exports.filtered = filtered;
 module.exports.addPost = addPost;
 module.exports.upvote = upvote;
 module.exports.downvote = downvote;
+module.exports.getName = getName;

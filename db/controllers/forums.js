@@ -174,3 +174,12 @@ module.exports.downvotePost = (id) => {
       text, values,
   );
 };
+
+module.exports.getUserName = (id) => {
+  const text = `SELECT username FROM users WHERE id = $1`;
+  const values = [id];
+  console.log(id);
+  return client.query(
+      text, values,
+  );
+};
