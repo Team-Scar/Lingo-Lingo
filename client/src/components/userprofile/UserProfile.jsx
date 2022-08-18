@@ -5,6 +5,7 @@ import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
 import Modal from '..//Modal/Modal.jsx';
 import globalStore from '../../zustand.js';
 
+
 //   //     //userprofle
 //   //     //add connection button
 //   //       //axios.post to connections table
@@ -70,8 +71,8 @@ const UserProfile = () => {
       })}</div>
       <Modal children={Form1()}/>
       <MfnBtn />
-      <Modal children={Form2()}/>
-      <MfnBtn />
+      {/* <Modal children={Form2()}/>
+      <MfnBtn style ={'profilechat_btn'}/> */}
     </div>
   );
 };
