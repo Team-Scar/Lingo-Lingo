@@ -7,7 +7,7 @@ const Modal = (props) => {
   const modalState = globalStore((state) => state.showModal);
   const showModal = globalStore((state) => state.modalOn);
   const hideModal = globalStore((state) => state.modalOff);
-
+  const style = props.style || 'mfn_modal_content';
   const content = props.children || (() => {
     return (
       <form><input></input></form>
@@ -18,7 +18,7 @@ const Modal = (props) => {
     return null;
   }
   return <div className="mfn_modal">
-    <div className="mfn_modal_content">
+    <div className={style}>
       <h1>Modal</h1>
       {content}
     </div>
