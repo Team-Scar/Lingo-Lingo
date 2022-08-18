@@ -212,7 +212,7 @@ const ForumView = () => {
       // postObject['language'] = allLanguages.indexOf(lang);
       // postObject['jargon'] = allJargon.indexOf(jarg);
     };
-    return (<form style={{display: 'grid'}}>
+    return (<form className="submitPost">
       Submit your post
       <div>
         Title:
