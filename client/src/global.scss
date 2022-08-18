@@ -9,6 +9,19 @@ $authenticationPage: 'Lato', sans-serif;
 $mainBody: 'Roboto', sans-serif;
 
 // Elements
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: scroll;
+  margin: 0px;
+  display: flex;
+  box-sizing: border-box;
+}
+
 #root {
   display: flex;
   position: absolute;
