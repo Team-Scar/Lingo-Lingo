@@ -51,5 +51,6 @@ module.exports.queryResponses = (postID) => {
         r.vote, u.username
       from responses r, users u
       where u.id = r.user_id and r.post_id = ($1)
+      order by r.timestamp
       `, [postID]);
 };

@@ -10,7 +10,7 @@ const ForumMessage = (props) => {
       <div className="forumMessage">
         <div className="messageHeader">
           <img className="userImage" src={props.response.photo} />
-          <p>{ 'UserNameHere' }</p>
+          <p>{ props.response.username }</p>
           <p>{ props.response.timestamp }</p>
         </div>
 

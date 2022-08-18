@@ -15,30 +15,37 @@ const usePostStore = ((set) => ({
   },
   responsesData: [
     {
-      id: 1,
+      id: 3,
       response_to_id: '',
       content: 'TEXT TEXT TEXT TEXT TEXT',
       photo: 'https://picsum.photos/id/237/200/300',
-      timestamp: '08/16/2022 11:11:11',
+      timestamp: '2022-08-10T01:15:49.000Z',
       vote: 5,
-      user_id: 2,
-      post_id: 5,
+      username: 'asdf',
     },
     {
-      id: 2,
+      id: 4,
       response_to_id: 1,
       content: 'MORE TEXT MORE TEXT MORE TEXT MORE TEXT MORE TEXT',
       photo: 'https://picsum.photos/id/1/200/300',
-      timestamp: '08/16/2022 11:15:11',
+      timestamp: '2022-08-10T01:15:49.000Z',
       vote: 1,
-      user_id: 3,
-      post_id: 5,
+      username: 'asdf2',
     },
   ],
   fetched: false,
   setFetched: () => set({fetched: true}),
-  loadPost: (queryResults) => set({postData: queryResults, fetched: true}),
-  loadResponses: (queryResults) => set({postData: queryResults, fetched: true}),
+  loadPost: (postQueryRes) => set(
+      {
+        postData: postQueryRes,
+      },
+  ),
+  loadResponses: (responseQueryRes) => set(
+      {
+        responsesData: responseQueryRes,
+      },
+  ),
+
 }));
 
 const postStore = create(devtools(usePostStore));

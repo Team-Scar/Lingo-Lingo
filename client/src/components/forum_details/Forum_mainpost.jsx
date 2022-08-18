@@ -20,10 +20,18 @@ const ForumMainPost = () => {
           loadPost(post.data[0]);
           setFetched();
         })
+        .then(() => {
+          axios.get('http://localhost:3005/responses/' + postID)
+              .then((postResponses) => {
+                loadResponses(postResponses.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+        })
         .catch((err) => {
           console.log(err);
         });
-
 
     // axios.get('http://localhost:3005/responses/' + postID)
     //     .then((postResponses) => {
