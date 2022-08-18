@@ -52,6 +52,7 @@ const useGlobalStore = ((set) => ({
   })),
   userConnections: [],
   showModal: false,
+  token: '',
   clearFilters: () =>
     set((state) => ({
       currentFilters: {},
@@ -93,6 +94,11 @@ const useGlobalStore = ((set) => ({
   setUserId: (newId) => {
     set((state) => ({
       userId: newId,
+    }));
+  },
+  setToken: (getToken) => {
+    set((state) => ({
+      token: getToken,
     }));
   },
 }));
