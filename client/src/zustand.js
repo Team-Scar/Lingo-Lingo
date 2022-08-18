@@ -23,7 +23,17 @@ const useGlobalStore = ((set) => ({
   userId: 1,
   user: null,
   allLanguages: null,
+  setLanguages: (languages) => {
+    set((state) => ({
+      allLanguages: languages,
+    }));
+  },
   allJargon: null,
+  setJargon: (jargons) => {
+    set((state) => ({
+      allJargon: jargons,
+    }));
+  },
   currentFilters: {},
   currentPage: window.location.href,
   userLanguages: ['English', 'Spanish', 'German'],

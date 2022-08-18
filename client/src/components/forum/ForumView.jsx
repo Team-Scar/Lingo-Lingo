@@ -17,20 +17,33 @@ const ForumView = () => {
   const filterLang = globalStore((state) => state.userLanguages);
   const filterTopics = globalStore((state) => state.userTopics);
   const userId = globalStore((state) => state.userId);
+  const setLanguages = globalStore((state) => state.setLanguages);
+  const setJargon = globalStore((state) => state.setJargon);
 
   if (fetched === false) {
+    const languages = [];
+    const jargons = [];
     axios.get('http://localhost:3005/posts')
         .then((results) => {
           loadPosts(results.data);
           setFetched();
-        });
-    axios.get('http://localhost:3005/languages')
-        .then((results) => {
-          console.log(results);
-        });
-    axios.get('http://localhost:3005/jargons')
-        .then((results) => {
-          console.log(results);
+          axios.get('http://localhost:3005/languages')
+              .then((results) => {
+                for (let x = 0; x < results.data.length; x++) {
+                  const lang = results.data[x];
+                  languages.push(lang['language_name']);
+                }
+                setLanguages(languages);
+                axios.get('http://localhost:3005/jargons')
+                    .then((results) => {
+                      console.log(results.data);
+                      for (let x = 0; x < results.data.length; x++) {
+                        const jarg = results.data[x];
+                        jargons.push(jarg['jargon_name']);
+                      }
+                      setJargon(jargons);
+                    });
+              });
         });
   }
 
