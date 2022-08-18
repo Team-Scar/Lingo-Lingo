@@ -34,7 +34,11 @@ app.use(bodyParser.json());
 /* ==== Route Handlers === */
 app.get('/languages', controllers.languages);
 
+app.post('/language', controllers.languageId);
+
 app.get('/jargons', controllers.jargons);
+
+app.post('/jargon', controllers.jargonId);
 
 app.post('/profile', controllers.profile);
 

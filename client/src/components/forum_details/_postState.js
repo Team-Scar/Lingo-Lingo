@@ -35,6 +35,7 @@ const usePostStore = ((set) => ({
   ],
   fetched: false,
   setFetched: () => set({fetched: true}),
+  resetFetched: () => set({fetched: false}),
   loadPost: (postQueryRes) => set(
       {
         postData: postQueryRes,
