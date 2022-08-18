@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
+const profileRouter=require('./routes/profiles.js');
 
 /* ==== Internal Modules === */
 const app = express();
@@ -63,12 +64,15 @@ app.get('/responses/:postID', controllers.getResponses);
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
-
+app.use(profileRouter);
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-app.get('/profile/:username', (req, res) => {
+// // app.get('/profile/:userID', controllers.getUserProfile);
+
+
+app.get('/profile/:userID', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
