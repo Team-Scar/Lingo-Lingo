@@ -190,6 +190,21 @@ module.exports.submitPost = (post) => {
   );
 };
 
+module.exports.getLanguageId = (language) => {
+  console.log(language);
+  const lang = `'` + language + `'`;
+  return client.query(`
+    select * from languages where language_name=${lang}
+  `);
+};
+
+module.exports.getJargonId = (jargon) => {
+  const jarg = `'` + jargon + `'`;
+  return client.query(`
+    select * from jargons where jargon_name=${jarg}
+  `);
+};
+
 
 module.exports.upvotePost = (id) => {
   const text = `update posts set vote = vote + 1 where id=$1`;

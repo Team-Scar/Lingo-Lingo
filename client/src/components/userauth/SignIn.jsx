@@ -22,6 +22,7 @@ const SignIn = () => {
       console.log(userCredential);
       // await axios.post('/signup')
       navigate('/');
+      location.href = `${window.location.href}`;
     } catch (e) {
       console.log('err in sign in', e.message);
       setError('Wrong email or password, please try again!');
