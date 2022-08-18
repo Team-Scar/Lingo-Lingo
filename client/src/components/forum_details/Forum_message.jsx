@@ -1,6 +1,7 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
 
-// import forumStore from '../forum/_forumState.js';
+
 import ForumReply from './Forum_responseform.jsx';
 
 const ForumMessage = (props) => {
@@ -9,7 +10,7 @@ const ForumMessage = (props) => {
       <div className="forumMessage">
         <div className="messageHeader">
           <img className="userImage" src={props.response.photo} />
-          <p>{ 'UserNameHere' }</p>
+          <p>{ props.response.username }</p>
           <p>{ props.response.timestamp }</p>
         </div>
 

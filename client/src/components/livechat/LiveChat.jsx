@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Login from './Login.jsx';
+import Messages from './Messages.jsx';
 import './livechat.scss';
+import {useLocalStorage} from './hooks/useLocalStorage.js';
+import {ContactsProvider} from './contexts/ContactsProvider.jsx';
+
 
 const LiveChat = () => {
-  // const bear = bears((state) => state.bears);
+  const [id, setId] = useLocalStorage('id');
+
+  const messagebox = (
+    <ContactsProvider>
+      <Messages id={id}/>
+    </ContactsProvider>
+  );
   return (
     <div>
+      {id !== undefined ? messagebox :
+      <Login onIdSubmit={setId} />}
       <div id="message-container"></div>
       <form id="send-container">
         <input type="text" id="message-input" />

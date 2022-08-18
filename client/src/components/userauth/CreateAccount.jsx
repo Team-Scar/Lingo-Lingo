@@ -14,8 +14,14 @@ const CreateAccount = () => {
   const userNameRef = useRef();
   const bioRef = useRef();
   const jargonRef = useRef();
+  const langRef = useRef();
+  const roleRef = useRef();
+  const proficiencyRef = useRef();
   const {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
+  const [chosenLang, setChosenLan] = useState([]);
+  const [chosenJargon, setChosenJargon] = useState([]);
+
 
   const fetchLanguage = async () => {
     const res = await axios.get('/allLanguages');
@@ -32,19 +38,31 @@ const CreateAccount = () => {
     fetchJargons();
   }, []);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(nameRef.current.value);
-    console.log(jargonRef.current.value);
-    // navigate('/');
-    // await axios.post();
+    try {
+      await axios.post('/create-account',
+          {email: currentUser.email,
+            name: nameRef.current.value,
+            username: userNameRef.current.value,
+            profile_photo: photoUrl,
+            bio: bioRef.current.value,
+            user_language: chosenLang,
+            user_jargon: chosenJargon,
+          },
+      );
+    } catch (e) {
+      console.log('err in post to create account', e);
+    };
+    navigate('/');
   };
 
   const AddNewLanguage = () => {
     return (
       <div>
         <span>
-          <select>
+          <select ref={langRef}>
             <option>--Language--</option>
             {languages && languages.map((language, i)=> {
               return <option key={i} value={language.language_name}>
@@ -54,7 +72,7 @@ const CreateAccount = () => {
           </select>
         </span>
         <span>
-          <select>
+          <select ref={roleRef}>
             <option>--Teacher or Student--</option>
             <option value='teacher'>Teacher</option>
             <option value='student'>Student</option>
@@ -62,7 +80,7 @@ const CreateAccount = () => {
           </select>
         </span>
         <span>
-          <select>
+          <select ref={proficiencyRef}>
             <option value=''>--Proficiency--</option>
             <option value='5'>Expert</option>
             <option value='4'>Superior</option>
@@ -75,11 +93,28 @@ const CreateAccount = () => {
     );
   };
 
+  const handleAddLang = () => {
+    setLanguagesCount(languagesCount+1);
+    setChosenLan([...chosenLang,
+      {language: langRef.current.value,
+        role: roleRef.current.value,
+        proficiency: proficiencyRef.current.value,
+      }]);
+    langRef.current.value = '';
+    roleRef.current.value = '';
+    proficiencyRef.current.value ='';
+  };
+
+  const handleAddJargon = () => {
+    setChosenJargon([...chosenJargon, jargonRef.current.value]);
+    jargonRef.current.value = '----jargons----';
+  };
+
+
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
+
       <h2>Create account</h2>
-      {/* {nameRef.current && console.log(nameRef.current.value)} */}
-      {/* {jargonRef && console.log(jargonRef.current.value)} */}
       <form onSubmit={handleSubmit}>
         <div>
           <input type='text' placeholder='name' ref={nameRef} required/>
@@ -93,7 +128,12 @@ const CreateAccount = () => {
         <PhotoUpload setPhotosUrl={setPhotosUrl}/>
         <div>
           <label htmlFor='jargon'>Choose a jargon</label>
-          <select id='jargon' ref={jargonRef}>
+          <ul>
+            {chosenJargon.length > 0 && chosenJargon.map((jargon, i) => {
+              return <li key={i}>{jargon}</li>;
+            })}
+          </ul>
+          <select id='jargon' ref={jargonRef} onChange = {handleAddJargon}>
             <option>----jargons----</option>
             {jargons && jargons.map((jargon, i)=> {
               return <option key={i} value={jargon.jargon_name}>
@@ -103,13 +143,17 @@ const CreateAccount = () => {
           </select>
         </div>
         <label id='language'>Add a language (Max is three)</label>
+        <ul>
+          {chosenLang.length > 0 && chosenLang.map((lang, i) => {
+            return <li key={i}>{lang.language} - {lang.role}</li>;
+          })}
+        </ul>
         <AddNewLanguage />
-        {languagesCount >= 2 && <AddNewLanguage/>}
-        {languagesCount === 3 && <AddNewLanguage/>}
-        {languagesCount < 3 &&
-        <button onClick={() => setLanguagesCount(languagesCount+1)}>
+        {/* {languagesCount < 3 && */}
+        <button type='button' disabled={languagesCount===4}
+          onClick={handleAddLang}>
           Add one more language
-        </button>}
+        </button>
         <button>Confirm</button>
       </form>
     </div>
@@ -117,5 +161,3 @@ const CreateAccount = () => {
 };
 
 export default CreateAccount;
-
-

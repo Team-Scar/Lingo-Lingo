@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {auth, methods} from './firebase.js';
-
+import globalStore from '../../zustand.js';
+import axios from 'axios';
 export const AuthContext = React.createContext();
 
 // export const useAuth = () => {
@@ -11,6 +12,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [loading, setLoading] = useState(true);
+  const changeUserID = globalStore((state )=> state.setUserId);
 
   const signup = (email, password) => {
     return methods.createUserWithEmailAndPassword(auth, email, password);
@@ -36,6 +38,13 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = methods.onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      console.log(user);
+      if (user) {
+        axios.get('/getUserId', {params: {email: user.email}})
+            .then((res) => changeUserID(res.data.rows[0].id))
+            .catch((e) => console.log(e));
+      }
+
       setLoading(false);
     });
     return unsubscribe;

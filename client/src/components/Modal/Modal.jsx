@@ -1,6 +1,7 @@
 import React from 'react';
 import globalStore from '../../zustand.js';
 import MfnBtn from '../../components/mfn_btn/MfnBtn.jsx';
+import '../../global.scss';
 
 const Modal = (props) => {
   const modalState = globalStore((state) => state.showModal);
