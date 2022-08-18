@@ -3,6 +3,8 @@ import React, {useRef, useState, useContext} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from './AuthContext.jsx';
 import axios from 'axios';
+import LogoFull from '../../../assets/LogoFull.svg';
+import './userauth.scss';
 
 const SignUp = () => {
   const emailRef = useRef();
@@ -42,35 +44,47 @@ const SignUp = () => {
   };
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
-      <div>
-        {/* {currentUser.email} */}
-        <p>Already have an account?</p>
-        <Link to='/signin'>Sign In</Link>
+    <div className='container'>
+      <div className='left_logo'>
+        <img className='logo' src={LogoFull} alt="Lingo Logo" />
       </div>
-      <h1>Free access 14 days trial</h1>
-      {error && <h3>{error}</h3>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type='email'
-          placeholder='Your Email Address'
-          ref={emailRef}
-          required
-        />
-        <input
-          type='password'
-          placeholder='Your Password'
-          ref={passwordRef}
-          required
-        />
-        <input
-          type='password'
-          placeholder='Password confirmation'
-          ref={passwordConfirmRef}
-          required
-        />
-        <button disabled={loading}>Create an account</button>
-      </form>
+      <div className='right_part'>
+        <div className='need_sign_up_container'>
+          <p className='need_sign_up'>Already have an account?</p>
+          <Link to='/signin' className='sign_up_link'>Sign In</Link>
+        </div>
+        <div className='sign_up_title'>
+          <div className='title'>
+            <span>Free access </span><span className='title_blue'>14</span>
+          </div>
+          <div className='rest_title'>days trials!</div>
+        </div>
+        {error && <h3>{error}</h3>}
+        <form onSubmit={handleSubmit} className='sign_up_form'>
+          <input
+            className ='form_input'
+            type='email'
+            placeholder='Your Email Address'
+            ref={emailRef}
+            required
+          />
+          <input
+            className = 'form_input'
+            type='password'
+            placeholder='Your Password'
+            ref={passwordRef}
+            required
+          />
+          <input
+            className = 'form_input'
+            type='password'
+            placeholder='Password confirmation'
+            ref={passwordConfirmRef}
+            required
+          />
+          <button className='button' disabled={loading}>Create an account</button>
+        </form>
+      </div>
     </div>
   );
 };

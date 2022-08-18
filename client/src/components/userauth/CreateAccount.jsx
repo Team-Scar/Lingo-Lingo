@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import PhotoUpload from './PhotoUpload.jsx';
 import axios from 'axios';
 import globalStore from '../../zustand.js';
+import './userauth.scss';
 
 const CreateAccount = () => {
   const [photoUrl, setPhotosUrl] = useState('');
@@ -30,7 +31,7 @@ const CreateAccount = () => {
   };
 
   const fetchJargons = async () => {
-    const res = await axios.get('/allJargons');
+    const res = await axios.get('/allJargons', {headers: {authorization: `Bearer ${gotToken}`}});
     setJargons(res.data);
   };
 
@@ -63,7 +64,7 @@ const CreateAccount = () => {
     return (
       <div>
         <span>
-          <select ref={langRef}>
+          <select ref={langRef} className='select'>
             <option>--Language--</option>
             {languages && languages.map((language, i)=> {
               return <option key={i} value={language.language_name}>
@@ -73,7 +74,7 @@ const CreateAccount = () => {
           </select>
         </span>
         <span>
-          <select ref={roleRef}>
+          <select ref={roleRef} className='select'>
             <option>--Teacher or Student--</option>
             <option value='teacher'>Teacher</option>
             <option value='student'>Student</option>
@@ -81,7 +82,7 @@ const CreateAccount = () => {
           </select>
         </span>
         <span>
-          <select ref={proficiencyRef}>
+          <select ref={proficiencyRef} className='select'>
             <option value=''>--Proficiency--</option>
             <option value='5'>Expert</option>
             <option value='4'>Superior</option>
@@ -108,54 +109,79 @@ const CreateAccount = () => {
 
   const handleAddJargon = () => {
     setChosenJargon([...chosenJargon, jargonRef.current.value]);
-    jargonRef.current.value = '----jargons----';
+    jargonRef.current.value = '------------    Jargons    ------------';
   };
 
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
-      <h2>Create account</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type='text' placeholder='name' ref={nameRef} required/>
-        </div>
-        <div>
-          <input type='text' placeholder='username' ref={userNameRef} required/>
-        </div>
-        <div>
-          <input type='text' placeholder='bio' ref={bioRef} required/>
-        </div>
-        <PhotoUpload setPhotosUrl={setPhotosUrl}/>
-        <div>
-          <label htmlFor='jargon'>Choose a jargon</label>
+    <div className='create_account_container'>
+      <dic className='content_container'>
+        <h2 className='create_account_title'>Create account</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              type='text'
+              placeholder='Name'
+              ref={nameRef}
+              className='form_input_create_account'
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              placeholder='Username'
+              ref={userNameRef}
+              className='form_input_create_account'
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              placeholder='Bio'
+              ref={bioRef}
+              className='form_input_create_account'
+              required
+            />
+          </div>
+          <PhotoUpload setPhotosUrl={setPhotosUrl}/>
+          <div>
+            <label htmlFor='jargon' className='label'>Choose a jargon</label>
+            <ul>
+              {chosenJargon.length > 0 && chosenJargon.map((jargon, i) => {
+                return <li key={i}>{jargon}</li>;
+              })}
+            </ul>
+            <select
+              id='jargon'
+              ref={jargonRef}
+              onChange = {handleAddJargon}
+              className='select jargon_select'
+            >
+              <option>------------    Jargons    ------------</option>
+              {jargons && jargons.map((jargon, i)=> {
+                return <option key={i} value={jargon.jargon_name}>
+                  {jargon.jargon_name}
+                </option>;
+              })}
+            </select>
+          </div>
+          <label id='language' className='label'>Add a language (Max is three)</label>
           <ul>
-            {chosenJargon.length > 0 && chosenJargon.map((jargon, i) => {
-              return <li key={i}>{jargon}</li>;
+            {chosenLang.length > 0 && chosenLang.map((lang, i) => {
+              return <li key={i}>{lang.language} - {lang.role}</li>;
             })}
           </ul>
-          <select id='jargon' ref={jargonRef} onChange = {handleAddJargon}>
-            <option>----jargons----</option>
-            {jargons && jargons.map((jargon, i)=> {
-              return <option key={i} value={jargon.jargon_name}>
-                {jargon.jargon_name}
-              </option>;
-            })}
-          </select>
-        </div>
-        <label id='language'>Add a language (Max is three)</label>
-        <ul>
-          {chosenLang.length > 0 && chosenLang.map((lang, i) => {
-            return <li key={i}>{lang.language} - {lang.role}</li>;
-          })}
-        </ul>
-        <AddNewLanguage />
-        {/* {languagesCount < 3 && */}
-        <button type='button' disabled={languagesCount===4}
-          onClick={handleAddLang}>
-          Add one more language
-        </button>
-        <button>Confirm</button>
-      </form>
+          <AddNewLanguage />
+          {/* {languagesCount < 3 && */}
+          <button type='button' disabled={languagesCount===4}
+            onClick={handleAddLang} className='add_lang_btn'>
+            + Add Language
+          </button>
+          <button className='button confirm_account_btn'>CONFIRM</button>
+        </form>
+      </dic>
     </div>
   );
 };
