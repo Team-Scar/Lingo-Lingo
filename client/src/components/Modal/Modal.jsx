@@ -19,7 +19,6 @@ const Modal = (props) => {
   }
   return <div className="mfn_modal">
     <div className={style}>
-      <h1>Modal</h1>
       {content}
     </div>
   </div>;
