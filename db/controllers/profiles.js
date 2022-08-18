@@ -14,7 +14,7 @@ module.exports.getProfile = (userID) => {
             WHERE teacher = true AND ul.user_id = users.id and ul.lang_id=ll.id
               ) item
             ) AS speaks,
-            
+
             (select json_agg(language_name)
               from user_language ul,languages ll
               where student = true AND ul.user_id = users.id and ul.lang_id=ll.id) as wants,
@@ -24,4 +24,10 @@ module.exports.getProfile = (userID) => {
               where uj.user_id = users.id and uj.jargon_id=jj.id) as interests
   FROM users
   WHERE users.id = ${userID}`);
+};
+
+
+module.exports.addConnect = (userID, friendID) => {
+  return client.query(`insert into connections (user_id,friend_id)
+  values (${userID},${friendID})`);
 };

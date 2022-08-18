@@ -60,10 +60,10 @@ import {useParams} from 'react-router-dom';
 // };
 
 const UserProfile = () => {
-  const { username } = useParams();
+  const { userID } = useParams();
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
-      <div>{username}</div>
+      <div>{userID}</div>
       <div>This is antoher user profile</div>
     </div>
   );
