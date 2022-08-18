@@ -16,6 +16,7 @@ const ForumView = () => {
   const filter = globalStore((state) => state.currentFilters);
   const filterLang = globalStore((state) => state.userLanguages);
   const filterTopics = globalStore((state) => state.userTopics);
+  const userId = globalStore((state) => state.userId);
 
   if (fetched === false) {
     axios.get('http://localhost:3005/posts')
@@ -67,6 +68,7 @@ const ForumView = () => {
   useEffect(() => {
     const languageArr = [];
     const jargonArr = [];
+    console.log(userId);
     for (const key in filter) {
       if (filter[key] && filterLang.includes(key)) {
         languageArr.push(key);
