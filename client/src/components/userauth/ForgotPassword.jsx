@@ -1,6 +1,7 @@
 import React, {useRef, useState, useContext} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from './AuthContext.jsx';
+import LogoFull from '../../../assets/LogoFull.svg';
 
 
 const ForgotPassword = () => {
@@ -30,20 +31,30 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
-      <h2>Password Reset</h2>
-      {message && <h3>{message}</h3>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Your Email Address'
-          ref={emailRef}
-          required
-        />
-        <button>Reset Password</button>
-      </form>
-      <div>
-        <Link to='/signin'>Sign In</Link>
+    <div className='container'>
+      <div className='left_logo'>
+        <img className='logo' src={LogoFull} alt="Lingo Logo" />
+      </div>
+      <div className='right_part'>
+        <div>
+          <div className='title'>
+            <span>Password Reset</span>
+          </div>
+          {message && <h3>{message}</h3>}
+          <form onSubmit={handleSubmit} className='sign_in_form'>
+            <input
+              className ='form_input forgot_pw_input'
+              type='text'
+              placeholder='Your Email Address'
+              ref={emailRef}
+              required
+            />
+            <button className='button'>Reset Password</button>
+          </form>
+          <div>
+          <button className='button sign_in_btn' onClick={() => navigate('/signin')}>Sign In</button>
+          </div>
+        </div>
       </div>
     </div>
   );
