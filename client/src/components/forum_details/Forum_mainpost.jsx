@@ -1,30 +1,62 @@
 import React from 'react';
+const axios = require('axios');
+import TimeAgo from 'react-timeago';
 
+import postStore from './_postState.js';
 import forumStore from '../forum/_forumState.js';
 
 const ForumMainPost = () => {
-  const postExample = {
-    id: 5,
-    title: 'THIS IS A TITLE',
-    content: 'POST TEXT POST TEXT POST TEXT POST TEXT',
-    photo: 'https://picsum.photos/id/1012/200/300',
-    timestamp: '08/15/2022 11:22:33',
-    vote: 7,
-    user_id: 5,
-    lang_id: 6,
-    jargon_id: 7,
-  };
+  // const postID = 7;
+  const postID = forumStore((state) => state.currentPost);
+  const setCurrentPost = forumStore((state) => state.setCurrentPost);
+  const postData = postStore((state) => state.postData);
+  const responsesData = postStore((state) => state.responsesData);
+  const fetched = postStore((state) => state.fetched);
+  const setFetched = postStore((state) => state.setFetched);
+
+  const loadPost = postStore((state) => state.loadPost);
+  const loadResponses = postStore((state) => state.loadResponses);
+
+  if (fetched === false) {
+    axios.get('http://localhost:3005/posts/' + postID)
+        .then((post) => {
+          loadPost(post.data[0]);
+          setFetched();
+        })
+        .then(() => {
+          axios.get('http://localhost:3005/responses/' + postID)
+              .then((postResponses) => {
+                loadResponses(postResponses.data);
+                // resetFetched();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    // axios.get('http://localhost:3005/responses/' + postID)
+    //     .then((postResponses) => {
+    //       console.log(postResponses.data);
+    //       loadResponses(postResponses.data);
+    //       // setFetched();
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+  }
 
   return (
     <div className="forumMainPost">
-      <div>{ postExample.title }</div>
-      <div>userName</div>
-      <div>Language</div>
-      <div>Jargon</div>
-      <div>{ postExample.timestamp }</div>
-      <div>{ postExample.content }</div>
-      <img className="postImage" src={postExample.photo} />
-      <div>REPLY</div>
+      <div>{ postData.title }</div>
+      <div>{ postData.username }</div>
+      <div>{ postData.language_name }</div>
+      <div>{ postData.jargon_name }</div>
+      <div>{ postData.timestamp }</div>
+      <div>{ postData.content }</div>
+      <img className="postImage" src={postData.photo} />
     </div>
   );
 };

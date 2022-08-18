@@ -1,69 +1,63 @@
-import React from 'react';
-import {useParams} from 'react-router-dom';
+import React, {useContext, useState, useEffect} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+import axios from 'axios';
+import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
+import Modal from '..//Modal/Modal.jsx';
+import globalStore from '../../zustand.js';
 
-// const user = {
-//   name: 'John Doe',
-//   photo: 'https://i.imgur.com/tigb3PX.jpg',
-//   bio: 'xyz',
-//   speaks: [
-//     {language: 'French',
-//       proficiency: '1'},
-//   ],
-//   wants: ['English'],
-//   interest: ['Medical'],
-// };
-
-// const UserProfile = () => {
-//   // const navigate = useNavigate();
-//   const {username} = useParams();
-//   // if (username = current user) {
-//   return (
-//     <div>
-//       <div>{username}</div>
-//       {/* <div>{user.name}</div>
-//       <img src ={`${user.photo}`}
-//         width="384"
-//         height="192" />
-//       <div>{user.bio}</div>
-//       <div>{user.name}</div> */}
-//       {/* <div>Speaks: {user.speaks.map(item => {
-//           <>Language: {item.language} Proficiency : {item.proficiency}</>
-//         })}</div>
-//         <div>Wants to Learn: {user.wants.map(item => {
-//           <>{item}</>
-//         })}</div>
-//         <div>Interested In : {user.interests.map(item => {
-//           <>{item}</>
-//         })}</div> */}
-//     </div>
-//     // return
-//     // userprofile
-//     // edit botton
-//     // onclick
-//     // form
-//     // submit
-//     // onclick
-//     // axios.put
-//     // cancel
-//     // return to previous page
-//   );
-//   // } return (
-//   // //else
-//   //   //return
 //   //     //userprofle
 //   //     //add connection button
-//   //       //axios.put
+//   //       //axios.post to connections table
 //   //     //message button
 //   //       //react-route to messages
 //   // )
 // };
 
 const UserProfile = () => {
-  const { username } = useParams();
+  const {userID} = useParams();
+  const userId = globalStore((state) => state.userId);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    axios.get(`http://localhost:3005/profile/${userID}`).then((res)=> {
+      console.log(res.data);
+      setUser(res.data);
+    });
+  }, [userID]);
+
+  const Form = () => {
+    return (<form style={{display: 'grid'}}>
+      Add this user to your connections list?
+      <button onClick = {() => {
+        const obj = {userID: userId, friendID: Number(userID)};
+        axios.post('http://localhost:3005/profile/connections', {obj}).then(()=> {
+          console.log('Successfully added');
+        }).catch((err) => console.log(err));
+      }} >Add User</button>
+      <button>Cancel</button>
+    </form>
+    );
+  };
+
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
-      <div>{username}</div>
-      <div>This is antoher user profile</div>
+      <div>This is another user's profile</div>
+      <div>{user && user.name}</div>
+      <div>Username: {user && user.username}</div>
+      <img src= {user && user.photo}
+        width="384"
+        height="192"/>
+      <div>Bio: {user && user.bio}</div>
+      <div>Speaks: {user && user.speaks && user.speaks.map((item) => {
+        return (<div>Language: {item.language} --- Proficiency: {item.proficiency}</div>);
+      })}</div>
+      <div>Wants to Learn: {user && user.wants && user.wants.map((item) => {
+        return (<div>{item}</div>);
+      })}</div>
+      <div>Interests: {user && user.interests && user.interests.map((item) => {
+        return (<div>{item}</div>);
+      })}</div>
+      <Modal children={Form()}/>
+      <MfnBtn />
     </div>
   );
 };

@@ -1,0 +1,223 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  z-index: 999;
+}
+
+.left_logo {
+  position: relative;
+  left: -193px;
+  width: 1069px;
+  background-color: #F7F7F7;
+}
+
+.right_part {
+  position: relative;
+  left: -248px;
+  width: 100vw;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  scale: 0.65;
+  position: relative;
+  top: 200px;
+}
+
+.need_sign_up_container {
+  position: absolute;
+  top: 75px;
+  left: 753px;
+}
+
+.need_sign_up {
+  font-size: 20px;
+  color: #555;
+}
+
+.sign_up_link {
+  text-decoration: none;
+  color: #4598e6;
+  font-size: 18px;
+}
+
+.title {
+  display: inline-block;
+  font-size: 70px;
+  margin-bottom: 15px;
+  position: absolute;
+  top: 237px;
+  left: 250px;
+  color: #555;
+}
+
+.title_blue {
+  color: #55dfef;
+}
+
+.rest_title {
+  font-size: 68px;
+  margin-bottom: 15px;
+  position: absolute;
+  color: #55dfef;
+  top: 323px;
+  left: 252px;
+}
+
+.form_input {
+  display: block;
+  width: 438px;
+  height: 44px;
+  border-radius: 5px;
+  border-color: lightgray;
+  margin-bottom: 25px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.forgot_pw_input {
+  position: relative;
+  bottom: -28px;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.button {
+  display: block;
+  width: 458px;
+  height: 46px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  margin-top: 60px;
+  border: none;
+  background-color: #539af1;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sign_up_form {
+  position: absolute;
+  top: 443px;
+  left: 257px;
+}
+
+.sign_in_form {
+  position: absolute;
+  top: 368px;
+  left: 257px;
+}
+
+.link {
+  position: absolute;
+  left: 258px;
+  bottom: 443px;
+  text-decoration: none;
+}
+
+.sign_in_btn {
+  cursor: pointer;
+  position: absolute;
+  left: 260px;
+  top: 482px;
+}
+
+.reset_pw_link {
+  position: absolute;
+  bottom: 501px;
+  font-size: 20px;
+  left: 470px;
+}
+
+.visitor_link {
+  position: absolute;
+  right: -330px;
+  font-size: 16.5px;
+}
+
+//create account
+.create_account_container {
+  position: absolute;
+  left: 40%;
+  top: 15%;
+}
+
+.create_account_title {
+  color: #555;
+  text-align: center;
+  font-size: 35px;
+  margin: 20px 0;
+}
+
+.form_input_create_account {
+  width: 400px;
+  height: 35px;
+  border-radius: 3px;
+  border-color: lightgray;
+  margin-bottom: 11px;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.label {
+  color: #555;
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.confirm_account_btn {
+  width: 417px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+
+.select {
+  height: 35px;
+  border-radius: 3px;
+  margin-right: 3px;
+  margin-bottom: 30px;
+  border-color: lightgray;
+  font-size: 15px;
+  color: #555;
+  text-align: center;
+}
+
+.jargon_select {
+  width: 418px;
+}
+
+.add_lang_btn {
+  border: none;
+  background-color: #F7F7F7;
+  position: relative;
+  top: -23px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  margin: 10px 0 30px 0;
+  scale: 1.3;
+  position: relative;
+  right: -37px;
+}
+
+.photo_upload_label {
+  margin-top: 5px;
+}
+
+.show_list {
+  color: #1272e8;
+}

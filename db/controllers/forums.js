@@ -1,5 +1,39 @@
 const {client} = require('../index.js');
 
+module.exports.getLanguages = () => {
+  return client.query(`
+    select language_name from languages
+  `);
+};
+
+module.exports.getJargons = () => {
+  return client.query(`
+    select jargon_name from jargons
+  `);
+};
+
+module.exports.getProfile = (id) => {
+  return client.query(`
+    select * from users where id = ${id}
+  `);
+};
+
+module.exports.getUserLanguages = (id) => {
+  return client.query(`
+    select ul.user_id, l.language_name
+    from user_language ul, languages l
+    where ul.user_id = ${id} and ul.lang_id = l.id
+  `);
+};
+
+module.exports.getUserJargons = (id) => {
+  return client.query(`
+    select uj.user_id, j.jargon_name
+    from user_jargon uj, jargons j
+    where uj.user_id = ${id} and uj.jargon_id = j.id
+  `);
+};
+
 module.exports.queryPosts = () => {
   return client.query(`
   with responseCount as (
@@ -156,6 +190,21 @@ module.exports.submitPost = (post) => {
   );
 };
 
+module.exports.getLanguageId = (language) => {
+  console.log(language);
+  const lang = `'` + language + `'`;
+  return client.query(`
+    select * from languages where language_name=${lang}
+  `);
+};
+
+module.exports.getJargonId = (jargon) => {
+  const jarg = `'` + jargon + `'`;
+  return client.query(`
+    select * from jargons where jargon_name=${jarg}
+  `);
+};
+
 
 module.exports.upvotePost = (id) => {
   const text = `update posts set vote = vote + 1 where id=$1`;
@@ -168,6 +217,38 @@ module.exports.upvotePost = (id) => {
 
 module.exports.downvotePost = (id) => {
   const text = `update posts set vote = vote - 1 where id=$1`;
+  const values = [id];
+  console.log(id);
+  return client.query(
+      text, values,
+  );
+};
+
+
+module.exports.queryPost = (postID) => {
+  return client.query(`
+      select
+        p.id, p.title, p.content, p.photo, p.timestamp,
+        p.vote, u.username, l.language_name, j.jargon_name
+      from posts p, users u, languages l, jargons j
+      where u.id = p.user_id and p.lang_id = l.id
+      and p.jargon_id = j.id and p.id = ($1)
+      `, [postID]);
+};
+
+module.exports.queryResponses = (postID) => {
+  return client.query(`
+      select
+        r.id, r.response_to_id, r.content, r.photo, r.timestamp,
+        r.vote, u.username
+      from responses r, users u
+      where u.id = r.user_id and r.post_id = ($1)
+      order by r.timestamp
+      `, [postID]);
+};
+
+module.exports.getUserName = (id) => {
+  const text = `SELECT username FROM users WHERE id = $1`;
   const values = [id];
   console.log(id);
   return client.query(

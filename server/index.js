@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
+const profileRouter=require('./routes/profiles.js');
 
 /* ==== Internal Modules === */
 const app = express();
@@ -32,6 +33,20 @@ app.use(bodyParser.json());
 
 
 /* ==== Route Handlers === */
+app.get('/languages', controllers.languages);
+
+app.post('/language', controllers.languageId);
+
+app.get('/jargons', controllers.jargons);
+
+app.post('/jargon', controllers.jargonId);
+
+app.post('/profile', controllers.profile);
+
+app.post('/languages', controllers.userLanguages);
+
+app.post('/jargons', controllers.userJargons);
+
 app.get('/posts', controllers.getPosts);
 
 app.get('/posts/filter', controllers.filtered);
@@ -42,15 +57,22 @@ app.post('/upvote', controllers.upvote);
 
 app.post('/downvote', controllers.downvote);
 
+app.get('/posts/:postID', controllers.getPost);
+
+app.get('/responses/:postID', controllers.getResponses);
+
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
-
+app.use(profileRouter);
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-app.get('/profile/:username', (req, res) => {
+// // app.get('/profile/:userID', controllers.getUserProfile);
+
+
+app.get('/profile/:userID', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 

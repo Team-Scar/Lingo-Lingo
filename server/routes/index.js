@@ -1,5 +1,6 @@
 const controllers = require('../controllers');
 const router = require('express').Router();
+// const {checkIfAuthenticated} = require('../middleware.js');
 
 router.post('/signup', controllers.userAuth.signUpPost);
 router.post('/create-account', controllers.userAuth.createAccount);

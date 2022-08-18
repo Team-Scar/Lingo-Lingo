@@ -73,7 +73,7 @@ module.exports = {
     console.log('get all languages!!!');
     try {
       const query = `select json_agg(l)
-      from (select language_name from languages limit 15)l`;
+      from (select language_name from languages)l`;
       const data = await client.query(query);
       res.status(200).send(data.rows[0].json_agg);
     } catch (e) {
@@ -84,7 +84,7 @@ module.exports = {
     console.log('get all jargons!!!');
     try {
       const query = `select json_agg(j)
-      from (select jargon_name from jargons limit 15)j`;
+      from (select jargon_name from jargons)j`;
       const data = await client.query(query);
       res.status(200).send(data.rows[0].json_agg);
     } catch (e) {

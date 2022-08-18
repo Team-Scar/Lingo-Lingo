@@ -87,24 +87,27 @@ label input {
   align-items: center;
 }
 
-.startTime{
+.startTime {
   display: flex;
 }
 
-.allEvents{
+.allEvents {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
-.leaflet-tile-container img{
+
+.leaflet-tile-container img {
   z-index: 1;
-  opacity:1;
+  opacity: 1;
 }
-.map-container{
+
+.map-container {
   z-index: 2;
   display: block;
 }
-.eventContainer{
+
+.eventContainer {
   display: flex;
   flex-direction: row;
   margin-top: 18vh;
@@ -133,6 +136,7 @@ label input {
     font-style: normal;
     font-weight: 500;
 }
+
 .previewPhoto{
   max-height: 50px;
 }
@@ -140,4 +144,5 @@ label input {
   // max-width: 100%;
   width:100%;
   max-height: 20vh;
+
 }
