@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) => {
       console.log(user);
       if (user) {
         axios.get('/getUserId', {params: {email: user.email}})
-            .then((res) => console.log(res.data.rows[0].id))
+            .then((res) => changeUserID(res.data.rows[0].id))
             .catch((e) => console.log(e));
       }
 
