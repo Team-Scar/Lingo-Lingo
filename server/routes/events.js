@@ -4,8 +4,9 @@ const controllers = require('../controllers/events.js');
 
 router.get('/allEvents', controllers.getAllEvents);
 router.get('/attendEvents/:userID', controllers.getAttendEvents);
-router.get('/allLanguages', controllers.getAllLanguages);
-router.get('/allJargons', controllers.getAllJargons);
+router.get('/allLanguagess', controllers.getAllLanguages);
+router.get('/allJargonss', controllers.getAllJargons);
+router.get('/geoLocation', controllers.getLocation);
 router.post('/addEvent/:userID', controllers.addEvent);
 router.delete('/removeEvent/:eventID', controllers.removeEvent);
 router.delete('/updateAttend/:eventID/:userID', controllers.updateAttend);

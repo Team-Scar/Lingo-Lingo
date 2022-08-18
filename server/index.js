@@ -9,7 +9,9 @@ const eventRouter=require('./routes/events.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const controllers = require('./controllers/index.js');
+const routes = require('./routes');
 
 
 /* ==== Middleware === */
@@ -21,6 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
@@ -31,7 +34,13 @@ app.use(bodyParser.json());
 /* ==== Route Handlers === */
 app.get('/posts', controllers.getPosts);
 
+app.get('/posts/filter', controllers.filtered);
+
 app.post('/posts', controllers.addPost);
+
+app.post('/upvote', controllers.upvote);
+
+app.post('/downvote', controllers.downvote);
 
 app.get('/posts/:postID', controllers.getPost);
 
@@ -40,14 +49,6 @@ app.get('/responses/:postID', controllers.getResponses);
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
-
-
-app.get('/signup', controllers.userAuth.signUpGet);
-app.get('/signin', controllers.userAuth.signIn);
-app.post('/signup', controllers.userAuth.signUpPost);
-app.post('/create-account', controllers.userAuth.createAccount);
-app.get('/allLanguages', controllers.userAuth.getAllLanguages);
-app.get('/allJargons', controllers.userAuth.getAllJargons);
 
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
@@ -61,7 +62,7 @@ app.get('/events', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 app.use(eventRouter);
-
+app.use(routes);
 
 app.get('/discussions', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));

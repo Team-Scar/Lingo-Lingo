@@ -2,8 +2,9 @@
 import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState, useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-
+import axios from 'axios';
 import globalStore from '../../zustand.js';
+import {getUserName} from '../../../../server/controllers/sidebar.js';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
@@ -17,12 +18,14 @@ const Sidebar = () => {
   const [error, setError] = useState('');
   const {signout, currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
-
+  // useEffect(() => {
+  //   axios.get('/userName', globalStore.userId).then((res) => {
+  //     console.log(res);
+  //   });
+  // }, [globalStore.userId]);
   const setCurrentPage = globalStore((state) => state.updateCurrentPage);
 
   const handleSignOut = async () => {
-    console.log('click!!');
-
     setError('');
     try {
       await signout();
@@ -35,52 +38,52 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar'>
-
       {currentUser && <p>{currentUser.email} logged in</p>}
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
+      <hr className='divider'></hr>
+
       <nav className='sidebar_navigation'>
-        <div onClick={setCurrentPage}>
-          <img className='home_icon' src={HomeSVG} alt="home icon" />
-          <Link to='/'>Home</Link>
+        <div className='link_container' onClick={setCurrentPage}>
+          <img className='home_icon icon' src={HomeSVG} alt="home icon" />
+          <Link className={'links'} to='/'>Home</Link>
         </div>
-        <div onClick={setCurrentPage}>
-          <img className='chat_icon' src={ChatSVG} alt="chat icon" />
-          <Link to='/livechat'>Chat</Link>
+        <div className='link_container' onClick={setCurrentPage}>
+          <img className='chat_icon icon' src={ChatSVG} alt="chat icon" />
+          <Link className={'links chat'} to='/livechat'>Chat</Link>
         </div>
-        <Link to='/events'>Events</Link>
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links'} to='/profile'>Profile</Link>
+        </div>
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links'} to='/create-account'>Create Account</Link>
+        </div>
+
         <Link to='/profile'>Profile</Link>
-        <Link to='/connections'>Connections</Link>
-        <Link to='signin'>Sign In</Link>
-        <Link to='signup'>Sign Up</Link>
-        <Link to='/'>Sign Out</Link>
 
-
-        <Link to='/create-account'>Create Account</Link>
         {currentUser ? (
           <>
-            <div onClick={setCurrentPage}>
-              <Link to='/'>Sign Out</Link>
+            <div className='link_container' onClick={setCurrentPage && handleSignOut}>
+              <Link className={'links'} to='/'>Sign Out</Link>
             </div>
-            <Link to='change-password'>Change Password</Link>
+            <Link className={'links'} to='change-password'>Change Password</Link>
           </>
         ) :
-          <div onClick={setCurrentPage}>
-            <Link to='signin'>Sign In</Link>
-          </div>
+           <div className='link_container' onClick={setCurrentPage}>
+             <Link className={'links'} to='signin'>Sign In</Link>
+             {/* >>>>>>> 6f7eddab77ed45daef16ebdc3c75351ee2765102 */}
+           </div>
         }
 
-        <div onClick={setCurrentPage}>
-          <Link to='/events'>Events</Link>
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links'} to='/events'>Events</Link>
         </div>
-        <div onClick={setCurrentPage}>
-          <Link to='/connections'>Connections</Link>
-        </div>
-
-        <div onClick={setCurrentPage}>
-          <Link to='signup'>Sign Up</Link>
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links'} to='/connections'>Connections</Link>
         </div>
 
-
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links'} to='signup'>Sign Up</Link>
+        </div>
       </nav>
     </div>
   );
