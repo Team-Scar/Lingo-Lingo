@@ -1,13 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import Map4 from './Map4.jsx';
 import {GoogleLogin} from 'react-google-login';
+import {gapi} from 'gapi-script';
+
+
+import globalStore from '../../zustand.js';
 import Modal from '../Modal/Modal.jsx';
 import MfnBtn from '../mfn_btn/MfnBtn.jsx';
+
+import Map4 from './Map4.jsx';
+
+
 const user_id = 2;
 const EventDetail = (props) => {
   const [showMap, setShowMap] = React.useState(false);
-  const [goCal, setGoCal]=React.useState();
+  const [goCal, setGoCal] = React.useState();
   const handleCancel = (e) => {
     const eventID = e.target.attributes.data.value;
     const creatorID = e.target.attributes[1].value;
@@ -22,43 +29,41 @@ const EventDetail = (props) => {
     }
   };
 
-  const responseGoogle=(response)=>{
-    console.log(response);
-  };
-  const responseError=(err)=>{
-    console.log(err);
-  };
-
   const handleAdd = (e) => {
     const eventID = e.target.attributes.data.value;
     axios.post(`/addAttend/${eventID}/${user_id}`).then(() => {
       props.add();
     });
-    setGoCal(<GoogleLogin clientId='866655618285-5vbvalfp3mn5j9te2du9g54i5sd9ip1t.apps.googleusercontent.com'
-      buttonText='Sign in & Authorize Calendar'
-      onSuccess={responseGoogle}
-      onFailure={responseError}
-      cookiePolicy={'single_host_origin'}
-      responseType='code'
-      accessType='offline'
-      scope='openid email profile https://www.googleapis.com/auth/calendar'
-    />);
   };
+
+  const time=new Date(props.info.start);
+  const year=time.getFullYear();
+  const month=time.getMonth()+1;
+  const day=time.getDate();
+  const hr=time.getHours();
+  const min=time.getMinutes();
+  // const weekday=time.getDayOfWeek();
+
   return (
     <>
       {props.info &&
         <div className="eventDetails">
-          <img className="eventPhoto" src={props.info.photo} />
-          <h3>{props.info.title}</h3>
-          <div>{props.allLang[props.info.langID - 1].language_name}</div>
-          <div>{props.allJargon[props.info.jargonID - 1].jargon_name}</div>
-          <p>{props.info.descriptiÍon}</p>
-          <div>Start time: {String(props.info.start)}</div>
-          {props.info.allDay ? <div>All Day Event</div> : <div>End time: {String(props.info.end)}</div>}
-          {props.selectEvent.includes(props.info.eventID) ? <button data={props.info.eventID} data-creator={props.info.creatorID} onClick={handleCancel}>Cancel</button> : <button data={props.info.eventID} onClick={handleAdd}>Add to your event</button>}
+          <h3 className="eventColumn">Event Detail</h3>
+          <div className="cardContent">
+            <img className="eventPhoto" src={props.info.photo} />
+            <h3>{props.info.title}</h3>
 
-          {props.info.location.includes('http') ? <a href={props.info.location}>online event</a> : <Map4 location={props.info.location} />}
-          {goCal}
+            <ul>Language: {props.allLang[props.info.langID - 1].language_name}</ul>
+            <ul>Jargon: {props.allJargon[props.info.jargonID - 1].jargon_name}</ul>
+            <ul>Date: {month+'/'+day+'/'+year+' ('+String(props.info.start).slice(0, 3)+')'} </ul>
+            <ul>Time: {hr+':'+min}</ul>
+            <ul>Location:{props.info.location.includes('http') ? <a href={props.info.location}>online event</a> : props.info.location}</ul>
+            {props.info.location.includes('http') ?<></>:<Map4 location={props.info.location} />}
+
+
+            {props.selectEvent.includes(props.info.eventID) ? <button data={props.info.eventID} data-creator={props.info.creatorID} onClick={handleCancel}>Cancel</button> : <button data={props.info.eventID} onClick={handleAdd}>Add to your event</button>}
+
+          </div>
         </div>
 
       }

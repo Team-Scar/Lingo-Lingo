@@ -108,14 +108,36 @@ label input {
   display: flex;
   flex-direction: row;
   margin-top: 18vh;
-
+  // position: relative;
 }
-// .mfn_modal_content{
-//   z-index: 1000;
-// }
+.eventCalendar,
+.eventDetails{
+  height: 100%;
+  position: relative;
+  top:0;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 80px;
+}
+.rbc-month-view{
+  border-radius: 10px;
+  box-shadow: skyblue 0px 5px 15px;
+}
+.rbc-row-bg{
+  border-radius: 10px;
+}
+
+.eventColumn{
+  color: rgba(0, 0, 0, 0.54);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+}
 .previewPhoto{
   max-height: 50px;
 }
 .eventPhoto{
-  max-width: 20vw;
+  // max-width: 100%;
+  width:100%;
+  max-height: 20vh;
 }
