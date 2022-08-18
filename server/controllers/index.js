@@ -14,3 +14,5 @@ module.exports.upvote = forums.upvote;
 module.exports.downvote = forums.downvote;
 module.exports.getPost = forums.getPost;
 module.exports.getResponses = forums.getResponses;
+module.exports.languageId = forums.languageId;
+module.exports.jargonId = forums.jargonId;

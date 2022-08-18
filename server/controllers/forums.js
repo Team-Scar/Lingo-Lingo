@@ -13,6 +13,8 @@ const {getJargons} = require('../../db/controllers/forums.js');
 const {getProfile} = require('../../db/controllers/forums.js');
 const {getUserLanguages} = require('../../db/controllers/forums.js');
 const {getUserJargons} = require('../../db/controllers/forums.js');
+const {getLanguageId} = require('../../db/controllers/forums.js');
+const {getJargonId} = require('../../db/controllers/forums.js');
 
 const languages = (req, res) => {
   getLanguages()
@@ -124,13 +126,35 @@ const filtered = (req, res) => {
 };
 
 const addPost = (req, res) => {
-  submitPost(req.body)
+  submitPost(req.body.postObject)
       .then((results) => {
         res.send(results.rows);
       })
       .catch((err) => {
         console.log(err);
         res.send('upload failed');
+      });
+};
+
+const languageId = (req, res) => {
+  getLanguageId(req.body.language)
+      .then((results) => {
+        res.send(results.rows[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+};
+
+const jargonId = (req, res) => {
+  getJargonId(req.body.jargon)
+      .then((results) => {
+        res.send(results.rows[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
       });
 };
 
@@ -189,3 +213,5 @@ module.exports.downvote = downvote;
 module.exports.getPost = getPost;
 module.exports.getResponses = getResponses;
 module.exports.getName = getName;
+module.exports.languageId = languageId;
+module.exports.jargonId = jargonId;
