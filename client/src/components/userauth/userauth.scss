@@ -208,9 +208,16 @@ input:focus {
 }
 
 input[type="file"] {
-  display: none;
+  margin: 10px 0 30px 0;
+  scale: 1.3;
+  position: relative;
+  right: -37px;
 }
 
 .photo_upload_label {
-  background-color: green;
+  margin-top: 5px;
+}
+
+.show_list {
+  color: #1272e8;
 }
