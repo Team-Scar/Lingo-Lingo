@@ -21,11 +21,35 @@ import {devtools} from 'zustand/middleware';
 const useGlobalStore = ((set) => ({
   userName: '',
   userId: 1,
+  user: null,
+  setUser: (info) => {
+    set((state) => ({
+      user: info,
+    }));
+  },
+  allLanguages: null,
+  setLanguages: (languages) => {
+    set((state) => ({
+      allLanguages: languages,
+    }));
+  },
+  allJargon: null,
+  setJargon: (jargons) => {
+    set((state) => ({
+      allJargon: jargons,
+    }));
+  },
   currentFilters: {},
   currentPage: window.location.href,
   userLanguages: ['English', 'Spanish', 'German'],
+  setUserLanguages: (languages) => set((state) => ({
+    userLanguages: languages,
+  })),
   userProficiencies: [],
   userTopics: ['Medicine', 'Tech', 'Sports'],
+  setUserTopics: (topics) => set((state) => ({
+    userTopics: topics,
+  })),
   userConnections: [],
   showModal: false,
   clearFilters: () =>
