@@ -8,7 +8,6 @@ const ForumMainPost = () => {
   const postID = 7;
 
   const postData = postStore((state) => state.postData);
-  const responsesData = postStore((state) => state.responsesData);
   const fetched = postStore((state) => state.fetched);
   const setFetched = postStore((state) => state.setFetched);
   const loadPost = postStore((state) => state.loadPost);
@@ -32,16 +31,6 @@ const ForumMainPost = () => {
         .catch((err) => {
           console.log(err);
         });
-
-    // axios.get('http://localhost:3005/responses/' + postID)
-    //     .then((postResponses) => {
-    //       console.log(postResponses.data);
-    //       loadResponses(postResponses.data);
-    //       // setFetched();
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
   }
 
   return (
