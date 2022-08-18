@@ -36,6 +36,12 @@ app.get('/languages', controllers.languages);
 
 app.get('/jargons', controllers.jargons);
 
+app.post('/profile', controllers.profile);
+
+app.post('/languages', controllers.userLanguages);
+
+app.post('/jargons', controllers.userJargons);
+
 app.get('/posts', controllers.getPosts);
 
 app.get('/posts/filter', controllers.filtered);

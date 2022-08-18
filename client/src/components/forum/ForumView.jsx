@@ -17,20 +17,38 @@ const ForumView = () => {
   const filterLang = globalStore((state) => state.userLanguages);
   const filterTopics = globalStore((state) => state.userTopics);
   const userId = globalStore((state) => state.userId);
+  const setLanguages = globalStore((state) => state.setLanguages);
+  const setJargon = globalStore((state) => state.setJargon);
+  const user = globalStore((state) => state.user);
+  const setUser = globalStore((state) => state.setUser);
+  const updateUserName = globalStore((state) => state.updateUserName);
+  const setUserLanguages = globalStore((state) => state.setUserLanguages);
+  const setUserTopics = globalStore((state) => state.setUserTopics);
 
   if (fetched === false) {
+    const languages = [];
+    const jargons = [];
     axios.get('http://localhost:3005/posts')
         .then((results) => {
           loadPosts(results.data);
           setFetched();
-        });
-    axios.get('http://localhost:3005/languages')
-        .then((results) => {
-          console.log(results);
-        });
-    axios.get('http://localhost:3005/jargons')
-        .then((results) => {
-          console.log(results);
+          axios.get('http://localhost:3005/languages')
+              .then((results) => {
+                for (let x = 0; x < results.data.length; x++) {
+                  const lang = results.data[x];
+                  languages.push(lang['language_name']);
+                }
+                setLanguages(languages);
+                axios.get('http://localhost:3005/jargons')
+                    .then((results) => {
+                      console.log(results.data);
+                      for (let x = 0; x < results.data.length; x++) {
+                        const jarg = results.data[x];
+                        jargons.push(jarg['jargon_name']);
+                      }
+                      setJargon(jargons);
+                    });
+              });
         });
   }
 
@@ -45,6 +63,35 @@ const ForumView = () => {
     }
     console.log(filter);
   };
+
+  useEffect(() => {
+    axios.post('http://localhost:3005/profile', {'id': userId})
+        .then((results) => {
+          console.log(results.data);
+          setUser(results.data);
+          updateUserName(results.data.username);
+          axios.post('http://localhost:3005/languages', {'id': userId})
+              .then((results) => {
+                console.log(results.data);
+                const userLangs = [];
+                for (let x = 0; x < results.data.length; x++) {
+                  const lang = results.data[x];
+                  userLangs.push(lang['language_name']);
+                }
+                setUserLanguages(userLangs);
+                axios.post('http://localhost:3005/jargons', {'id': userId})
+                    .then((results) => {
+                      console.log(results.data);
+                      const userJargs = [];
+                      for (let x = 0; x < results.data.length; x++) {
+                        const jarg = results.data[x];
+                        userJargs.push(jarg['jargon_name']);
+                      }
+                      setUserTopics(userJargs);
+                    });
+              });
+        });
+  }, user);
 
   useEffect(() => {
     // console.log('use effect');
