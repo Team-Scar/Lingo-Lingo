@@ -4,7 +4,8 @@ import axios from 'axios';
 import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
 import Modal from '..//Modal/Modal.jsx';
 import globalStore from '../../zustand.js';
-
+import NavBtn from '..//Nav_btn/NavBtn.jsx';
+import '../../global.scss';
 
 //   //     //userprofle
 //   //     //add connection button
@@ -71,8 +72,8 @@ const UserProfile = () => {
       })}</div>
       <Modal children={Form1()}/>
       <MfnBtn />
-      {/* <Modal children={Form2()}/>
-      <MfnBtn style ={'profilechat_btn'}/> */}
+      <NavBtn style = {'profilechat_btn'} path={'/livechat'} />
+
     </div>
   );
 };
