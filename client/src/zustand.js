@@ -21,6 +21,9 @@ import {devtools} from 'zustand/middleware';
 const useGlobalStore = ((set) => ({
   userName: '',
   userId: 1,
+  user: null,
+  allLanguages: null,
+  allJargon: null,
   currentFilters: {},
   currentPage: window.location.href,
   userLanguages: ['English', 'Spanish', 'German'],

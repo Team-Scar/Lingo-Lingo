@@ -24,6 +24,14 @@ const ForumView = () => {
           loadPosts(results.data);
           setFetched();
         });
+    axios.get('http://localhost:3005/languages')
+        .then((results) => {
+          console.log(results);
+        });
+    axios.get('http://localhost:3005/jargons')
+        .then((results) => {
+          console.log(results);
+        });
   }
 
   const handleClick = (e) => {

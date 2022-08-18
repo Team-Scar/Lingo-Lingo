@@ -8,6 +8,24 @@ const {downvotePost} = require('../../db/controllers/forums.js');
 const {queryPost} = require('../../db/controllers/forums.js');
 const {queryResponses} = require('../../db/controllers/forums.js');
 const {getUserName} = require('../../db/controllers/forums.js');
+const {getLanguages} = require('../../db/controllers/forums.js');
+const {getJargons} = require('../../db/controllers/forums.js');
+
+const languages = (req, res) => {
+  getLanguages()
+      .then((results) => {
+        res.send(results.rows);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+};
+
+const jargons = (req, res) => {
+  getJargons()
+      .then((results) => res.send(results.rows))
+      .catch((err) => res.send(err));
+};
 
 const getPosts = (req, res) => {
   // console.log(req);
@@ -124,6 +142,8 @@ const getName = (req, res) => {
   });
 };
 
+module.exports.languages = languages;
+module.exports.jargons = jargons;
 module.exports.getPosts = getPosts;
 module.exports.filtered = filtered;
 module.exports.addPost = addPost;

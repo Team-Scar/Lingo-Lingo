@@ -1,5 +1,17 @@
 const {client} = require('../index.js');
 
+module.exports.getLanguages = () => {
+  return client.query(`
+    select language_name from languages
+  `);
+};
+
+module.exports.getJargons = () => {
+  return client.query(`
+    select jargon_name from jargons
+  `);
+};
+
 module.exports.queryPosts = () => {
   return client.query(`
   with responseCount as (
