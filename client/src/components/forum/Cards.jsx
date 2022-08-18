@@ -120,7 +120,7 @@ function Cards(props) {
           </div>
           <div className="comments" id={post.title} onClick={showDetails} name={post.id} >
             <img className="commentIcon" src={comment_icon} />
-            <p>{post.responses}</p>
+            <p className="commentCount">{post.responses}</p>
           </div>
           <div className="share">
             <RiShareLine className="shareIcon" />
