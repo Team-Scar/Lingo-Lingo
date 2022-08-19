@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-
+import globalStore from '../../zustand.js';
 const hr = (new Array(24).fill(0)).map((val, ind) => {
   return ind;
 });
@@ -11,6 +11,9 @@ const min = (new Array(12).fill(0)).map((val, ind) => {
 
 
 const AddEventModal = (props) => {
+  const userLang = globalStore((state) => state.userLanguages);
+  const userJargon = globalStore((state) => state.userTopics);
+
   const [newEvent, setNewEvent] = React.useState({title: '', allDay: true, start: props.startDate, end: '', language: 'English', jargon: 'Culture', photo: 'https://images.unsplash.com/photo-1527431016-15eb83515018?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'});
   const [temp, setTemp] = React.useState();
   const [photo, setPhoto]=React.useState();
@@ -37,96 +40,109 @@ const AddEventModal = (props) => {
 
   const [startDateTime, setStartDateTime]=React.useState('');
   const [endDateTime, setEndDateTime]=React.useState('');
+
+
+  const modalState = globalStore((state) => state.showModal);
+  const showModal = globalStore((state) => state.modalOn);
+  const hideModal = globalStore((state) => state.modalOff);
   return (
 
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button onClick={() => {
-            props.closeModal();
-          }}>x</button>
+
+    <div className="modalContainer">
+      <div className="titleCloseBtn">
+        <button onClick={() => {
+          // props.closeModal();
+          if (!modalState) {
+            showModal();
+          } else {
+            hideModal();
+          }
+        }}>x</button>
+      </div>
+
+      <div className="createEventTitle">
+        <div className="actualTitle">Create a new event</div>
+        <p className="subTitle">Let's rock and roll</p>
+      </div>
+
+
+      <div className="body">
+
+        <div className="eventInput">
+          <input type="text" placeholder="Add Event Description" value={newEvent.description} onChange={(e) => {
+            setNewEvent({...newEvent, description: e.target.value});
+          }} />
+        </div>
+
+        <div className="eventInput">
+          <input type="text" placeholder="Add Location" value={newEvent.location} onChange={(e) => {
+            setNewEvent({...newEvent, location: e.target.value});
+          }} />
         </div>
 
 
-        <div className="title">Create a new event</div>
-        <div className="body">
-
-          <div>
-            tell us about the event
-            <input type="text" placeholder="Add Description" value={newEvent.description} onChange={(e) => {
-              setNewEvent({...newEvent, description: e.target.value});
-            }} />
-          </div>
-
-          <div>
-            specify location
-            <input type="text" placeholder="Add Location" value={newEvent.location} onChange={(e) => {
-              setNewEvent({...newEvent, location: e.target.value});
-            }} />
-          </div>
-
-          <div>
-            choose a image
-            <input className="addImg" type='file' onChange={preview}/>
-            {photo}
-          </div>
-
-          <div>
-            choose a language
-            <select onChange={(e) => {
-              setNewEvent({...newEvent, language: e.target.value});
-            }}>
-              <option value="none" selected disabled hidden>Select a Language</option>
-              {props.allLang.map((item) => {
-                return (
-                  <option data={item.id} value={item.language_name}>{item.language_name}</option>
-                );
-              })}
-            </select>
-          </div>
-
-          <div>
-          choose a jargon
-            <select onChange={(e) => {
-              setNewEvent({...newEvent, jargon: e.target.value});
-            }}>
-              <option value="none" selected disabled hidden>Select a Jargon</option>
-              {props.allJargon.map((item) => {
-                return (
-                  <option data={item.id} value={item.jargon_name}>{item.jargon_name}</option>
-                );
-              })}
-            </select>
-          </div>
-
-          <div>
-            start time
-            <input
-              type="datetime-local"
-              id="startDateTime"
-              value={startDateTime}
-              onChange={(e)=> {
-                setStartDateTime(e.target.value);
-                setNewEvent({...newEvent, start: e.target.value, end: e.target.value});
-              }}/>
-          </div>
-
-          <div>
-            end time
-            <input
-              type="datetime-local"
-              id="endDateTime"
-              value={endDateTime}
-              onChange={(e)=> {
-                setEndDateTime(e.target.value);
-                setNewEvent({...newEvent, end: endDateTime, allDay: false});
-              }}/>
-          </div>
-
+        <div className="eventInput">
+          <label className="ins">choose a language</label>
+          <select onChange={(e) => {
+            setNewEvent({...newEvent, language: e.target.value});
+          }}>
+            <option value="none" selected disabled hidden>Select a Language</option>
+            {userLang.map((item, ind) => {
+              return (
+                <option data={ind} value={item}>{item}</option>
+              );
+            })}
+          </select>
         </div>
-        <div className="footer">
-          <button onClick={handleSubmit}>Submit</button>
+
+        <div className="eventInput">
+          <label className="ins">choose a jargon</label>
+          <select onChange={(e) => {
+            setNewEvent({...newEvent, jargon: e.target.value});
+          }}>
+            <option value="none" selected disabled hidden>Select a Jargon</option>
+            {userJargon.map((item, ind) => {
+              return (
+                <option data={ind} value={item}>{item}</option>
+              );
+            })}
+          </select>
         </div>
+
+        <div className="eventInput">
+          <label className="ins">start time</label>
+          <input
+            type="datetime-local"
+            id="startDateTime"
+            value={startDateTime}
+            onChange={(e)=> {
+              setStartDateTime(e.target.value);
+              setNewEvent({...newEvent, start: e.target.value, end: e.target.value});
+            }}/>
+        </div>
+
+        <div className="eventInput">
+          <label className="ins">end time</label>
+          <input
+            type="datetime-local"
+            id="endDateTime"
+            value={endDateTime}
+            onChange={(e)=> {
+              setEndDateTime(e.target.value);
+              setNewEvent({...newEvent, end: endDateTime, allDay: false});
+            }}/>
+        </div>
+
+        <div className="eventInput">
+          <label className="ins">choose a image</label>
+          <input className="addImg" type='file' onChange={preview}/>
+          {photo}
+        </div>
+
+        <div className="eventInput">
+          <button className="eventButton" onClick={handleSubmit}>Submit</button>
+        </div>
+
       </div>
     </div>
 
