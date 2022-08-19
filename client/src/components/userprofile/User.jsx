@@ -51,7 +51,7 @@ const User = () => {
     e.preventDefault();
     try {
       await axios.post('/create-account',
-          {email: currentUser.email,
+          {id: userId,
             name: nameRef.current.value,
             username: userNameRef.current.value,
             profile_photo: photoUrl,
