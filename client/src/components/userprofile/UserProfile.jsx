@@ -4,6 +4,8 @@ import axios from 'axios';
 import MfnBtn from '..//mfn_btn/MfnBtn.jsx';
 import Modal from '..//Modal/Modal.jsx';
 import globalStore from '../../zustand.js';
+import NavBtn from '..//Nav_btn/NavBtn.jsx';
+import '../../global.scss';
 
 //   //     //userprofle
 //   //     //add connection button
@@ -17,6 +19,7 @@ const UserProfile = () => {
   const {userID} = useParams();
   const userId = globalStore((state) => state.userId);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     axios.get(`http://localhost:3005/profile/${userID}`).then((res)=> {
       console.log(res.data);
@@ -24,7 +27,7 @@ const UserProfile = () => {
     });
   }, [userID]);
 
-  const Form = () => {
+  const Form1 = () => {
     return (<form style={{display: 'grid'}}>
       Add this user to your connections list?
       <button onClick = {() => {
@@ -33,6 +36,17 @@ const UserProfile = () => {
           console.log('Successfully added');
         }).catch((err) => console.log(err));
       }} >Add User</button>
+      <button>Cancel</button>
+    </form>
+    );
+  };
+
+  const Form2 = () => {
+    return (<form style={{display: 'grid'}}>
+      Want to send this user a message?
+      <button onClick = {() => {
+        navigate('/livechat');
+      }} >Message User</button>
       <button>Cancel</button>
     </form>
     );
@@ -56,8 +70,10 @@ const UserProfile = () => {
       <div>Interests: {user && user.interests && user.interests.map((item) => {
         return (<div>{item}</div>);
       })}</div>
-      <Modal children={Form()}/>
+      <Modal children={Form1()}/>
       <MfnBtn />
+      <NavBtn style = {'profilechat_btn'} path={'/livechat'} />
+
     </div>
   );
 };

@@ -39,11 +39,11 @@ const SignIn = () => {
         <img className='logo' src={LogoFull} alt="Lingo Logo" />
       </div>
       <div className='right_part'>
-        <div className='need_sign_up_container'>
-          <p className='need_sign_up'>Need an account?</p>
-          <Link to='/signup' className='sign_up_link'>Sign Up</Link>
-        </div>
         <div className='content_container'>
+          <div className='need_sign_up_container'>
+            <p className='need_sign_up'>Need an account?</p>
+            <Link to='/signup' className='sign_up_link'>Sign Up</Link>
+          </div>
           <div className='title'>
             <span>Welcome </span><span className='title_blue'>Back!</span>
           </div>

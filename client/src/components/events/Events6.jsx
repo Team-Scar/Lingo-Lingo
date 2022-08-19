@@ -20,6 +20,10 @@ import {useNavigate} from 'react-router-dom';
 import Modal from '../Modal/Modal.jsx';
 import MfnBtn from '../mfn_btn/MfnBtn.jsx';
 
+import eventStore from './eventStore.js';
+import globalStore from '../../zustand.js';
+
+
 const locales = {
   'en-US': enUS,
 };
@@ -33,7 +37,7 @@ const localizer = dateFnsLocalizer({
 
 
 const user_id = 2;// just to assume it is passed in from props
-const user_email = 'sharonhw888@gmail.com';
+const user_email='sharonhw888@gmail.com';
 const Events = () => {
   const navigate = useNavigate();
   const {currentUser} = useContext(AuthContext);
@@ -43,8 +47,8 @@ const Events = () => {
   const [allJargon, setAllJargon] = React.useState();
   const [date, setDate] = React.useState(new Date());
   const [show, setShow] = React.useState(false);
-  const [showDetail, setShowDetail] = React.useState(false);
-  const [select, setSelect] = React.useState();
+  const [showDetail, setShowDetail]=React.useState(false);
+  const [select, setSelect]=React.useState();
 
   const buildEvent = (array) => {
     console.log(array);
@@ -65,8 +69,8 @@ const Events = () => {
   };
 
 
-  const fetchData = () => {
-    if (user_id) {
+  const fetchData=()=>{
+    if (currentUser) {
       axios.get(`/attendEvents/${user_id}`).then((result) => {
         setAttend(result.data);
       });
@@ -82,7 +86,7 @@ const Events = () => {
     });
   };
 
-  const modalContent = () => {
+  const modalContent=()=>{
     return (<AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
       setAllEvent([...oldEvent, newEvent]);
     }} closeModal={() => {
@@ -95,7 +99,11 @@ const Events = () => {
   return (
     <div className="eventContainer">
 
-      <Modal children={modalContent()} />
+
+      {/* <button onClick={() => {
+        setShow(true);
+      }}>Add New Event</button> */}
+      <Modal children={modalContent()}/>
 
       {show && <AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={fetchData} closeModal={() => {
         setShow(false);
@@ -119,8 +127,11 @@ const Events = () => {
             setShowDetail(true);
           }} />
       </div>
-      {showDetail && <EventDetail info={select} add={fetchData} allLang={allLang} allJargon={allJargon} selectEvent={attend || []} />}
-      <MfnBtn />
+      <div className="eventDetails">
+        {/* {(oldEvent&&allLang&&allJargon) ? <EventDetail add={fetchData} allLang={allLang} allJargon={allJargon} allEvents={oldEvent} selectEvent={attend||[]}/>:<></>} */}
+        {showDetail&&<EventDetail info={select} add={fetchData} allLang={allLang} allJargon={allJargon} selectEvent={attend||[]}/>}
+        <MfnBtn/>
+      </div>
     </div>
   );
 };

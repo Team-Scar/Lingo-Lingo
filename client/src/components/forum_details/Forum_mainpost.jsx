@@ -1,6 +1,8 @@
 import React from 'react';
 const axios = require('axios');
 import TimeAgo from 'react-timeago';
+import upvoteIcon from '../../../assets/forum_icons/upvote_icon.svg';
+import downvoteIcon from '../../../assets/forum_icons/downvote_icon.svg';
 
 import postStore from './_postState.js';
 import forumStore from '../forum/_forumState.js';

@@ -22,7 +22,7 @@ const Map4 = (props) => {
   React.useEffect(geocode, []);
 
   return (
-    <div>Address: {props.location}
+    <div>
       {position&&<Map
         initialViewState={{latitude: position.lat, longitude: position.lng, zoom: 12}}
         mapLib={maplibregl}

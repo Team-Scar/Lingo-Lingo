@@ -1,26 +1,56 @@
-
+@use '../../global';
 
 .forumView {
   display: flex;
+  background-color: none;
+  height: auto;
   min-width: 40%;
   flex-wrap: wrap;
   position: relative;
-  margin-top: 10%;
+  margin-top: 7%;
+  margin-left: 10%;
 }
 
 .card {
   display: flex;
+  background-color: #F7F7F7;
   flex-wrap: wrap;
+  min-height: 40%;
   height: auto;
-  width: 25%;
-  border: 1px solid black;
+  width: 20%;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+  margin: 2%;
+  padding: 0% 1% 0% 1%;
+  transition: .5s;
+}
+
+.photoCard {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 60%;
+  height: auto;
+  width: 45%;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
   margin: 2%;
   padding: 0% 1% 0% 1%;
   transition: .5s;
 }
 
 .card:hover {
-  background-color: grey;
+  // border: 1.5px solid global.$color-dark-blue;
+  // box-shadow: 3px 3px 3px global.$color-dark-blue;
+  background-color: #f0f0f0;
+  transition: .5s;
+}
+
+.card:hover>.info {
+  // border: 1.5px solid global.$color-dark-blue;
+  // box-shadow: 3px 3px 3px global.$color-dark-blue;
+  background-color: #dee7e9;
   transition: .5s;
 }
 
@@ -34,7 +64,13 @@
 }
 
 .info {
-  width: 100%;
+  background-color: #edf2f3;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+  border-radius: 5px;
+  margin-left: 25%;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: auto;
 }
 
 em {
@@ -42,7 +78,7 @@ em {
 }
 
 em:hover {
-  color: azure
+  color: global.$color-dark-blue
 }
 
 .interaction {
@@ -57,30 +93,33 @@ em:hover {
   width: 100%;
   transition: .5s;
 }
+
 .votes:hover {
-  color: azure;
+  color: global.$color-dark-blue;
   transition: .5s;
 }
 
 .caretUp {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: -5px;
   transition: .5s
 }
+
 .caretUp:hover {
-  color: blue;
+  color: global.$color-light-blue;
   transition: .5s
 }
 
 .caretDown {
   position: absolute;
-  top: 40px;
+  top: 43px;
   left: -5px;
   transition: .5s
 }
+
 .caretDown:hover {
-  color: blue;
+  color: global.$color-light-blue;
   transition: .5s
 }
 
@@ -92,7 +131,7 @@ em:hover {
 }
 
 .comments:hover {
-  color: azure;
+  color: global.$color-dark-blue;
   transition: .5s
 }
 
@@ -110,11 +149,11 @@ em:hover {
 }
 
 .share:hover {
-  color: azure;
+  color: global.$color-dark-blue;
   transition: .5s;
 }
 
 .shareIcon {
   position: relative;
-  top: 30%
+  top: 20%
 }
