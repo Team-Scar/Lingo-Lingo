@@ -27,7 +27,8 @@ const Sidebar = ({id}) => {
       </nav>
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
       <div className="identificationText">
-        Hi {userName ? userName : 'visitor'}!
+        {/* Hi {userName ? userName : 'visitor'}! */}
+        Hi!
         Your user-id is: <span className="identification">{id}</span>
       </div>
       {currentTab === 'Conversation' ?

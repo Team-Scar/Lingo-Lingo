@@ -49,10 +49,10 @@ const ContactModal = ({closeModal}) => {
             value={idText}
             onChange={idListener}>
           </input>
-          <p>Name: </p>
+          <p>Nickname: </p>
           <input
             type="text"
-            placeholder="Enter Your name"
+            placeholder="Enter a nickname"
             value={nameText}
             onChange={nameListener}>
           </input>
