@@ -50,7 +50,7 @@ const SignIn = () => {
           <span>Welcome </span><span className='title_blue'>Back!</span>
         </div>
         {showMessage &&
-        <h3 className='show_message show_error'>
+        <h3 className='show_message'>
           {error}  <ImCross onClick={() => setShowMessage(false)}/>
         </h3>
         }
