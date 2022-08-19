@@ -97,6 +97,20 @@ const Sidebar = () => {
           <Link className={'links'} to='/connections'>Connections</Link>
         </div>
       </nav>
+      <div className='sidebar_pants'>
+        <div className='link_container' onClick={setCurrentPage}>
+          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
+          <Link className={'links'} to='/events'>Events</Link>
+        </div>
+        <div className='link_container' onClick={setCurrentPage}>
+          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
+          <Link className={'links'} to='/events'>Events</Link>
+        </div>
+        <div className='link_container' onClick={setCurrentPage}>
+          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
+          <Link className={'links'} to='/events'>Events</Link>
+        </div>
+      </div>
     </div>
   );
 };
