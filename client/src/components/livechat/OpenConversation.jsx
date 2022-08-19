@@ -33,15 +33,13 @@ const OpenConversation = () => {
               <div
                 ref={lastMessage ? setRef : null}
                 key={`indMessage-` + message + index }
-                className="messageWrapper">
+                className={`${message.fromMe ? 'messageWrapperMe' : "messageWrapperElse"}`}>
                 <div
-                  className={`messageitself`}
-                  // eslint-disable-next-line max-len
-                  style={{backgroundColor: 'white'}}
+                  className={`${message.fromMe ? 'messageitselfMe' : "messageitselfElse"}`}
                 >
                   {message.text}
                 </div>
-                <div className="senderName">
+                <div className={`${message.fromMe ? 'senderNameMe' : "senderNameElse"}`}>
                   {message.fromMe ? 'You' : message.senderName}
                 </div>
               </div>
@@ -49,7 +47,7 @@ const OpenConversation = () => {
           })}
         </div>
       </div>
-      <form className="formbox">
+      <div className="formbox">
         <textarea
           type="text"
           className="chatbox"
@@ -57,7 +55,7 @@ const OpenConversation = () => {
           onChange={textListener}>
         </textarea>
         <button onClick={handleSend}>Send Message</button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 import {useConversations} from './contexts/ConversationsProvider.jsx';
+import './sidebar.scss';
+
 
 
 const Conversation = () => {
@@ -12,10 +14,10 @@ const Conversation = () => {
   };
 
   return (
-    <div>
+    <div className="sidebarMain">
       {conversations.length > 0 ? conversations.map((conversation, index) => {
         return (
-          <div key={'conversationId ' + index}>
+          <div key={'conversationId ' + index} className="convoItems">
             <button
               onClick={() => {
                 changeConvo(event, index);

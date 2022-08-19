@@ -5,6 +5,7 @@ require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
 const profileRouter=require('./routes/profiles.js');
+const {v4} = require('uuid')
 
 /* ==== Internal Modules === */
 const app = express();
@@ -114,8 +115,11 @@ io.on('connection', (socket) => {
   });
 });
 
-module.exports = {
-  server,
-  express,
-  path,
-};
+app.get('/livechat/video', (req, res) => {
+  res.redirect(`/${uuidV4()}`)
+})
+
+app.get('/livechat/video/:room'), (req, res) => {
+  res.render('room', {roomId: req.params.room})
+}
+
