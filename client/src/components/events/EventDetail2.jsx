@@ -1,8 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {GoogleLogin} from 'react-google-login';
-import {gapi} from 'gapi-script';
-
 
 import globalStore from '../../zustand.js';
 import Modal from '../Modal/Modal.jsx';
@@ -11,8 +8,9 @@ import MfnBtn from '../mfn_btn/MfnBtn.jsx';
 import Map4 from './Map4.jsx';
 
 
-const user_id = 2;
+// const user_id = 2;
 const EventDetail = (props) => {
+  const user_id = globalStore((state) => state.user_id);
   const [showMap, setShowMap] = React.useState(false);
   const [goCal, setGoCal] = React.useState();
   const handleCancel = (e) => {
@@ -42,7 +40,6 @@ const EventDetail = (props) => {
   const day = time.getDate();
   const hr = time.getHours();
   const min = time.getMinutes();
-  // const weekday=time.getDayOfWeek();
 
   return (
     <>
