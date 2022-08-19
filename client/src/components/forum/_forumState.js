@@ -10,6 +10,9 @@ const useForumStore = ((set) => ({
   setCurrentPost: (postId) => set({currentPost: postId}),
   newPost: {},
   createPost: (postObject) => set({newPost: postObject}),
+  fetchedUser: () => false,
+  setFetchedUser: () => set({fetchedUser: true}),
+  unsetFetchedUser: () => set({fetchedUser: false}),
 }));
 
 const forumStore = create(devtools(useForumStore));

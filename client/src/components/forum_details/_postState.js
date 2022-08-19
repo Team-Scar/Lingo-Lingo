@@ -33,6 +33,7 @@ const usePostStore = ((set) => ({
       username: 'asdf2',
     },
   ],
+  clearData: () => set({postData: {}, responsesData: []}),
   fetched: false,
   setFetched: () => set({fetched: true}),
   resetFetched: () => set({fetched: false}),
