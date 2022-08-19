@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Login from './Login.jsx';
 import Messages from './Messages.jsx';
 import './livechat.scss';
@@ -14,6 +14,12 @@ const LiveChat = () => {
   const [id, setId] = useLocalStorage('id');
   const userId = globalStore((state) => state.userId);
   const userName = globalStore((state) => state.userName);
+  const hideModal = globalStore((state) => state.modalOff);
+
+  // useEffect(() => {
+  //   hideModal(false);
+  // }, []);
+
 
   const messagebox = (
     <div className="fitSidebar">

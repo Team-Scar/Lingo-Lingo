@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useContacts} from './contexts/ContactsProvider.jsx';
 import './modal.scss';
 
+
 const ContactModal = ({closeModal}) => {
   const [idText, setIdText] = useState('');
   const [nameText, setNameText] = useState('');
@@ -26,13 +27,15 @@ const ContactModal = ({closeModal}) => {
   return (
     <div className="modalBackgroundDF">
       <div className="modalContainerDF">
-        <div className="titleCloseBtn">
-          <button onClick={() => {
-            closeModal(false);
-          }}>X</button>
-        </div>
-        <div className = "title">
-          <h1>Create Contact</h1>
+        <div className="topHalf">
+          <div className="titleCloseBtn">
+            <button onClick={() => {
+              closeModal(false);
+            }}>X</button>
+          </div>
+          <div className = "EventTitleDF">
+            <h1>Create Contact</h1>
+          </div>
         </div>
         <div className="body">
           <p>ID: </p>
