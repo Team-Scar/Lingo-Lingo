@@ -10,14 +10,12 @@ body {
 
 .left_logo {
   position: relative;
-  left: -193px;
   width: 1069px;
   background-color: #F7F7F7;
 }
 
 .right_part {
   position: relative;
-  left: -248px;
   width: 100vw;
   background-color: #ffffff;
   display: flex;
@@ -148,11 +146,10 @@ input:focus {
 
 //create account
 .create_account_container {
-  // position: absolute;
-  // left: 40%;
-  // top: 15%;
   display: flex;
-  // position: relative;
+  position: relative;
+  left: 258px;
+  top: 128px;
 }
 
 .photo {
@@ -229,6 +226,7 @@ input:focus {
   position: relative;
   top: -13px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .input_file {
