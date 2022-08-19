@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import axios from 'axios';
+
 import {Calendar, dateFnsLocalizer} from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -7,20 +8,17 @@ import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import enUS from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
-import './events.scss';
-const moment = require('moment');
-import {DateTimePickerComponent} from '@syncfusion/ej2-react-calendars';
-import AddEventModal from './AddEventModal.jsx';
-import EventDetail from './EventDetail2.jsx';
 
 import {AuthContext} from '../userauth/AuthContext.jsx';
 import {useNavigate} from 'react-router-dom';
+import globalStore from '../../zustand.js';
 import Modal from '../Modal/Modal.jsx';
 import MfnBtn from '../mfn_btn/MfnBtn.jsx';
-import globalStore from '../../zustand.js';
-import eventStore from './eventStore.js';
+
+import './events.scss';
+import AddEventModal from './AddEventModal.jsx';
+import EventDetail from './EventDetail2.jsx';
+
 const locales = {
   'en-US': enUS,
 };
@@ -33,13 +31,19 @@ const localizer = dateFnsLocalizer({
 });
 
 
+const user_id = 2;// just to assume it is passed in from props
 const Events = () => {
-  const user_id = globalStore((state) => state.user_id);
-  const navigate = useNavigate();
+  const navigate = useNavigate();// why do we need this???
+  const user_id= globalStore((state) => state.userId);
+  const allLang= globalStore((state) => state.allLanguages);
+  const allJargon= globalStore((state) => state.allJargon);
+  const selectLang= globalStore((state) => state.userLanguages);
+  const selectJargon= globalStore((state) => state.userTopics);
+
+
   const [oldEvent, setAllEvent] = React.useState();
   const [attend, setAttend] = React.useState();
-  const [allLang, setAllLang] = React.useState();
-  const [allJargon, setAllJargon] = React.useState();
+
   const [date, setDate] = React.useState(new Date());
   const [show, setShow] = React.useState(false);
   const [showDetail, setShowDetail] = React.useState(false);
@@ -73,41 +77,22 @@ const Events = () => {
     axios.get('/allEvents').then((res) => {
       setAllEvent(buildEvent(res.data));
     });
-    axios.get('/allLanguagess').then((res) => {
-      setAllLang(res.data);
-    });
-    axios.get('/allJargonss').then((res) => {
-      setAllJargon(res.data);
-    });
   };
 
-  const modalContent = () => {
-    return (<AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
-      setAllEvent([...oldEvent, newEvent]);
-    }} closeModal={() => {
-      setShow(false);
-    }} />);
-  };
+  const addOneEvent=<AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
+    setAllEvent([...oldEvent, newEvent]);
+  }} closeModal={() => {
+    setShow(false);
+  }} />;
 
   React.useEffect(fetchData, []);
-
-
-  const modalState = globalStore((state) => state.showModal);
-  const showModal = globalStore((state) => state.modalOn);
-  const hideModal = globalStore((state) => state.modalOff);
-
 
   return (
     <div className="eventContainer">
 
+      <Modal children={addOneEvent} />
 
-      <Modal children={modalContent()} />
-
-      {/* {show && <div className="modalBackground"><AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={fetchData} closeModal={() => {
-        setShow(false);
-      }} /></div>} */}
-      {show && <Modal children={modalContent()} />}
-
+      {show && addOneEvent}
       <div className="eventCalendar">
         <Calendar
           localizer={localizer}
@@ -120,11 +105,6 @@ const Events = () => {
             console.log(e.start);
             setShow(true);
             setDate(new Date(e.start));
-            if (!modalState) {
-              showModal();
-            } else {
-              hideModal();
-            }
           }}
           onSelectEvent={(e) => {
             console.log(e);

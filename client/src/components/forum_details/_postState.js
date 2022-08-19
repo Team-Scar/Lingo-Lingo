@@ -34,6 +34,7 @@ const usePostStore = ((set) => ({
     },
   ],
   respondingToID: 0,
+  clearData: () => set({postData: {}, responsesData: []}),
   fetched: false,
   setFetched: () => set({fetched: true}),
   resetFetched: () => set({fetched: false}),

@@ -1,34 +1,94 @@
-body {
-  padding: 0;
-  margin: 0;
+
+.entireWindow {
   display: flex;
-  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-#message-container {
-  width: 80%;
-  max-width: 1200px;
-}
-
-#message-container div {
-  background-color: #CCC;
-  padding: 5px;
-}
-
-#message-container div:nth-child(2n) {
-  background-color: #FFF;
-}
-
-#send-container {
-  position: fixed;
-  padding-bottom: 30px;
-  bottom: 0;
-  background-color: white;
-  max-width: 1200px;
-  width: 80%;
+.mconvobar {
   display: flex;
-}
-
-#message-input {
   flex-grow: 1;
+  flex-direction: column;
+}
+
+.messages {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+
+.chatbox {
+  margin-left: 2px;
+  margin-right: 2px;
+  height: 100px;
+  resize: none;
+  width: 100%;
+}
+
+.formbox {
+  display: flex;
+  border-left: 40px;
+}
+
+.innerMessageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin: 25px 25px 10px 20px;
+}
+
+.messageWrapperElse {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.messageWrapperMe {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+
+
+.messageitselfElse {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 4px;
+  background-color: #73E0FE;
+  margin-bottom: 1px;
+}
+
+
+.messageitselfMe {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 4px;
+  background-color: white;
+  margin-bottom: 1px;
+}
+
+.senderNameMe {
+  color: gray;
+  text-align: right;
+  margin-bottom: 9px;
+}
+
+.senderNameElse {
+  color: gray;
+  margin-bottom: 9px;
+  margin-right: 2px;
+  margin-left: 2px;
 }

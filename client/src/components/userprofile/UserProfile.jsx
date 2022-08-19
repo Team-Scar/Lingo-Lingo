@@ -41,16 +41,6 @@ const UserProfile = () => {
     );
   };
 
-  const Form2 = () => {
-    return (<form style={{display: 'grid'}}>
-      Want to send this user a message?
-      <button onClick = {() => {
-        navigate('/livechat');
-      }} >Message User</button>
-      <button>Cancel</button>
-    </form>
-    );
-  };
 
   return (
     <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>

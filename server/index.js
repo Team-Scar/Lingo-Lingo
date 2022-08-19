@@ -5,6 +5,7 @@ require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const db = require('../db');
 const eventRouter=require('./routes/events.js');
 const profileRouter=require('./routes/profiles.js');
+const {v4} = require('uuid')
 
 /* ==== Internal Modules === */
 const app = express();
@@ -89,11 +90,52 @@ app.get('/discussions', (req, res) => {
 });
 
 
+app.get('/livechat/video/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'))
+});
+
+app.get('/livechat/url', (req, res) => {
+  res.send(v4());
+})
+
+// did someone put an id here after or was that me
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 /* ==== Server Binding === */
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
+
+/* ==== Socket Binding === */
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  const id = socket.handshake.query.id;
+  socket.join(id);
+  socket.emit("me", socket.id)
+
+  socket.on('send-message', ({recipients, text}) => {
+    recipients.forEach((recipient) => {
+      const newRecipients = recipients.filter((r) => r !== recipient);
+      newRecipients.push(id);
+      socket.broadcast.to(recipient).emit('receive-message', {
+        recipients: newRecipients, sender: id, text,
+      });
+    });
+  });
+
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('callEnded')
+  })
+  socket.on('callUser', (data) => {
+    io.to(data.userToCall).emit("callUser", {signal: data.signalData, from: data.from, name: data.name})
+  })
+
+  socket.on("answerCall", (data) =>{
+    io.to(data.to).emit("callAccepted"), data.signal
+})
+});
+
+
