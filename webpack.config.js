@@ -6,7 +6,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
   mode: "development",
   entry: "./client/src/index.jsx",
-  target: 'web',
   output: {
     path: path.join(__dirname, './client/public'),
     filename: "bundle.js",
@@ -54,31 +53,38 @@ module.exports = {
     // [port] what port on our local machine to run the dev server
     port: 3000,
   },
-  externals: [
-  "child_process",
-  "dns",
-  "fs",
-  "net",
-  "tls",
+  externals:
   {
     express: 'express',
     bufferutil: "bufferutil",
     "utf-8-validate": "utf-8-validate",
   },
-],
-  resolve: {
-    fallback: {
-      fs: false,
-      tls: false,
-      net: false,
-      path: false,
-      zlib: false,
-      http: false,
-      https: false,
-      stream: false,
-      crypto: false,
-      assert: false,
-
-    }
-  },
 }
+
+// externals: [
+//   "child_process",
+//   "dns",
+//   "fs",
+//   "net",
+//   "tls",
+//   {
+//     express: 'express',
+//     bufferutil: "bufferutil",
+//     "utf-8-validate": "utf-8-validate",
+//   },
+// ],
+//   resolve: {
+//     fallback: {
+//       fs: false,
+//       tls: false,
+//       net: false,
+//       path: false,
+//       zlib: false,
+//       http: false,
+//       https: false,
+//       stream: false,
+//       crypto: false,
+//       assert: false,
+
+//     }
+//   },
