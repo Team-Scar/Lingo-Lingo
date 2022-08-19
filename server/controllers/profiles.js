@@ -13,7 +13,14 @@ const addUser = (req, res) => {
   });
 };
 
+const editProfile = (req, res) => {
+  db.editUser(req.body).then(() => {
+    res.status(201);
+  });
+}
+
 module.exports = {
   getUserProfile,
   addUser,
+  editProfile,
 };
