@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import globalStore from '../../zustand.js';
 import HeaderMenu from './HeaderMenu.jsx';
+
 import './header.scss';
 import '../../global.scss';
 
@@ -22,13 +23,9 @@ const Header = () => {
     <div className='header'>
       <h1 className='header_title'>{headerTitle ? headerTitle : 'All Lingo Boards'}</h1>
       <ul className='header_filter_container'>
-        {
-          // TODO: li 'clear' should clear filters in state;
-        }
-        <li className='header_filter' value='clear' onClick={clearFilters}>Home</li>
-        {
-          // TODO: li's should update based on user onboarding selections;
-        }
+
+        <li className='header_filter' value='clear' onClick={clearFilters}>All Boards:</li>
+
         <HeaderMenu />
       </ul>
     </div>);
