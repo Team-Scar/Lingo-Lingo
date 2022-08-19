@@ -4,6 +4,7 @@ import ConversationModalCheckBox from './ConversationModalCheckBox.jsx';
 import {useConversations} from './contexts/ConversationsProvider.jsx';
 import './modal.scss';
 
+
 const ConversationModal = ({closeModal}) => {
   const {contacts} = useContacts();
   const {createConversation} = useConversations();
@@ -31,13 +32,15 @@ const ConversationModal = ({closeModal}) => {
   return (
     <div className="modalBackgroundDF">
       <div className="modalContainerDF">
-        <div className="titleCloseBtn">
-          <button onClick={() => {
-            closeModal(false);
-          }}>X</button>
-        </div>
-        <div className = "title">
-          <h1>Create Conversation</h1>
+        <div className="topHalf">
+          <div className="titleCloseBtn">
+            <button onClick={() => {
+              closeModal(false);
+            }}>X</button>
+          </div>
+          <div className = "EventTitleDF">
+            <h1>Create Conversation</h1>
+          </div>
         </div>
         <div className="body">
           {contacts.map(((contact, index) => {
