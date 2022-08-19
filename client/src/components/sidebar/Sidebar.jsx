@@ -46,9 +46,6 @@ const Sidebar = () => {
       return (
         <div className='sidebar_navigation'>
           <div className='link_container dropdownlist' onClick={setCurrentPage}>
-            <Link className={'links'} to='/create-account'>Create Account</Link>
-          </div>
-          <div className='link_container dropdownlist' onClick={setCurrentPage}>
             <Link className={'links'} to='signin'>Sign In</Link>
           </div>
           <div className='link_container dropdownlist' onClick={setCurrentPage}>
