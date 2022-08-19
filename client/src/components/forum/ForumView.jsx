@@ -213,54 +213,64 @@ const ForumView = () => {
       // postObject['jargon'] = allJargon.indexOf(jarg);
     };
     return (<form className="submitPost">
-      Submit your post
-      <div>
-        Title:
-        <input name="title" onChange={handleChange}></input>
+      <h1>Submit your post</h1>
+      <div className="modalField">
+        {/* Title: */}
+        <input className="input" name="title" placeholder="title" onChange={handleChange}></input>
       </div>
-      <div>
-        Content:
-        <textarea name="content" onChange={handleChange}></textarea>
+      <div className="modalField">
+        {/* Content: */}
+        <textarea className="bigInput" name="content" placeholder="content" onChange={handleChange}></textarea>
       </div>
-      <div>
-        Photo url:
-        <input name="photo" onChange={handleChange}></input>
+      <div className="modalField">
+        {/* Photo url: */}
+        <input className="input" name="photo" placeholder="photo url" onChange={handleChange}></input>
       </div>
-      <div>
-        Submission language:
-        <select name="language" id="language" onChange={handleChange}>
-          {userLanguages.map((lang) => {
-            return (
-              <option value={lang}>{lang}</option>
-            );
-          })}
-        </select>
+      <div className="modalField">
+        <p>Submission language:</p>
+        <div className="selectBox">
+          <select className="select" name="language" id="language" onChange={handleChange}>
+            {userLanguages.map((lang) => {
+              return (
+                <option value={lang}>{lang}</option>
+              );
+            })}
+          </select>
+        </div>
       </div>
-      <div>
-        Submission jargon:
-        <select name="jargon" id="jargon" onChange={handleChange}>
-          {userTopics.map((topic) => {
-            return (
-              <option value={topic}>
-                {topic}
-              </option>
-            );
-          })}
-        </select>
+      <div style={{margin: 0}} className="modalField">
+        <p>Submission topic:</p>
+        <div className="selectBox">
+          <select className="two" name="jargon" id="jargon" onChange={handleChange}>
+            {userTopics.map((topic) => {
+              return (
+                <option value={topic}>
+                  {topic}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
-      <button onClick={handleClick}>Submit</button>
+      <button className="btn" onClick={handleClick}>Submit</button>
     </form>
     );
   };
 
   return (
-    <div className="forumView">
-      <Modal children={Form()}/>
-      <MfnBtn />
+    <div>
+      <div className="viewHeader">
+        <p>Ask questions and join the conversation</p>
+      </div>
+      <div className="forumView">
+        <Modal children={Form()}/>
+        <MfnBtn />
 
-      {posts.map((post, x) => {
-        return <Cards key={x + post} post={post} handleClick={handleClick} />;
-      })}
+
+        {posts.map((post, x) => {
+          return <Cards key={x + post} post={post} handleClick={handleClick} />;
+        })}
+      </div>
     </div>
   );
 };
