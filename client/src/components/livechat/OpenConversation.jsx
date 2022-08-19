@@ -33,6 +33,7 @@ const OpenConversation = () => {
               <div
                 ref={lastMessage ? setRef : null}
                 key={`indMessage-` + message + index }
+<<<<<<< HEAD
                 className={`${message.fromMe ? 'messageWrapperMe' : "messageWrapperElse"}`}>
                 <div
                   className={`${message.fromMe ? 'messageitselfMe' : "messageitselfElse"}`}
@@ -40,6 +41,17 @@ const OpenConversation = () => {
                   {message.text}
                 </div>
                 <div className={`${message.fromMe ? 'senderNameMe' : "senderNameElse"}`}>
+=======
+                className="messageWrapper">
+                <div
+                  className={`messageitself`}
+                  // eslint-disable-next-line max-len
+                  style={{backgroundColor: 'white'}}
+                >
+                  {message.text}
+                </div>
+                <div className="senderName">
+>>>>>>> 4382926a5dec51fa4c53fd9d62c77d78a587a7c0
                   {message.fromMe ? 'You' : message.senderName}
                 </div>
               </div>
@@ -47,7 +59,11 @@ const OpenConversation = () => {
           })}
         </div>
       </div>
+<<<<<<< HEAD
       <div className="formbox">
+=======
+      <form className="formbox">
+>>>>>>> 4382926a5dec51fa4c53fd9d62c77d78a587a7c0
         <textarea
           type="text"
           className="chatbox"
@@ -55,7 +71,11 @@ const OpenConversation = () => {
           onChange={textListener}>
         </textarea>
         <button onClick={handleSend}>Send Message</button>
+<<<<<<< HEAD
       </div>
+=======
+      </form>
+>>>>>>> 4382926a5dec51fa4c53fd9d62c77d78a587a7c0
     </div>
   );
 };

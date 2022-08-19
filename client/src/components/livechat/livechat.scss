@@ -1,5 +1,6 @@
 
 .entireWindow {
+<<<<<<< HEAD
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -91,4 +92,66 @@
   margin-bottom: 9px;
   margin-right: 2px;
   margin-left: 2px;
+=======
+  display: flex;
+}
+
+.msidebar {
+  border: 3px solid #1C6EA4;
+  height: 100vh;
+}
+
+.mconvobar {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.messages {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+
+.chatbox {
+  border-left: 40px;
+  height: 75px;
+  resize: none;
+  width: 100%;
+}
+
+.formbox {
+  border-left: 40px;
+}
+
+.innerMessageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.messageWrapper {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.messageitself {
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 5px;
+}
+
+// Need to format the messages somehow conditionally. 1:18 in the video
+.senderName {
+  color: gray;
+>>>>>>> 4382926a5dec51fa4c53fd9d62c77d78a587a7c0
 }

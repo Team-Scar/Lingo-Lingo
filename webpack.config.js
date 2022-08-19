@@ -60,31 +60,3 @@ module.exports = {
     "utf-8-validate": "utf-8-validate",
   },
 }
-
-// externals: [
-//   "child_process",
-//   "dns",
-//   "fs",
-//   "net",
-//   "tls",
-//   {
-//     express: 'express',
-//     bufferutil: "bufferutil",
-//     "utf-8-validate": "utf-8-validate",
-//   },
-// ],
-//   resolve: {
-//     fallback: {
-//       fs: false,
-//       tls: false,
-//       net: false,
-//       path: false,
-//       zlib: false,
-//       http: false,
-//       https: false,
-//       stream: false,
-//       crypto: false,
-//       assert: false,
-
-//     }
-//   },
