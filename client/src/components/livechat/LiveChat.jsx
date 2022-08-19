@@ -12,7 +12,7 @@ const LiveChat = () => {
 
   const messagebox = (
     <ContactsProvider>
-      <ConversationsProvider>
+      <ConversationsProvider id={id}>
         <Messages id={id}/>
       </ConversationsProvider>
     </ContactsProvider>
@@ -21,11 +21,6 @@ const LiveChat = () => {
     <div>
       {id !== undefined ? messagebox :
       <Login onIdSubmit={setId} />}
-      <div id="message-container"></div>
-      <form id="send-container">
-        <input type="text" id="message-input" />
-        <button type="submit" id="send-button">Send</button>
-      </form>
     </div>
   );
 };

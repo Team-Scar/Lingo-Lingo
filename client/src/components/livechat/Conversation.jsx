@@ -4,15 +4,12 @@ import {useConversations} from './contexts/ConversationsProvider.jsx';
 
 const Conversation = () => {
   const {conversations, selectConversationIndex, selectedConversation, formattedConversations} = useConversations();
-  const onClicktest = (event) => {
-    event.preventDefault();
-    console.log('conversations', conversations);
-    console.log('selected Convo', selectedConversation);
-  };
 
-  const changeConvo = (event) => {
+
+  const changeConvo = (event, index) => {
     event.preventDefault();
-  }
+    selectConversationIndex(index);
+  };
 
   return (
     <div>
@@ -20,11 +17,12 @@ const Conversation = () => {
         return (
           <div key={'conversationId ' + index}>
             <button
-              onClick={() => selectConversationIndex}
+              onClick={() => {
+                changeConvo(event, index);
+              }}
             >
               {conversation.recipients.map((r) => r.name).join(', ')}
             </button>
-            <button onClick={onClicktest}>Test</button>
           </div>);
       }): <p>Loading...</p>}
     </div>
