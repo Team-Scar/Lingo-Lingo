@@ -9,7 +9,7 @@ const {v4} = require('uuid')
 
 /* ==== Internal Modules === */
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const controllers = require('./controllers/index.js');
