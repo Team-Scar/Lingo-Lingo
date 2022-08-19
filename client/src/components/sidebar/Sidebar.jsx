@@ -1,25 +1,23 @@
 
 import {useNavigate} from 'react-router-dom';
-import React, {useContext, useState, useEffect} from 'react';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-import axios from 'axios';
+import React, {useContext, useState} from 'react';
+import {Link} from 'react-router-dom';
 import globalStore from '../../zustand.js';
-import {getUserName} from '../../../../server/controllers/sidebar.js';
 import UserDropdown from './dropdown/UserDropdown.jsx';
 import MyLingoDropDown from './dropdown/MyLingoDropDown.jsx';
-
-import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
-// Icons
+
+// Images
 import HomeSVG from '../../../assets/sidebar_icons/Home_Icon.svg';
 import ChatSVG from '../../../assets/sidebar_icons/Chat_Icon.svg';
-import TileIcon from '../../../assets/sidebar_icons/TileIcon.svg';
-import About from '../../../assets/LogoDeconstructedGreyScale.svg';
 import Help from '../../../assets/sidebar_icons/Help_Icon.svg';
 import UserSettings from '../../../assets/sidebar_icons/Settings_Icon.svg';
+import LogoFull from '../../../assets/LogoFull.svg';
+
 // Styles
 import './sidebar.scss';
 import '../../global.scss';
+
 const Sidebar = () => {
   const [error, setError] = useState('');
   const currentUserId = globalStore((state) => {
@@ -68,7 +66,10 @@ const Sidebar = () => {
             <Link className={'links'} to='/'>Sign Out</Link>
           </div>
           <div className='link_container' onClick={setCurrentPage}>
-            <Link className={'links'} to='change-password'>Change Password</Link>
+            <Link
+              className={'links'}
+              to='change-password'>Change Password
+            </Link>
           </div>
         </div>
       );
@@ -82,7 +83,10 @@ const Sidebar = () => {
           <Link className={'links mylingoChildren'} to='/events'>Events</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
-          <Link className={'links mylingoChildren'} to='/connections'>Connections</Link>
+          <Link
+            className={'links mylingoChildren'}
+            to='/connections'>Connections
+          </Link>
         </div>
       </div>
     );
@@ -113,8 +117,14 @@ const Sidebar = () => {
           <Link className={'links'} to='/'>Help</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
-          <img className='user_settings_icon icon' src={UserSettings} alt="tile icon" />
-          <Link className={'links'} to='/profile/'>User Settings</Link>
+          <img
+            className='user_settings_icon icon'
+            src={UserSettings} alt="tile icon"
+          />
+          <Link
+            className={'links'}
+            to='/profile/'>User Settings
+          </Link>
         </div>
       </div>
     </div>
