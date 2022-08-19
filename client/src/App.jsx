@@ -53,10 +53,16 @@ const App = () => {
   return (
     <AuthProvider>
       <div>
+<<<<<<< HEAD
         {/* Home Page */}
         <Modal classname='mfn_modal'show={modalState}/>
         <Header />
         <MfnBtn />
+=======
+        Home Page
+        {/* <Modal classname='mfn_modal'show={modalState}/> */}
+        <Header />
+>>>>>>> 52e4d5d3e769338240d1021534a99215ec28fb60
         <div className='view_port'
           // style={modalState ? {filter: 'blur(5px)'} : null}
         >

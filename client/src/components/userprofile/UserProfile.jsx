@@ -43,7 +43,7 @@ const UserProfile = () => {
 
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
+    <div style={{'display': 'flex', 'flex-direction': 'column', 'position': 'relative', 'left': '300px', 'bottom': '-233px', 'justify-content': 'flex-start', 'align-items': 'center', 'width': '100%'}}>
       <div>This is another user's profile</div>
       <div>{user && user.name}</div>
       <div>Username: {user && user.username}</div>

@@ -61,7 +61,7 @@ const User = () => {
           },
       );
     } catch (e) {
-      console.log('err in post to create account', e);
+      console.log('err editing user account', e);
     };
     navigate('/');
   };

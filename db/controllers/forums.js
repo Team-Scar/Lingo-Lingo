@@ -255,3 +255,16 @@ module.exports.getUserName = (id) => {
       text, values,
   );
 };
+
+module.exports.submitResponse = (responseInfo) => {
+  console.log('responseInfo', responseInfo);
+  const text = `insert into responses(response_to_id, content, photo,
+    timestamp, vote, user_id, post_id) values($1, $2, $3, $4, $5, $6, $7)
+    returning *`;
+  const values = [responseInfo.response_to_id, responseInfo.content,
+    responseInfo.photo, responseInfo.timestamp, responseInfo.vote,
+    responseInfo.user_id, responseInfo.post_id];
+  return client.query(
+      text, values,
+  );
+};
