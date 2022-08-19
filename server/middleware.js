@@ -12,7 +12,7 @@ const getAuthToken = (req, res, next) => {
 };
 
 const checkIfAuthenticated = (req, res, next) => {
-  getAuthToken(req, res. next, async () => {
+  getAuthToken(req, res, async () => {
     try {
       const {authToken} = req;
       const userInfo = await admin.auth().verifyIdToken(authToken);
@@ -23,5 +23,6 @@ const checkIfAuthenticated = (req, res, next) => {
     }
   });
 };
+
 
 module.exports.checkIfAuthenticated = checkIfAuthenticated;
