@@ -11,6 +11,7 @@ const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const {currentUser, changePassword} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,8 +35,8 @@ const ChangePassword = () => {
   };
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-200px'}}>
-      <h2>Change Password</h2>
+    <div className='change_password_container'>
+      <h2 className='change_password_title'>Change Password</h2>
       {error && <h3>{error}</h3>}
       {message && <h3>{message}</h3>}
       <form onSubmit={handleSubmit}>
@@ -44,25 +45,31 @@ const ChangePassword = () => {
           placeholder='Your Email Address'
           ref={emailRef}
           defaultValue={currentUser.email}
+          className='form_input_create_account'
           required
         />
         <input
           type='password'
           placeholder='Your Password'
           ref={passwordRef}
+          className='form_input_create_account'
           required
         />
         <input
           type='password'
           placeholder='Password confirmation'
           ref={passwordConfirmRef}
+          className='form_input_create_account'
           required
         />
-        <button disabled={loading}>Confirm</button>
+        {message !== 'Password has been updated' &&
+          <button disabled={loading} className='button change_pw_btn'>Confirm</button>
+        }
+
       </form>
-      {message ?
-      <div><Link to='/'>Home</Link></div> :
-      <div><Link to='/'>Cancel</Link></div>
+      { message ?
+      <button className='button change_pw_btn' onClick={() => navigate('/')}>Home</button> :
+      <button className='button change_pw_btn' onClick={() => navigate('/')}>Cancel</button>
       }
 
     </div>

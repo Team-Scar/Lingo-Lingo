@@ -6,6 +6,8 @@ import PhotoUpload from './PhotoUpload.jsx';
 import axios from 'axios';
 import globalStore from '../../zustand.js';
 import './userauth.scss';
+import photo from '../../../public/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg';
+
 
 const CreateAccount = () => {
   const [photoUrl, setPhotosUrl] = useState('');
@@ -65,7 +67,7 @@ const CreateAccount = () => {
       <div>
         <span>
           <select ref={langRef} className='select'>
-            <option>--Language--</option>
+            <option>Language</option>
             {languages && languages.map((language, i)=> {
               return <option key={i} value={language.language_name}>
                 {language.language_name}
@@ -75,7 +77,7 @@ const CreateAccount = () => {
         </span>
         <span>
           <select ref={roleRef} className='select'>
-            <option>--Teacher or Student--</option>
+            <option>Teach/Learn</option>
             <option value='teacher'>Teacher</option>
             <option value='student'>Student</option>
             <option value='both'>Both</option>
@@ -83,7 +85,7 @@ const CreateAccount = () => {
         </span>
         <span>
           <select ref={proficiencyRef} className='select'>
-            <option value=''>--Proficiency--</option>
+            <option value=''>Proficiency</option>
             <option value='5'>Expert</option>
             <option value='4'>Superior</option>
             <option value='3'>Advanced</option>
@@ -109,14 +111,19 @@ const CreateAccount = () => {
 
   const handleAddJargon = () => {
     setChosenJargon([...chosenJargon, jargonRef.current.value]);
-    jargonRef.current.value = '';
+    jargonRef.current.value = '--jargon--';
   };
 
 
   return (
     <div className='create_account_container'>
-      <dic className='content_container'>
-        <h2 className='create_account_title'>Create account</h2>
+      <div >
+        <img src={photo} alt='' className='photo'/>
+      </div>
+      <div className='content_container'>
+        <h2 className='create_account_title'>
+          Create an <span className='title_blue'>Account!</span>
+        </h2>
         <form onSubmit={handleSubmit}>
           <div>
             <input
@@ -147,7 +154,7 @@ const CreateAccount = () => {
           </div>
           <PhotoUpload setPhotosUrl={setPhotosUrl}/>
           <div>
-            <label htmlFor='jargon' className='label'>Choose a jargon</label>
+            <label htmlFor='jargon' className='label'>Choose a Topic</label>
             <ul>
               {chosenJargon.length > 0 && chosenJargon.map((jargon, i) => {
                 return <li key={i} className='show_list'>{jargon}</li>;
@@ -159,7 +166,7 @@ const CreateAccount = () => {
               onChange = {handleAddJargon}
               className='select jargon_select'
             >
-              <option>------------    Jargons    ------------</option>
+              <option></option>
               {jargons && jargons.map((jargon, i)=> {
                 return <option key={i} value={jargon.jargon_name}>
                   {jargon.jargon_name}
@@ -167,7 +174,7 @@ const CreateAccount = () => {
               })}
             </select>
           </div>
-          <label id='language' className='label'>Add a language (Max is three)</label>
+          <label id='language' className='label'>Add a language (Choose up to 3)</label>
           <ul>
             {chosenLang.length > 0 && chosenLang.map((lang, i) => {
               return <li key={i} className='show_list'>{lang.language} - {lang.role}</li>;
@@ -181,7 +188,7 @@ const CreateAccount = () => {
           </button>
           <button className='button confirm_account_btn'>CONFIRM</button>
         </form>
-      </dic>
+      </div>
     </div>
   );
 };
