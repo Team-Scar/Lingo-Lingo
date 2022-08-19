@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import {useContacts} from './contexts/ContactsProvider.jsx';
+import globalStore from '../../zustand.js';
 import './modal.scss';
+
 
 const ContactModal = ({closeModal}) => {
   const [idText, setIdText] = useState('');
   const [nameText, setNameText] = useState('');
   const {createContact} = useContacts();
+
+  // axios.get('/')
+  // const userName = globalStore((state) => state.userName);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,13 +31,15 @@ const ContactModal = ({closeModal}) => {
   return (
     <div className="modalBackgroundDF">
       <div className="modalContainerDF">
-        <div className="titleCloseBtn">
-          <button onClick={() => {
-            closeModal(false);
-          }}>X</button>
-        </div>
-        <div className = "title">
-          <h1>Create Contact</h1>
+        <div className="topHalf">
+          <div className="titleCloseBtn">
+            <button onClick={() => {
+              closeModal(false);
+            }}>X</button>
+          </div>
+          <div className = "EventTitleDF">
+            <h1>Create Contact</h1>
+          </div>
         </div>
         <div className="body">
           <p>ID: </p>
@@ -42,10 +49,10 @@ const ContactModal = ({closeModal}) => {
             value={idText}
             onChange={idListener}>
           </input>
-          <p>Name: </p>
+          <p>Nickname: </p>
           <input
             type="text"
-            placeholder="Enter Your name"
+            placeholder="Enter a nickname"
             value={nameText}
             onChange={nameListener}>
           </input>

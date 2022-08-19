@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import {v4} from 'uuid';
+import globalStore from '../../zustand.js';
 
 const Login = ({onIdSubmit}) => {
   const [text, setText] = useState('');
+  const userId = globalStore((state) => state.userId);
+  const userName = globalStore((state) => state.userName);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();

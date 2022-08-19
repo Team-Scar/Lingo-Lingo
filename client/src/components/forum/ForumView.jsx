@@ -30,8 +30,13 @@ const ForumView = () => {
   const setUserLanguages = globalStore((state) => state.setUserLanguages);
   const setUserTopics = globalStore((state) => state.setUserTopics);
   const resetFetched = postStore((state) => state.resetFetched);
+  const fetchedUser = forumStore((state) => state.fetchedUser);
+  const setFetchedUser = forumStore((state) => state.setFetchedUser);
+  const unsetFetchedUser = forumStore((state) => state.unsetFetchedUser);
+  const clearData = postStore((state) => state.clearData);
 
   resetFetched();
+  clearData();
 
   if (fetched === false) {
     const languages = [];
@@ -70,12 +75,14 @@ const ForumView = () => {
     // navigate('/discussions');
   };
 
+  unsetFetchedUser();
   useEffect(() => {
     axios.post('http://localhost:3005/profile', {'id': userId})
         .then((results) => {
           // console.log(results.data);
           setUser(results.data);
           updateUserName(results.data.username);
+          setFetchedUser();
           axios.post('http://localhost:3005/languages', {'id': userId})
               .then((results) => {
                 // console.log(results.data);
@@ -97,7 +104,7 @@ const ForumView = () => {
                     });
               });
         });
-  }, user);
+  }, [userId]);
 
   useEffect(() => {
     // console.log('use effect');

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import axios from 'axios';
+
 import {Calendar, dateFnsLocalizer} from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -10,17 +11,15 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import './events.scss';
-const moment = require('moment');
-import {DateTimePickerComponent} from '@syncfusion/ej2-react-calendars';
+
+import globalStore from '../../zustand.js';
+import Modal from '../Modal/Modal.jsx';
+import MfnBtn from '../mfn_btn/MfnBtn.jsx';
+
+import eventStore from './eventStore.js';
 import AddEventModal from './AddEventModal.jsx';
 import EventDetail from './EventDetail2.jsx';
 
-import {AuthContext} from '../userauth/AuthContext.jsx';
-import {useNavigate} from 'react-router-dom';
-import Modal from '../Modal/Modal.jsx';
-import MfnBtn from '../mfn_btn/MfnBtn.jsx';
-import globalStore from '../../zustand.js';
-import eventStore from './eventStore.js';
 const locales = {
   'en-US': enUS,
 };
@@ -32,10 +31,13 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-
 const Events = () => {
-  const user_id = globalStore((state) => state.user_id);
-  const navigate = useNavigate();
+  //globalStore
+  const user_id = globalStore((state) => state.user_id)||2;
+  const modalState = globalStore((state) => state.showModal);
+  const showModal = globalStore((state) => state.modalOn);
+  const hideModal = globalStore((state) => state.modalOff);
+
   const [oldEvent, setAllEvent] = React.useState();
   const [attend, setAttend] = React.useState();
   const [allLang, setAllLang] = React.useState();
@@ -63,7 +65,6 @@ const Events = () => {
     });
   };
 
-
   const fetchData = () => {
     if (user_id) {
       axios.get(`/attendEvents/${user_id}`).then((result) => {
@@ -90,11 +91,6 @@ const Events = () => {
   };
 
   React.useEffect(fetchData, []);
-
-
-  const modalState = globalStore((state) => state.showModal);
-  const showModal = globalStore((state) => state.modalOn);
-  const hideModal = globalStore((state) => state.modalOff);
 
 
   return (

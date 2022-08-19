@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Conversation from './Conversation.jsx';
 import Contacts from './Contacts.jsx';
 import ConversationModal from './ConversationModal.jsx';
 import ContactModal from './ContactModal.jsx';
+import globalStore from '../../zustand.js';
+import './sidebar.scss';
+
 
 
 const Sidebar = ({id}) => {
   const [currentTab, setCurrentTab] = useState('Conversation');
   const [modalOpen, setModalOpen] = useState(false);
+  const userName = globalStore((state) => state.userName);
+
   const tabHandler = (event) => {
     setCurrentTab(event.target.innerHTML);
   };
@@ -15,18 +20,26 @@ const Sidebar = ({id}) => {
     setModalOpen(false);
   };
   return (
-    <div>
-      <button onClick={tabHandler}>Conversation</button>
-      <button onClick={tabHandler}>Contacts</button>
+    <div className='msidebar'>
+      <nav className="tabsMenu">
+        <button onClick={tabHandler} className='tabs conversation'>Conversation</button>
+        <button onClick={tabHandler} className='tabs contacts'>Contacts</button>
+      </nav>
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
-      <div>Your id is {id}</div>
+      <div className="identificationText">
+        {/* Hi {userName ? userName : 'visitor'}! */}
+        Hi!
+        Your user-id is: <span className="identification">{id}</span>
+      </div>
       {currentTab === 'Conversation' ?
       <button
         className="openModalBtn"
         onClick={() => {
           setModalOpen(true);
         }}>New Conversation</button>:
-        <button onClick={() => {
+        <button
+        className="openModalBtn"
+        onClick={() => {
           setModalOpen(true);
         }}>New Contact</button>
       }

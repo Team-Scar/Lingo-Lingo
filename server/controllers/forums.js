@@ -15,6 +15,7 @@ const {getUserLanguages} = require('../../db/controllers/forums.js');
 const {getUserJargons} = require('../../db/controllers/forums.js');
 const {getLanguageId} = require('../../db/controllers/forums.js');
 const {getJargonId} = require('../../db/controllers/forums.js');
+const {submitResponse} = require('../../db/controllers/forums.js');
 
 const languages = (req, res) => {
   getLanguages()
@@ -194,6 +195,18 @@ const getResponses = (req, res) => {
       });
 };
 
+const addResponse = (req, res) => {
+  console.log('reqBody', req.body);
+  submitResponse(req.body.responseObj)
+      .then((results) => {
+        res.send(results.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send('response upload failed');
+      });
+};
+
 const getName = (req, res) => {
   getUserName(req.body.id).then((res) => {
     console.log(res);
@@ -215,3 +228,4 @@ module.exports.getResponses = getResponses;
 module.exports.getName = getName;
 module.exports.languageId = languageId;
 module.exports.jargonId = jargonId;
+module.exports.addResponse = addResponse;

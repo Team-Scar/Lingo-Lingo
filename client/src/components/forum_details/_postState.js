@@ -33,6 +33,8 @@ const usePostStore = ((set) => ({
       username: 'asdf2',
     },
   ],
+  respondingToID: 0,
+  clearData: () => set({postData: {}, responsesData: []}),
   fetched: false,
   setFetched: () => set({fetched: true}),
   resetFetched: () => set({fetched: false}),
@@ -44,6 +46,11 @@ const usePostStore = ((set) => ({
   loadResponses: (responseQueryRes) => set(
       {
         responsesData: responseQueryRes,
+      },
+  ),
+  setRespondingToID: (replyID) => set(
+      {
+        respondingToID: replyID,
       },
   ),
 
