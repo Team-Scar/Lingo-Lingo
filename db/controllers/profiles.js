@@ -31,34 +31,33 @@ module.exports.addConnect = ({userID, friendID}) => {
   return client.query(`insert into connections (user_id, friend_id)
   values (${userID},${friendID})`);
 };
+
+
 // createAccount: async (req, res) => {
 module.exports.editUser = async ({id, name, username, profile_photo, bio, user_jargon, user_language} ) => {
-  return client.query(`update users
-    set name = ${name}, username = ${username}, profile_photo = ${profile_photo}, bio = ${bio}
-    where users.id = ${id}`)
-      .then( async () => {
-        for (const jargon of JSON.parse(JSON.stringify(user_jargon))) {
-          const jargonResult = await client.query('select jargons.id from jargons where jargons.jargon_name = $1', [jargon]);
-          const userJargonQuery = 'update user_jargon set jargon_id = $1 where user_id = $2';
-          await client.query(userJargonQuery, [jargonResult.rows[0].id, id]);
-        }
-      })
-      .then( async () => {
-        const userLanguages = JSON.parse(JSON.stringify(user_language));
-        for (const key in userLanguages) {
-          let teacher = true;
-          let student = true;
-          const lang = userLanguages[key];
-          const {language, role, proficiency} = lang;
-          const langResult = await client.query('select languages.id from languages where languages.language_name = $1', [language]);
-          if (role === 'teacher') student = false;
-          if (role === 'student') teacher = false;
-          const userJargonQuery = 'update user_language set lang_id = $1, proficiency = $2, teacher = $3, student = $4 where user_id = $5';
-          await client.query(userJargonQuery, [langResult.rows[0].id, proficiency, teacher, student, id]);
-        }
-      })
-      .then(()=> {
-        res.status(201).send('updated successfully');
-      })
-      .catch((err) => console.log(err));
+  try {
+    client.query(`update users
+    set name = $1, username = $2, profile_photo = $3, bio = $4
+    where users.id = $5`, [name, username, profile_photo, bio, id]);
+
+    for (const jargon of JSON.parse(JSON.stringify(user_jargon))) {
+      const jargonResult = await client.query('select jargons.id from jargons where jargons.jargon_name = $1', [jargon]);
+      const userJargonQuery = 'update user_jargon set jargon_id = $1 where user_id = $2';
+      await client.query(userJargonQuery, [jargonResult.rows[0].id, id]);
+    }
+    const userLanguages = JSON.parse(JSON.stringify(user_language));
+    for (const key in userLanguages) {
+      let teacher = true;
+      let student = true;
+      const lang = userLanguages[key];
+      const {language, role, proficiency} = lang;
+      const langResult = await client.query('select languages.id from languages where languages.language_name = $1', [language]);
+      if (role === 'teacher') student = false;
+      if (role === 'student') teacher = false;
+      const userJargonQuery = 'update user_language set lang_id = $1, proficiency = $2, teacher = $3, student = $4 where user_id = $5';
+      await client.query(userJargonQuery, [langResult.rows[0].id, proficiency, teacher, student, id]);
+    }
+  } catch (e) {
+    console.log('err in store data in db', e);
+  }
 };

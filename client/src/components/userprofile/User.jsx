@@ -51,7 +51,7 @@ const User = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('/profile/edit',
+      await axios.put('http://localhost:3005/profile/edit',
           {id: userId,
             name: nameRef.current.value,
             username: userNameRef.current.value,
@@ -64,7 +64,7 @@ const User = () => {
     } catch (e) {
       console.log('err editing user account', e);
     };
-    navigate('/');
+    navigate('http://localhost:3005/profile');
   };
 
   const AddNewLanguage = () => {
