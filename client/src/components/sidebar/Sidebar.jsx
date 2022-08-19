@@ -6,6 +6,7 @@ import axios from 'axios';
 import globalStore from '../../zustand.js';
 import {getUserName} from '../../../../server/controllers/sidebar.js';
 import UserDropdown from './dropdown/UserDropdown.jsx';
+import MyLingoDropDown from './dropdown/MyLingoDropDown.jsx';
 
 import LogoFull from '../../../assets/LogoFull.svg';
 import {AuthContext} from '../userauth/AuthContext.jsx';
@@ -13,6 +14,9 @@ import {AuthContext} from '../userauth/AuthContext.jsx';
 import HomeSVG from '../../../assets/sidebar_icons/Home_Icon.svg';
 import ChatSVG from '../../../assets/sidebar_icons/Chat_Icon.svg';
 import TileIcon from '../../../assets/sidebar_icons/TileIcon.svg';
+import About from '../../../assets/LogoDeconstructedGreyScale.svg';
+import Help from '../../../assets/sidebar_icons/Help_Icon.svg';
+import UserSettings from '../../../assets/sidebar_icons/Settings_Icon.svg';
 // Styles
 import './sidebar.scss';
 import '../../global.scss';
@@ -56,7 +60,7 @@ const Sidebar = () => {
       return (
         <div className='sidebar_navigation'>
           <div className='link_container dropdownlist' onClick={setCurrentPage}>
-            <Link className={'links'} to='/profile'>Profile</Link>
+            <Link className={'links'} to={`/profiles/${currentUserId}`}>Profile</Link>
           </div>
           <div className='link_container' onClick = {() => {
             setCurrentPage();
@@ -74,6 +78,18 @@ const Sidebar = () => {
     };
   };
 
+  const myLingoDd = () => {
+    return (
+      <div className='sidebar_navigation'>
+        <div className='link_container dropdownlist' onClick={setCurrentPage}>
+          <Link className={'links mylingoChildren'} to='/events'>Events</Link>
+        </div>
+        <div className='link_container' onClick={setCurrentPage}>
+          <Link className={'links mylingoChildren'} to='/connections'>Connections</Link>
+        </div>
+      </div>
+    );
+  };
   return (
     <div className='sidebar'>
       <img className='lingo_logo' src={LogoFull} alt="Lingo Logo" />
@@ -89,28 +105,19 @@ const Sidebar = () => {
           <img className='chat_icon icon' src={ChatSVG} alt="chat icon" />
           <Link className={'links chat'} to='/livechat'>Chat</Link>
         </div>
-        <div className='link_container' onClick={setCurrentPage}>
-          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>Events</Link>
-        </div>
-        <div className='link_container' onClick={setCurrentPage}>
-          <Link className={'links'} to='/connections'>Connections</Link>
+        <div className='link_container'>
+          <MyLingoDropDown children={myLingoDd()}/>
         </div>
       </nav>
       <div className='sidebar_pants'>
         <hr className='divider'></hr>
-
         <div className='link_container' onClick={setCurrentPage}>
-          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>About</Link>
+          <img className='help_icon icon' src={Help} alt="help icon" />
+          <Link className={'links'} to='/'>Help</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
-          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>Help</Link>
-        </div>
-        <div className='link_container' onClick={setCurrentPage}>
-          <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>User Settings</Link>
+          <img className='user_settings_icon icon' src={UserSettings} alt="tile icon" />
+          <Link className={'links'} to={`/profiles/${currentUserId}`}>User Settings</Link>
         </div>
       </div>
     </div>
