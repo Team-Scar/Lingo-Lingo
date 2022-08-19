@@ -16,17 +16,19 @@ const LiveChat = () => {
   const userName = globalStore((state) => state.userName);
 
   const messagebox = (
-    <SocketProvider id={id} userName={userName}>
-      <ContactsProvider>
-        <ConversationsProvider id={id} userName={userName}>
-          <Messages id={id} userName={userName}/>
-        </ConversationsProvider>
-      </ContactsProvider>
-    </SocketProvider>
+    <div className="fitSidebar">
+      <SocketProvider id={userId} userName={userName}>
+        <ContactsProvider>
+          <ConversationsProvider id={userId} userName={userName}>
+            <Messages id={userId} userName={userName}/>
+          </ConversationsProvider>
+        </ContactsProvider>
+      </SocketProvider>
+    </div>
   );
   return (
     <div>
-      {id !== undefined ? messagebox :
+      {userId !== undefined ? messagebox :
       <Login onIdSubmit={setId} />}
     </div>
   );

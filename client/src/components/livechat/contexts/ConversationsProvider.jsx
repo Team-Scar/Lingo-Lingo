@@ -9,7 +9,7 @@ export const useConversations = () => {
   return useContext(ConversationsContext);
 };
 
-export const ConversationsProvider = ({id, children}) => {
+export const ConversationsProvider = ({id, children, userName}) => {
   // eslint-disable-next-line max-len
   const [conversations, setConversations] = useLocalStorage('conversations', []);
   const [selectedConversationIndex, setSelectedConversationIndex] = useState(0);
