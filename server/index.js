@@ -62,6 +62,8 @@ app.get('/posts/:postID', controllers.getPost);
 
 app.get('/responses/:postID', controllers.getResponses);
 
+app.post('/responses', controllers.addResponse);
+
 app.get('/livechat', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });

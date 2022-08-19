@@ -31,8 +31,8 @@ const ForumView = () => {
   const setUserTopics = globalStore((state) => state.setUserTopics);
   const resetFetched = postStore((state) => state.resetFetched);
   const fetchedUser = forumStore((state) => state.fetchedUser);
-  const setFetchedUser = forumStore((state) => state.fetchedUser);
-  const unsetFetchedUser = forumStore((state) => state.fetchedUser);
+  const setFetchedUser = forumStore((state) => state.setFetchedUser);
+  const unsetFetchedUser = forumStore((state) => state.unsetFetchedUser);
   const clearData = postStore((state) => state.clearData);
 
   resetFetched();

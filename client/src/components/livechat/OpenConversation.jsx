@@ -54,7 +54,7 @@ const OpenConversation = () => {
           value={text}
           onChange={textListener}>
         </textarea>
-        <button onClick={handleSend}>Send Message</button>
+        <button className="sendButton" onClick={handleSend}>Send Message</button>
       </div>
     </div>
   );

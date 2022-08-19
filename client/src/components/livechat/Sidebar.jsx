@@ -7,7 +7,7 @@ import './sidebar.scss';
 
 
 
-const Sidebar = ({id}) => {
+const Sidebar = ({id, userName}) => {
   const [currentTab, setCurrentTab] = useState('Conversation');
   const [modalOpen, setModalOpen] = useState(false);
   const tabHandler = (event) => {
@@ -23,7 +23,10 @@ const Sidebar = ({id}) => {
         <button onClick={tabHandler} className='tabs'>Contacts</button>
       </nav>
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
-      <div className="identificationText">Your user-id is: <span className="identification">{id}</span> </div>
+      <div className="identificationText">
+        Hi {userName}!
+        Your user-id is: <span className="identification">{id}</span>
+      </div>
       {currentTab === 'Conversation' ?
       <button
         className="openModalBtn"
