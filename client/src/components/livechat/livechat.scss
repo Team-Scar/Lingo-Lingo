@@ -41,3 +41,24 @@
   padding-left: 3px;
   padding-right: 3px;
 }
+
+.messageWrapper {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.messageitself {
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 2px;
+}
+
+// Need to format the messages somehow conditionally. 1:18 in the video
+.senderName {
+  color: gray;
+}

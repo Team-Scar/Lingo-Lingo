@@ -21,7 +21,24 @@ const OpenConversation = () => {
     <div className="mconvobar">
       <div className="messages">
         <div className="innerMessageBox">
-
+          {selectedConversation.messages.map((message, index) => {
+            return (
+              <div
+                key={`indMessage-` + message + index }
+                className="messageWrapper">
+                <div
+                  className={`messageitself`}
+                  // eslint-disable-next-line max-len
+                  style={{backgroundColor: 'white'}}
+                >
+                  {message.text}
+                </div>
+                <div className="senderName">
+                  {message.fromMe ? 'You' : message.senderName}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
       <form className="formbox">
