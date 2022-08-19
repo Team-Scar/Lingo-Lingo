@@ -10,14 +10,12 @@ body {
 
 .left_logo {
   position: relative;
-  left: -193px;
   width: 1069px;
   background-color: #F7F7F7;
 }
 
 .right_part {
   position: relative;
-  left: -248px;
   width: 100vw;
   background-color: #ffffff;
   display: flex;
@@ -56,18 +54,18 @@ body {
   position: absolute;
   top: 237px;
   left: 250px;
-  color: #555;
+  color: #23222D
 }
 
 .title_blue {
-  color: #55dfef;
+  color:#73E0FE
 }
 
 .rest_title {
   font-size: 68px;
   margin-bottom: 15px;
   position: absolute;
-  color: #55dfef;
+  color: #73E0FE;
   top: 323px;
   left: 252px;
 }
@@ -101,7 +99,7 @@ input:focus {
   font-size: 20px;
   margin-top: 60px;
   border: none;
-  background-color: #539af1;
+  background-color: #229AEF;
   color: #ffffff;
   cursor: pointer;
   font-weight: bold;
@@ -121,8 +119,8 @@ input:focus {
 
 .link {
   position: absolute;
-  left: 258px;
-  bottom: 443px;
+  left: 259px;
+  bottom: 264px;
   text-decoration: none;
 }
 
@@ -148,30 +146,48 @@ input:focus {
 
 //create account
 .create_account_container {
-  position: absolute;
-  left: 40%;
-  top: 15%;
+  display: flex;
+  position: relative;
+  left: 258px;
+  top: 128px;
+}
+
+.photo {
+  height: 1011px;
+  width: 667px;
+  object-fit: cover;
+  margin-right: 210px;
+}
+
+.content_container {
+  position: relative;
+  top: 166px;
 }
 
 .create_account_title {
-  color: #555;
-  text-align: center;
-  font-size: 35px;
+  color: #4E5C6E;
+  /* text-align: center; */
+  font-size: 55px;
   margin: 20px 0;
+  font-weight: 500;
+  word-spacing: 4px;
+  position: relative;
+  left: -34px;
 }
 
 .form_input_create_account {
-  width: 400px;
-  height: 35px;
-  border-radius: 3px;
-  border-color: lightgray;
+  width: 380px;
+  height: 39px;
+  border-radius: 9px;
   margin-bottom: 11px;
   font-size: 18px;
   padding-left: 10px;
+  display: block;
+  border-color: #e7e2e2;
 }
 
 .label {
-  color: #555;
+  color: #404040;
   display: block;
   font-size: 20px;
   margin-bottom: 5px;
@@ -181,34 +197,40 @@ input:focus {
   width: 417px;
   margin: 20px 0;
   font-weight: bold;
+  border-radius: 9px;
+  position: relative;
+  top: -10px;
 }
 
 
 .select {
-  height: 35px;
-  border-radius: 3px;
+  height: 48px;
+  border-radius: 10px;
   margin-right: 3px;
-  margin-bottom: 30px;
+  margin-bottom: 7px;
   border-color: lightgray;
   font-size: 15px;
   color: #555;
   text-align: center;
+  width: 133px;
+  position: relative;
+  top: -10px;
 }
 
 .jargon_select {
-  width: 418px;
+  width: 402px;
 }
 
 .add_lang_btn {
   border: none;
-  background-color: #F7F7F7;
   position: relative;
-  top: -23px;
+  top: -13px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .input_file {
-  margin: 10px 0 30px 0;
+  margin: 10px 0 18px 0;
   scale: 1.3;
   position: relative;
   right: -37px;
@@ -219,5 +241,52 @@ input:focus {
 }
 
 .show_list {
-  color: #1272e8;
+  color: #555;
+}
+
+.show_message {
+  background-color: #73E0FE;
+  position: absolute;
+  top: 170px;
+  left: 253px;
+  height: 53px;
+  width: 447px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.show_error {
+  position: relative;
+  left: -484px;
+  top: -112px;
+  font-weight: 400;
+}
+
+//changed password
+.change_password_container {
+  position: absolute;
+  left: 40%;
+  top: 15%;
+}
+
+.change_password_title {
+  color: #555;
+  text-align: center;
+  font-size: 35px;
+  margin: 20px 0;
+}
+
+.change_pw_btn {
+  margin-top: 31px;
+  margin-bottom: -20px;
+  width: 396px;
+  border-radius: 7px;
+}
+
+.cross {
+  position: relative;
+  left: 23px;
+  top: 3px;
 }
