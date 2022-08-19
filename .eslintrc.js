@@ -7,7 +7,6 @@ module.exports = {
   },
   'extends': [
     'plugin:react/recommended',
-    'google',
   ],
   parser: "@babel/eslint-parser",
   'parserOptions': {
