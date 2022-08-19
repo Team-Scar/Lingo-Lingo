@@ -1,13 +1,30 @@
 import React, {useState} from 'react';
 import {useContacts} from './contexts/ContactsProvider.jsx';
 import ConversationModalCheckBox from './ConversationModalCheckBox.jsx';
+import {useConversations} from './contexts/ConversationsProvider.jsx';
 import './modal.scss';
 
 const ConversationModal = ({closeModal}) => {
   const {contacts} = useContacts();
+  const {createConversation} = useConversations();
+
+  const [selectedContactIds, setSelectedContactIds] = useState([]);
+
+  const handleCheckboxChange = (id, name) => {
+    setSelectedContactIds((prevSelectedContactIds) => {
+      if (prevSelectedContactIds.includes(id)) {
+        return prevSelectedContactIds.filter((prevId) => {
+          return id !== prevId;
+        });
+      } else {
+        return [...prevSelectedContactIds, id];
+      }
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    createConversation(selectedContactIds);
     closeModal();
   };
 
@@ -24,7 +41,13 @@ const ConversationModal = ({closeModal}) => {
         </div>
         <div className="body">
           {contacts.map(((contact, index) => {
-            return (<ConversationModalCheckBox />);
+            return (<ConversationModalCheckBox key={'index ' + index}
+              selectedContactIds={selectedContactIds}
+              handleCheckboxChange={handleCheckboxChange}
+              controlId={contact.id}
+              name={contact.name}
+              contactIdSelect={selectedContactIds.includes(contact.id)}
+              id={contact.id}/>);
           }))}
         </div>
         <div className="footer">

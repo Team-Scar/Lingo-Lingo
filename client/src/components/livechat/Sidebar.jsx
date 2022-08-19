@@ -3,6 +3,8 @@ import Conversation from './Conversation.jsx';
 import Contacts from './Contacts.jsx';
 import ConversationModal from './ConversationModal.jsx';
 import ContactModal from './ContactModal.jsx';
+import './sidebar.scss';
+
 
 
 const Sidebar = ({id}) => {
@@ -15,18 +17,22 @@ const Sidebar = ({id}) => {
     setModalOpen(false);
   };
   return (
-    <div>
-      <button onClick={tabHandler}>Conversation</button>
-      <button onClick={tabHandler}>Contacts</button>
+    <div className='msidebar'>
+      <nav className="tabsMenu">
+        <button onClick={tabHandler} className='tabs'>Conversation</button>
+        <button onClick={tabHandler} className='tabs'>Contacts</button>
+      </nav>
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
-      <div>Your id is {id}</div>
+      <div className="identificationText">Your user-id is: <span className="identification">{id}</span> </div>
       {currentTab === 'Conversation' ?
       <button
         className="openModalBtn"
         onClick={() => {
           setModalOpen(true);
         }}>New Conversation</button>:
-        <button onClick={() => {
+        <button
+        className="openModalBtn"
+        onClick={() => {
           setModalOpen(true);
         }}>New Contact</button>
       }
