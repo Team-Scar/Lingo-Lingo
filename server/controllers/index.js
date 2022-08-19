@@ -17,3 +17,4 @@ module.exports.getPost = forums.getPost;
 module.exports.getResponses = forums.getResponses;
 module.exports.languageId = forums.languageId;
 module.exports.jargonId = forums.jargonId;
+module.exports.addResponse = forums.addResponse;
