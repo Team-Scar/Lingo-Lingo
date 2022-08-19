@@ -10,6 +10,7 @@ const HeaderMenu = () => {
   const deleteFilters = globalStore((state) => state.deleteFilter);
   const languages = globalStore((state) => state.userLanguages);
   const jargon = globalStore((state) => state.userTopics);
+  const filter = globalStore((state) => state.currentFilters);
 
 
   // Join filters and jargon arrays from state into one
@@ -30,7 +31,7 @@ const HeaderMenu = () => {
       return (
         <li
           key={`1${item}`}
-          className='header_filter'
+          className={filter[item] === true ? 'header_selected' : 'header_filter'}
           id={item}
           onClick={(e) => {
             handleClick(e);

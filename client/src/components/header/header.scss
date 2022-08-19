@@ -45,8 +45,15 @@
 
 .header_filter {
   padding-right: 1em;
+  cursor: pointer;
 
   &:hover {
     color: global.$color-light-blue
   }
+}
+
+.header_selected {
+  cursor: pointer;
+  color: global.$color-light-blue;
+  padding-right: 1em;
 }
