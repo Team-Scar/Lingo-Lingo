@@ -8,8 +8,8 @@ import postStore from './_postState.js';
 import forumStore from '../forum/_forumState.js';
 
 const ForumMainPost = () => {
-  const postID = 7;
-  // const postID = forumStore((state) => state.currentPost);
+  // const postID = 7;
+  const postID = forumStore((state) => state.currentPost);
   const setCurrentPost = forumStore((state) => state.setCurrentPost);
   const postData = postStore((state) => state.postData);
   const fetched = postStore((state) => state.fetched);
@@ -41,13 +41,26 @@ const ForumMainPost = () => {
 
   return (
     <div className="forumMainPost">
-      <div>{ postData.title }</div>
-      <div>{ postData.username }</div>
-      <div>{ postData.language_name }</div>
-      <div>{ postData.jargon_name }</div>
-      <div>{ postData.timestamp }</div>
-      <div>{ postData.content }</div>
-      <img className="postImage" src={postData.photo} />
+      <div className="postVotesR">
+        <img className="upVotePostR" src={ upvoteIcon } />
+        <p id="postVoteTotal">{ postData.vote }</p>
+        <img className="downVotePostR" src={ downvoteIcon } />
+      </div>
+
+      <div className="postHeaderR">
+        <div className="postTitleR">{ postData.title }</div>
+
+        <div className="userAndTimeR">
+          <TimeAgo className="timeagoR" date={postData.timestamp}/>
+          <em className="timeagoR">{ ' by ' }</em>
+          <em className="postUserR">{postData.username}</em>
+        </div>
+
+        <div className="postContentR">{ postData.content }</div>
+        <img className="postImage" src={postData.photo} />
+
+      </div>
+
     </div>
   );
 };
