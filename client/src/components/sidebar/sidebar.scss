@@ -1,13 +1,18 @@
 @use '../../global';
 
 .sidebar {
-  position: relative;
-  // width: 25vw;
-  max-width: 300px;
-  width: 85%;
-  height: 100vh;
+  // position: relative;
+  // // width: 25vw;
+  // max-width: 300px;
+  // width: 85%;
+  // height: 100vh;
+  // left: 0px;
+  // top: 0%;
+  position: absolute;
+  width: 256px;
+  height: 100%;
   left: 0px;
-  top: 0%;
+  top: 0px;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #FAFAFA;
 }
 
