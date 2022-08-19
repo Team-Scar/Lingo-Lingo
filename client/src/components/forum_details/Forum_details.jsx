@@ -9,6 +9,7 @@ const ForumDetails = () => {
   return (
     <div className="forumDetails">
       <ForumMainPost />
+      <hr className="solid"></hr>
       <ForumThread />
     </div>
   );
