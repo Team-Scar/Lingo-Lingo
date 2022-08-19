@@ -7,8 +7,7 @@
   justify-content: center;
   width: 89%;
   top: 130px;
-  // left: 10%;
-  margin-left: 136px;
+  margin-left: 260px;
   font-size: 36px;
   font-weight: 200;
 }
@@ -247,10 +246,11 @@ em:hover {
   align-self: flex-end;
   display: flex;
   width: 150%;
-  transition: .5s
+  transition: .5s;
 }
 
 .comments:hover {
+  cursor: pointer;
   color: global.$color-dark-blue;
   transition: .5s
 }
