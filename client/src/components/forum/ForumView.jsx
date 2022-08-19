@@ -33,8 +33,10 @@ const ForumView = () => {
   const fetchedUser = forumStore((state) => state.fetchedUser);
   const setFetchedUser = forumStore((state) => state.fetchedUser);
   const unsetFetchedUser = forumStore((state) => state.fetchedUser);
+  const clearData = postStore((state) => state.clearData);
 
   resetFetched();
+  clearData();
 
   if (fetched === false) {
     const languages = [];
