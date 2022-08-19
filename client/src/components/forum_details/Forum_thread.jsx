@@ -1,7 +1,7 @@
 import React from 'react';
 
 import postStore from './_postState.js';
-import globalStore from './../zustand.js';
+import globalStore from '../../zustand.js';
 import ForumMessage from './Forum_message.jsx';
 
 const ForumThread = (props) => {

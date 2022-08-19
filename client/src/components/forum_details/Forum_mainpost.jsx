@@ -6,8 +6,8 @@ import postStore from './_postState.js';
 import forumStore from '../forum/_forumState.js';
 
 const ForumMainPost = () => {
-  // const postID = 7;
-  const postID = forumStore((state) => state.currentPost);
+  const postID = 7;
+  // const postID = forumStore((state) => state.currentPost);
   const setCurrentPost = forumStore((state) => state.setCurrentPost);
   const postData = postStore((state) => state.postData);
   const fetched = postStore((state) => state.fetched);
