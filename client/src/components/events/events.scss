@@ -173,11 +173,11 @@ label input {
   background-color: white;
   border: none;
   border-radius: 10px;
-  box-shadow: global.$color-light-blue 0px 5px 15px;
+  box-shadow: global.$color-grey 0px 5px 15px;
 }
 .rbc-month-view{
   border-radius: 10px;
-  box-shadow: global.$color-light-blue 0px 5px 15px;
+  box-shadow: global.$color-grey 0px 5px 15px;
 }
 .rbc-row-bg{
   border-radius: 10px;
@@ -188,7 +188,7 @@ label input {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    margin-left: 15%;
+    margin-left: 25%;
     margin-bottom: 10px;
 }
 
@@ -220,6 +220,7 @@ object-fit: cover;
 }
 .eventTitle{
   margin: 20px;
+
 }
 .eventInput{
   width:100%;

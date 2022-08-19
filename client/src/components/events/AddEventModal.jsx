@@ -11,6 +11,9 @@ const min = (new Array(12).fill(0)).map((val, ind) => {
 
 
 const AddEventModal = (props) => {
+  const userLang = globalStore((state) => state.userLanguages);
+  const userJargon = globalStore((state) => state.userTopics);
+
   const [newEvent, setNewEvent] = React.useState({title: '', allDay: true, start: props.startDate, end: '', language: 'English', jargon: 'Culture', photo: 'https://images.unsplash.com/photo-1527431016-15eb83515018?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'});
   const [temp, setTemp] = React.useState();
   const [photo, setPhoto]=React.useState();
@@ -84,9 +87,9 @@ const AddEventModal = (props) => {
             setNewEvent({...newEvent, language: e.target.value});
           }}>
             <option value="none" selected disabled hidden>Select a Language</option>
-            {props.allLang.map((item) => {
+            {userLang.map((item, ind) => {
               return (
-                <option data={item.id} value={item.language_name}>{item.language_name}</option>
+                <option data={ind} value={item}>{item}</option>
               );
             })}
           </select>
@@ -98,9 +101,9 @@ const AddEventModal = (props) => {
             setNewEvent({...newEvent, jargon: e.target.value});
           }}>
             <option value="none" selected disabled hidden>Select a Jargon</option>
-            {props.allJargon.map((item) => {
+            {userJargon.map((item, ind) => {
               return (
-                <option data={item.id} value={item.jargon_name}>{item.jargon_name}</option>
+                <option data={ind} value={item}>{item}</option>
               );
             })}
           </select>

@@ -20,6 +20,7 @@ import {useNavigate} from 'react-router-dom';
 import Modal from '../Modal/Modal.jsx';
 import MfnBtn from '../mfn_btn/MfnBtn.jsx';
 import globalStore from '../../zustand.js';
+import eventStore from './eventStore.js';
 const locales = {
   'en-US': enUS,
 };
@@ -32,11 +33,9 @@ const localizer = dateFnsLocalizer({
 });
 
 
-const user_id = 2;// just to assume it is passed in from props, actually everyone shall see the same event calendar, so it doesn't matter then
-const user_email = 'sharonhw888@gmail.com';
 const Events = () => {
+  const user_id = globalStore((state) => state.user_id);
   const navigate = useNavigate();
-  const {currentUser} = useContext(AuthContext);
   const [oldEvent, setAllEvent] = React.useState();
   const [attend, setAttend] = React.useState();
   const [allLang, setAllLang] = React.useState();
