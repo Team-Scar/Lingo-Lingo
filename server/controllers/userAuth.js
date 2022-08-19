@@ -1,6 +1,5 @@
 const {client} = require('../../db');
 
-
 module.exports = {
   signUpPost: async (req, res) => {
     console.log('sign up post!!!');
