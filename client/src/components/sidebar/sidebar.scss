@@ -73,3 +73,36 @@
   border-color: rgba(0, 0, 0, 0.12);
 
 }
+
+.sidebar_pants {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  bottom: 22px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.about {
+  transform: scale(.1);
+}
+
+.mylingo_container {
+  display: flex;
+}
+
+.mylingo {
+  cursor: pointer;
+  padding-left: 37px;
+  padding-right: 60px;
+}
+
+.mylingoChildren {
+  margin-left: 24px;
+}
+
+.tile_icon {
+  cursor: pointer;
+}
