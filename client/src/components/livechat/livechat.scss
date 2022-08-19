@@ -1,7 +1,15 @@
+.fitSidebar {
+
+  // margin-top: 14vh;
+  // margin-left: 257px;
+  position: relative;
+  left: 257px;
+  top: 125px
+}
 
 .entireWindow {
   display: flex;
-  height: 100vh;
+  height: 86vh;
   width: 100vw;
 }
 
@@ -23,11 +31,20 @@
   height: 100px;
   resize: none;
   width: 100%;
+  border-radius: 5px;
+
+}
+
+.sendButton {
+  background-color: #74add5;
+  margin-right: 2px;
+  border-radius: 5px;
 }
 
 .formbox {
   display: flex;
   border-left: 40px;
+  margin-bottom: 2px;
 }
 
 .innerMessageBox {
