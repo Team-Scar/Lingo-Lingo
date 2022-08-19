@@ -3,6 +3,7 @@ import Conversation from './Conversation.jsx';
 import Contacts from './Contacts.jsx';
 import ConversationModal from './ConversationModal.jsx';
 import ContactModal from './ContactModal.jsx';
+import './livechat.scss';
 
 
 const Sidebar = ({id}) => {
@@ -15,7 +16,7 @@ const Sidebar = ({id}) => {
     setModalOpen(false);
   };
   return (
-    <div>
+    <div className='msidebar'>
       <button onClick={tabHandler}>Conversation</button>
       <button onClick={tabHandler}>Contacts</button>
       {currentTab === 'Conversation' ? <Conversation /> : <Contacts />}
