@@ -88,6 +88,15 @@ app.get('/discussions', (req, res) => {
 });
 
 
+app.get('/livechat/video/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'))
+});
+
+app.get('/livechat/url', (req, res) => {
+  res.send(v4());
+})
+
+// did someone put an id here after or was that me
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
@@ -103,6 +112,7 @@ const io = require('socket.io')(server);
 io.on('connection', (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
+  socket.emit("me", socket.id)
 
   socket.on('send-message', ({recipients, text}) => {
     recipients.forEach((recipient) => {
@@ -113,13 +123,17 @@ io.on('connection', (socket) => {
       });
     });
   });
+
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('callEnded')
+  })
+  socket.on('callUser', (data) => {
+    io.to(data.userToCall).emit("callUser", {signal: data.signalData, from: data.from, name: data.name})
+  })
+
+  socket.on("answerCall", (data) =>{
+    io.to(data.to).emit("callAccepted"), data.signal
+})
 });
 
-app.get('/livechat/video', (req, res) => {
-  res.redirect(`/${uuidV4()}`)
-})
-
-app.get('/livechat/video/:room'), (req, res) => {
-  res.render('room', {roomId: req.params.room})
-}
 
