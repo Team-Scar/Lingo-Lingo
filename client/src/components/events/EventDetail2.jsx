@@ -51,17 +51,17 @@ const EventDetail = (props) => {
           <h3 className="eventColumn">Event Detail</h3>
           <div className="cardContent">
             <img className="eventPhoto" src={props.info.photo} />
-            <h3>{props.info.title}</h3>
+            <h3 className="eventTitle">{props.info.title}</h3>
 
-            <ul>Language: {props.allLang[props.info.langID - 1].language_name}</ul>
-            <ul>Jargon: {props.allJargon[props.info.jargonID - 1].jargon_name}</ul>
-            <ul>Date: {month + '/' + day + '/' + year + ' (' + String(props.info.start).slice(0, 3) + ')'} </ul>
-            <ul>Time: {hr + ':' + min}</ul>
-            <ul>Location:{props.info.location.includes('http') ? <a href={props.info.location}>online event</a> : props.info.location}</ul>
+            <ul className="eventInfo">Language: {props.allLang[props.info.langID - 1].language_name}</ul>
+            <ul className="eventInfo">Jargon: {props.allJargon[props.info.jargonID - 1].jargon_name}</ul>
+            <ul className="eventInfo">Date: {month + '/' + day + '/' + year + ' (' + String(props.info.start).slice(0, 3) + ')'} </ul>
+            <ul className="eventInfo">Time: {hr + ':' + min}</ul>
+            <ul className="eventInfo">Location:{props.info.location.includes('http') ? <a href={props.info.location}>online event</a> : props.info.location}</ul>
             {props.info.location.includes('http') ? <></> : <Map4 location={props.info.location} />}
 
 
-            {props.selectEvent.includes(props.info.eventID) ? <button data={props.info.eventID} data-creator={props.info.creatorID} onClick={handleCancel}>Cancel</button> : <button data={props.info.eventID} onClick={handleAdd}>Add to your event</button>}
+            {props.selectEvent.includes(props.info.eventID) ? <button className="eventButton" data={props.info.eventID} data-creator={props.info.creatorID} onClick={handleCancel}>Cancel</button> : <button className="eventButton" data={props.info.eventID} onClick={handleAdd}>Add to your event</button>}
 
           </div>
         </div>
