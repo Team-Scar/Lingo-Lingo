@@ -24,6 +24,7 @@ const User = () => {
   const proficiencyRef = useRef();
   const [chosenLang, setChosenLan] = useState([]);
   const [chosenJargon, setChosenJargon] = useState([]);
+  const navigate = useNavigate();
 
   const fetchLanguage = async () => {
     const res = await axios.get('/allLanguages');
@@ -50,7 +51,7 @@ const User = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/create-account',
+      await axios.put('/profile/edit',
           {id: userId,
             name: nameRef.current.value,
             username: userNameRef.current.value,
