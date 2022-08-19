@@ -60,7 +60,7 @@ const User = () => {
           user_jargon: chosenJargon,
         },
     ).then(() => {
-      navigate('http://localhost:3005/profile/edit');
+      navigate('http://localhost:3005/profile');
     }).catch((err) => console.log(err));
   };
 
