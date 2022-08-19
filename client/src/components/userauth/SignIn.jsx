@@ -42,6 +42,13 @@ const SignIn = () => {
         <img className='logo' src={LogoFull} alt="Lingo Logo" />
       </div>
       <div className='right_part'>
+        <div>
+      {showMessage &&
+        <h3 className='show_message'>
+          {error}  <ImCross onClick={() => setShowMessage(false)}/>
+        </h3>
+        }
+        </div>
         <div className='need_sign_up_container'>
           <p className='need_sign_up'>Need an account?</p>
           <Link to='/signup' className='sign_up_link'>Sign Up</Link>
@@ -49,11 +56,7 @@ const SignIn = () => {
         <div className='title'>
           <span>Welcome </span><span className='title_blue'>Back!</span>
         </div>
-        {showMessage &&
-        <h3 className='show_message show_error'>
-          {error}  <ImCross onClick={() => setShowMessage(false)}/>
-        </h3>
-        }
+
         <form onSubmit={handleSubmit} className='sign_up_form'>
           <input
             className='form_input'

@@ -120,7 +120,7 @@ input:focus {
 .link {
   position: absolute;
   left: 259px;
-  bottom: 264px;
+  top: 688px;
   text-decoration: none;
 }
 
@@ -258,9 +258,9 @@ input:focus {
 }
 
 .show_error {
-  position: relative;
-  left: -484px;
-  top: -112px;
+  position: absolute;
+  top: 160px;
+  left: 257px;
   font-weight: 400;
 }
 
