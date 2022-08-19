@@ -60,7 +60,7 @@ const Sidebar = () => {
       return (
         <div className='sidebar_navigation'>
           <div className='link_container dropdownlist' onClick={setCurrentPage}>
-            <Link className={'links'} to={`/profiles/${currentUserId}`}>Profile</Link>
+            <Link className={'links'} to='/profile/'>Profile</Link>
           </div>
           <div className='link_container' onClick = {() => {
             setCurrentPage();
@@ -117,7 +117,7 @@ const Sidebar = () => {
         </div>
         <div className='link_container' onClick={setCurrentPage}>
           <img className='user_settings_icon icon' src={UserSettings} alt="tile icon" />
-          <Link className={'links'} to={`/profiles/${currentUserId}`}>User Settings</Link>
+          <Link className={'links'} to='/profile/'>User Settings</Link>
         </div>
       </div>
     </div>
