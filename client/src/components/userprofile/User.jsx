@@ -48,23 +48,20 @@ const User = () => {
     });
   }, [userId]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.put('http://localhost:3005/profile/edit',
-          {id: userId,
-            name: nameRef.current.value,
-            username: userNameRef.current.value,
-            profile_photo: photoUrl,
-            bio: bioRef.current.value,
-            user_language: chosenLang,
-            user_jargon: chosenJargon,
-          },
-      );
-    } catch (e) {
-      console.log('err editing user account', e);
-    };
-    navigate('http://localhost:3005/profile');
+    axios.put('http://localhost:3005/profile/edit',
+        {id: userId,
+          name: nameRef.current.value,
+          username: userNameRef.current.value,
+          profile_photo: photoUrl,
+          bio: bioRef.current.value,
+          user_language: chosenLang,
+          user_jargon: chosenJargon,
+        },
+    ).then(() => {
+      navigate('http://localhost:3005/profile/edit');
+    }).catch((err) => console.log(err));
   };
 
   const AddNewLanguage = () => {
@@ -199,7 +196,7 @@ const User = () => {
 
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
+    <div style={{'display': 'flex', 'flex-direction': 'column', 'position': 'relative', 'left': '300px', 'bottom': '-233px', 'justify-content': 'flex-start', 'align-items': 'center', 'width': '100%'}}>
       <div>This is your user profile</div>
       <div>{user && user.name}</div>
       <div>Username: {user && user.username}</div>
