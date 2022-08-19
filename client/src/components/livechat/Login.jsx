@@ -7,6 +7,7 @@ const Login = ({onIdSubmit}) => {
   const userId = globalStore((state) => state.userId);
   const userName = globalStore((state) => state.userName);
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     onIdSubmit(text);

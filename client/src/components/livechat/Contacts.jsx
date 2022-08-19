@@ -10,10 +10,15 @@ const Contacts = () => {
 
   return (
     <div className="sidebarMain">
-      {contacts.length > 0 ? contacts.map((contact, index) => {
-        return (<div key={'contactid ' + contact.id} className="contactItems">{contact.name}</div>);
-      }): <p>Loading...</p>}
-    </div>
+        {contacts.length > 0 ? contacts.map((contact, index) => {
+          return (
+            <div className="contactsWrapper" key={'contactid ' + contact.id}>
+              <div  className="contactItems">{
+              contact.name}
+              </div>
+            </div>);
+        }): <p>Loading...</p>}
+      </div>
   );
 };
 

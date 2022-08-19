@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useContacts} from './contexts/ContactsProvider.jsx';
+import globalStore from '../../zustand.js';
 import './modal.scss';
 
 
@@ -7,6 +8,9 @@ const ContactModal = ({closeModal}) => {
   const [idText, setIdText] = useState('');
   const [nameText, setNameText] = useState('');
   const {createContact} = useContacts();
+
+  // axios.get('/')
+  // const userName = globalStore((state) => state.userName);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,10 +49,10 @@ const ContactModal = ({closeModal}) => {
             value={idText}
             onChange={idListener}>
           </input>
-          <p>Name: </p>
+          <p>Nickname: </p>
           <input
             type="text"
-            placeholder="Enter Your name"
+            placeholder="Enter a nickname"
             value={nameText}
             onChange={nameListener}>
           </input>
