@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {useConversations} from './contexts/ConversationsProvider.jsx';
 import './livechat.scss';
 
 const OpenConversation = () => {
   const [text, setText] = useState('');
   const {sendMessage, selectedConversation} = useConversations();
+  const setRef = useCallback((node) => {
+    if (node) {
+      node.scrollIntoView({smooth: true});
+    }
+  }, []);
 
   const textListener = (event) => {
     const payload = event.target.value;
@@ -22,8 +27,11 @@ const OpenConversation = () => {
       <div className="messages">
         <div className="innerMessageBox">
           {selectedConversation.messages.map((message, index) => {
+            const lastMessage =
+            selectedConversation.messages.length - 1 === index;
             return (
               <div
+                ref={lastMessage ? setRef : null}
                 key={`indMessage-` + message + index }
                 className="messageWrapper">
                 <div
