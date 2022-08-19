@@ -52,10 +52,23 @@ module.exports = {
     // [port] what port on our local machine to run the dev server
     port: 3000,
   },
-  externals: {
+  externals: [
+  "child_process",
+  "dns",
+  "fs",
+  "net",
+  "tls",
+  {
     express: 'express',
     bufferutil: "bufferutil",
     "utf-8-validate": "utf-8-validate",
-  }
-
+  },
+],
+  resolve: {
+    fallback: {
+        net: false,
+        tls: false,
+        fs: false,
+    }
+  },
 }
