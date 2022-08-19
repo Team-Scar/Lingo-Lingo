@@ -48,6 +48,24 @@ const User = () => {
     });
   }, [userId]);
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try{
+  //   await axios.put('http://localhost:3005/profile/edit',
+  //       {id: userId,
+  //         name: nameRef.current.value,
+  //         username: userNameRef.current.value,
+  //         profile_photo: photoUrl,
+  //         bio: bioRef.current.value,
+  //         user_language: chosenLang,
+  //         user_jargon: chosenJargon,
+  //       },
+  //     )} catch (e) {
+  //       console.log('err in post to create account', e);
+  //     };
+  //   navigate('/profile');
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.put('http://localhost:3005/profile/edit',
@@ -59,9 +77,11 @@ const User = () => {
           user_language: chosenLang,
           user_jargon: chosenJargon,
         },
-    ).then(() => {
-      navigate('http://localhost:3005/profile');
-    }).catch((err) => console.log(err));
+    ).then((res) => {
+      console.log("adsfsdfs")
+      navigate('/profile');
+    })
+    // navigate('/profile');
   };
 
   const AddNewLanguage = () => {
