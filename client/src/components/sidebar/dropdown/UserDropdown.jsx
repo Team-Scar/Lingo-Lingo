@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import globalStore from '../../../zustand.js';
+import './dropdown.scss';
+import menuButton from '../../../../assets/sidebar_icons/downArrow.svg';
 
 const UserDropdown = (props) => {
   const [display, setDisplay] = useState('none');
@@ -18,9 +20,12 @@ const UserDropdown = (props) => {
     }
   };
   return (
-    <div onClick={handleClick}>
-      <div>
+    <div >
+      <div onClick={handleClick} className='username'>
         {`Hello, ${userName}`}
+        <div>
+          <img className='menu' src={menuButton} alt="menu button" onClick={handleClick} />
+        </div>
       </div>
       <div style={{display: display}}>
         { props.children }
