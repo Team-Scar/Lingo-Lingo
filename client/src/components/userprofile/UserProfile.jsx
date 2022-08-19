@@ -41,19 +41,9 @@ const UserProfile = () => {
     );
   };
 
-  const Form2 = () => {
-    return (<form style={{display: 'grid'}}>
-      Want to send this user a message?
-      <button onClick = {() => {
-        navigate('/livechat');
-      }} >Message User</button>
-      <button>Cancel</button>
-    </form>
-    );
-  };
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
+    <div style={{'display': 'flex', 'flex-direction': 'column', 'position': 'relative', 'left': '300px', 'bottom': '-233px', 'justify-content': 'flex-start', 'align-items': 'center', 'width': '100%'}}>
       <div>This is another user's profile</div>
       <div>{user && user.name}</div>
       <div>Username: {user && user.username}</div>
