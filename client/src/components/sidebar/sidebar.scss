@@ -76,7 +76,11 @@
 
 .sidebar_pants {
   display: flex;
+  flex-direction: column;
   position: absolute;
   justify-content: center;
-  bottom: 135px;
+  bottom: 22px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
 }

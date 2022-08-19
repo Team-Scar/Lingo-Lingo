@@ -98,17 +98,19 @@ const Sidebar = () => {
         </div>
       </nav>
       <div className='sidebar_pants'>
+        <hr className='divider'></hr>
+
         <div className='link_container' onClick={setCurrentPage}>
           <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>Events</Link>
+          <Link className={'links'} to='/events'>About</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
           <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>Events</Link>
+          <Link className={'links'} to='/events'>Help</Link>
         </div>
         <div className='link_container' onClick={setCurrentPage}>
           <img className='tile_icon icon' src={TileIcon} alt="tile icon" />
-          <Link className={'links'} to='/events'>Events</Link>
+          <Link className={'links'} to='/events'>User Settings</Link>
         </div>
       </div>
     </div>
