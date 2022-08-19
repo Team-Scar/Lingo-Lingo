@@ -42,6 +42,7 @@ module.exports = {
   // [devtool] this is an additional source map that will let the browser know what files are running our code.
   // Helps with error tracing. Without it we will not know where our errors are coming from because it will state that everything inside the bundle file.
   devtool: "eval-cheap-module-source-map",
+  // 'inline-source-map'
   // [devServer] configuration for the live server including port
   devServer: {
     // [static] config for how what to serve
@@ -66,9 +67,17 @@ module.exports = {
 ],
   resolve: {
     fallback: {
-        net: false,
-        tls: false,
-        fs: false,
+      fs: false,
+      tls: false,
+      net: false,
+      path: false,
+      zlib: false,
+      http: false,
+      https: false,
+      stream: false,
+      crypto: false,
+      assert: false,
+
     }
   },
 }
