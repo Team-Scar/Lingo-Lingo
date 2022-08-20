@@ -18,7 +18,7 @@
 </div>
 <br></br>
 <div align="center">
-  <img src="client/assets/LogoFull.svg" width=200px>
+  <img src="client/assets/logoWhiteLettering.svg" width=200px>
 </div>
 
  <h2 style="color:#73E0FE"> About Lingo Lingo: </h2>
