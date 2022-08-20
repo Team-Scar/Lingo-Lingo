@@ -74,11 +74,13 @@ function Cards(props) {
   if (post.photo) {
     return (
       <div className="photoCard">
+        <div className="photoContainer">
         <img
           className="image"
           src={post.photo}
           // style={{height: '100px', width: '100px'}}
         />
+        </div>
         <div className="cardContent">
           <div className="content">
             {/* <img src={post.photo}></img> */}
