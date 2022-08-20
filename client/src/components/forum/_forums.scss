@@ -40,9 +40,9 @@
   font-family: global.$mainBody;
   font-weight: 400;
   flex-wrap: wrap;
-  min-height: 400px;
+  // min-height: 400px;
   max-height: 600px;
-  // height: 700px;
+  height: 300px;
   width: 500px;
   // border: 1.5px solid black;
   border-radius: 5px;
@@ -51,6 +51,7 @@
   // padding: 0% 1% 0% 1%;
   transition: .5s;
 }
+
 
 .photoCard {
   // display: flex;
@@ -65,20 +66,50 @@
   // padding: 0% 1% 0% 1%;
   // transition: .5s;
   display: flex;
+  justify-content: center;
   background-color: #F7F7F7;
   font-family: global.$mainBody;
   font-weight: 400;
   flex-wrap: wrap;
   min-height: 40%;
   height: auto;
-  width: 50%;
+  width: 500px;
   // border: 1.5px solid black;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
   margin: 2%;
   // margin-left: 15%;
   // padding: 0% 1% 0% 1%;
   transition: .5s;
+}
+
+.card:hover {
+  width: 35%;
+  height: 600px;
+}
+
+.cardContent:hover > .content {
+  // margin-top: 20%;
+}
+
+.cardContent:hover > .info {
+  transition: .5s;
+  margin-top: 20%;
+}
+
+.cardContent:hover > .interaction {
+  transition: .5s;
+  margin-top: 20%;
+}
+
+.photoCard:hover {
+  width: 30%;
+  // height:
+}
+
+.photoContainer {
+  display: flex;
+  padding: 2%;
+  width: 70%;
 }
 
 .cardContent {
@@ -126,9 +157,12 @@ h3 {
 .image {
   height: auto;
   width: 100%;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
 }
 
 .info {
+  transition: .5s;
   // background-color: #edf2f3;
   // box-shadow: rgba(0,0,0,0.25) 0px 2px 5px;
   // border-radius: 5px;
@@ -160,13 +194,15 @@ em:hover {
 }
 
 .interaction {
+  transition: .5s;
   position: relative;
-  height: 33%;
+  // height: 33%;
+  max-height: 200px;
   width: 100%;
   display: flex;
   font-size: 1.5em;
-  margin-top: 15%;
-  height: 150px;
+  // margin-top: 15%;
+  height: 100px;
   // justify-content: space-between;
 }
 
@@ -179,26 +215,30 @@ em:hover {
 }
 
 .up {
+  cursor: select;
   position: relative;
-  top: -40%;
+  top: -63%;
   left: 45%;
 }
 
 .upPhoto {
+  cursor: select;
   position: relative;
-  top: -40%;
+  top: -63%;
   left: 45%;
 }
 
 .down {
+  cursor: select;
   position: relative;
-  top: -16%;
+  top: -20%;
   left: 45%
 }
 
 .downPhoto {
+  cursor: select;
   position: relative;
-  top: -16%;
+  top: -20%;
   left: 45%
 }
 
@@ -283,7 +323,7 @@ em:hover {
 
 .shareIcon {
   position: relative;
-  top: -20%
+  top: -30%
 }
 
 .submitPost {
