@@ -25,6 +25,9 @@ const User = () => {
   const [chosenLang, setChosenLan] = useState([]);
   const [chosenJargon, setChosenJargon] = useState([]);
   const navigate = useNavigate();
+  const modalState = globalStore((state) => state.showModal);
+  const showModal = globalStore((state) => state.modalOn);
+  const hideModal = globalStore((state) => state.modalOff);
 
   const fetchLanguage = async () => {
     const res = await axios.get('/allLanguages');
@@ -67,6 +70,7 @@ const User = () => {
   // };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     axios.put('http://localhost:3005/profile/edit',
         {id: userId,
@@ -78,8 +82,13 @@ const User = () => {
           user_jargon: chosenJargon,
         },
     ).then((res) => {
-      console.log("adsfsdfs")
-      navigate('/profile');
+      axios.get(`http://localhost:3005/profile/${userId}`).then((res)=> {
+      console.log(res.data);
+      setUser(res.data);
+      });
+      // window.location.reload(false);
+      // location.href = window.location.href;
+      hideModal();
     })
     // navigate('/profile');
   };
