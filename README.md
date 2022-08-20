@@ -21,7 +21,7 @@
   <img src="client/assets/logoWhiteLettering.svg" width=200px>
 </div>
 
- <h2 style="color:#73E0FE"> About Lingo Lingo: </h2>
+ <h2 style="color:#73E0FE"> About: </h2>
 
 Our team was tasked with the development and design of an online language exchange platform consisting of a forum, chat feature, and event scheduler. The forum will allow the user to ask and answer questions to gain a better understanding of a new language. The chat feature allows users to directly message other users and the event calendar will allow users to schedule events.
 
