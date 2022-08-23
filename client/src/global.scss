@@ -1,0 +1,97 @@
+// Global Variables
+// Color Scheme
+$color-dark-blue: #229AEF;
+$color-light-blue: #73E0FE;
+$color-grey: #4E5C6E;
+
+// Default Fonts
+$authenticationPage: 'Lato', sans-serif;
+$mainBody: 'Roboto', sans-serif;
+
+// Elements
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: scroll;
+  margin: 0px;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #E5E5E5;
+}
+
+#root {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  background: #E5E5E5;
+  mix-blend-mode: normal;
+}
+
+.view_port {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  // left: 25vw;
+  background: #E5E5E5;
+}
+
+.mfn_btn {
+  position: fixed;
+  z-index: 5;
+  right: 5%;
+  bottom: 5%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: rgba(72, 188, 212);
+  border-style: none;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3), 2px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profilechat_btn {
+  position: fixed;
+  z-index: 5;
+  right: 5%;
+  bottom: 20%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: rgba(72, 188, 212);
+  border-style: none;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3), 2px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.mfn_modal {
+  position: fixed;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  opacity: 10;
+}
+
+.mfn_modal_content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+  width: 50vw;
+  height: 70vh;
+  background: #F7F7F7;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(112, 128, 175, 0.2)0px 16px 24px 0px;
+}

@@ -1,0 +1,108 @@
+@use '../../global';
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+
+
+.modalBackgroundDF {
+  // width: 100vw;
+  // height: 100vh;
+  // background-color: rgba(200, 200, 200);
+  // position: fixed;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(50.2%, 50.2%, 50.2%, 0.5);
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.modalContainerDF {
+  width: 465px;
+  min-height: 617px;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.modalContainerDF .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.EventTitleDF {
+width: 465px;
+height: 80px;
+position: relative;
+left: 0;
+top: 0;
+text-align: center;
+background-color: global.$color-light-blue;
+}
+
+.topHalf {
+  background-color: global.$color-light-blue;
+}
+
+.titleCloseBtnMe {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainerDF .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.modalContainerDF .footer {
+  flex: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.modalContainerDF .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}

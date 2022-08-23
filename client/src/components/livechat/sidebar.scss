@@ -1,0 +1,132 @@
+.msidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #1C6EA4;
+}
+
+// .tabs {
+//   justify-content: center;
+// }
+
+
+.tabsMenu {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  overflow: auto;
+  flex-grow: 1;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 2px;
+  box-shadow: 2px 2px 2px;
+}
+
+.conversation{
+  border-top: 1px;
+  border-left: 0px;
+  border-bottom: 1px;
+  margin-left: 1px;
+}
+
+.conversation:active{
+  background-color: rgb(167, 205, 252);
+}
+
+// .conversation:focus{
+//   background-color: lightgrey;
+// }
+
+.contacts {
+  border-top: 1px;
+  border-right: 0px;
+  border-bottom: 1px;
+  margin-right: 1px;
+}
+
+.contacts:active{
+  background-color: rgb(167, 205, 252);
+}
+
+// .contacts:focus{
+//   background-color: lightgrey;
+// }
+
+
+.identificationText {
+  padding: 2px;
+  border-top: 2px;
+  border-right: 2px;
+  color: black;
+}
+
+.identification {
+  color: rgb(54, 52, 52);
+}
+
+.sidebarMain {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+.convoItems{
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+  margin-top: 2px;
+  border: 0px;
+}
+
+.convoButtons {
+  background-color: rgb(204, 219, 224);
+  position: relative;
+  width: 247px;
+  height: 50px;
+  padding-right: 15px;
+  border: 2px 0px 0px 0px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px;
+}
+
+.convoButtons:active{
+  background-color: rgb(167, 205, 252);
+}
+
+.contactsWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  margin-top: 7px;
+  align-items: flex-start;
+}
+
+
+.contactItems{
+  background-color: rgb(194, 216, 243);
+  position: relative;
+  width: 230px;
+  padding-right: 15px;
+  border: .5px solid black;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px;
+}
+
+.openModalBtn {
+  background-color: cornflowerblue;
+  border-radius: 4px;
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+

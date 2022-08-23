@@ -1,0 +1,114 @@
+@use '../../global';
+
+.sidebar {
+  // position: relative;
+  // // width: 25vw;
+  // max-width: 300px;
+  // width: 85%;
+  // height: 100vh;
+  // left: 0px;
+  // top: 0%;
+  position: absolute;
+  width: 256px;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #FAFAFA;
+}
+
+.dropdownlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar_navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  // margin-left: 10%;
+}
+
+.lingo_logo {
+  transform: scale(0.7);
+}
+
+.link_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 5%;
+  padding-left: 30%;
+  // align-items: center;
+  width: 100%;
+}
+
+.links {
+  text-decoration: none;
+  color: global.$color-grey;
+  font-family: global.$mainBody;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  padding-left: 15%;
+}
+
+.icon {
+  transform: scale(1);
+}
+
+.chat {
+  padding-left: 17%;
+}
+
+.divider {
+  width: 100%;
+  color: global.$color-grey;
+  // box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: rgba(0, 0, 0, 0.12);
+
+}
+
+.sidebar_pants {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  bottom: 22px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.about {
+  transform: scale(.1);
+}
+
+.mylingo_container {
+  display: flex;
+}
+
+.mylingo {
+  cursor: pointer;
+  padding-left: 37px;
+  padding-right: 60px;
+}
+
+.mylingoChildren {
+  margin-left: 24px;
+}
+
+.tile_icon {
+  cursor: pointer;
+}
+
+.show_error {
+  position: absolute;
+  top: 242px;
+  left: 257px;
+}

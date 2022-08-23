@@ -43,7 +43,7 @@ Our team was tasked with the development and design of an online language exchan
 This section provides a broad overview of just a few of the exciting functionalities our team implemented for the Lingo Lingo web platform.
 
 - <b> User authentication: </b> New end-users are required to create a user account with log-in details. Upon opening the app, the user will be prompted to provide their log-in details if not already logged in, and/or create a new user account in order to access the app’s functionalities.
-- <b> Forum Category Filtering: </b> The user will have the option to filter the topics they wish to view by category, or by clicking on any of the module tags on the module description.
+- <b> Forum Category Filtering: </b> The user will have the optserion to filter the topics they wish to view by category, or by clicking on any of the module tags on the module description.
 - <b> Viewing a Forum Post:  </b>  When users click on a post it will bring up the details of the post and associated responses, allowing the users to interact.
 - <b> Live Chat Feature: </b>  Will allow users to chat with individual users directly. Will have a log of all previous conversations and display a list of all connections.
 - <b> Events: </b> Will allow users to schedule and announce an event. Events will be clickable to display the event detail and allow the user to save it to their calendar.
@@ -54,12 +54,54 @@ This section provides a broad overview of just a few of the exciting functionali
 
 <!-- info about user authentication here -->
 
-#### subtitle here
+- The authentication section allows users to create a new account using their email and sign in if they already have an existing account.
+- On the signup page, there’s also a sign in link if the user already has an account. After signing up, the page will jump to the create account page for new users to create their account the first time. The create account pages requires users to input their information, upload a profile photo and choose their language interests.
+- After confirming the new account, the page will navigate to the home page. When a user signs in, there will be a change password button under their user name, the button takes users to a new page where they can change their password. Additionally, there is a sign out button will allow users to sign out, after signing out users will be brought back to the home page.
+- If users already have an account, they can sign in directly, they then will be navigated to the home page. If users forget their password, there is a “forgot password” button which allows user to reset their password. When users start the reset process they will receive a link in the inbox to reset the password.There will also be a message that appears on the top of the page that will remind users to check their inbox. Additionally, the signup page also gives users the option to sign in as a visitor, after clicking it, the user will be brought to the homepage as a visitor.
 
-![gif goes here](http://giflink here)
+![sign up](https://media.giphy.com/media/kuLrkcF0EugfYxKq50/giphy.gif)
+
+![sign in](https://media.giphy.com/media/TijjulDBoBADnCiBf8/giphy.gif)
 
 <!-- some text about the above image -->
 
+### Forum Posts
+Users can ask questions and sort through them by language, topic, or both. Users can also navigate the site using their voice by speaking forum titles.
+
+![forum titles](https://user-images.githubusercontent.com/41023883/186042128-c1742b20-f3e8-4d97-9f5f-c456b847e4cd.png)
+
+
+### Forum Category Filtering
+Users can click on a topic in the header or in an individual forum module's link in order to filter posts by that topic.
+
+![filter posts](https://user-images.githubusercontent.com/41023883/186042316-90e8555e-607d-423d-ab50-458656eeaf95.png)
+
+### Posting
+Users can click the multifunction button in the bottom right to submit new questions to the forum.
+
+![submit new questions](https://user-images.githubusercontent.com/41023883/186042457-4f97cb05-fbb6-4e34-b46b-26b719975f1b.png)
+
+
+### Discussions Thread
+The Discussions Forum is where users can talk about various topics, share useful information and, in general, help each other with any questions and curiosities they may have while learning a new language. Clicking the reply icon next to the main post or any user response will allow you to respond to that message.
+
+
+
+### Live Chat Feature
+The live chat feature allows our users to connect directly and instantly with each other on the platform. Messages can be started with any other person who is connected as a contact. A user can establish a 1 on 1 conversation or they can establish a group conversation with any number of their contacts. Once the conversation is started by one user, all other participating contacts will get the new conversation added to their live chat automatically.
+
+
+
+### Event scheduler
+
+The events component gives users an overview of the events they can attend. All the events are populated in the calendar. When a user clicks on an individual event, the event detail will be displayed on the side along with the map indicating the location if the address is provided in the description. A user can respond to join an event by clicking the “Add to your event” button and retract from the attendee list by clicking the “Cancel” button. Upon clicking on the empty spot on the calendar or the multi-function button, a user can create an event where the language and jargon selection are limited by the user’s preference.
+
+
+#### screenshots
+
+<img src="./client/assets/p1.png">&nbsp;<img src="./client/assets/p2.png">
+
+<!-- some text about the above image -->
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
@@ -78,7 +120,7 @@ The following scripts can be found in package.json
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-`npm run server-dev`
+`npm run server`
 
 <i> Launches nodemon to watch the server path and serve static files </i>
 
