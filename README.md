@@ -33,9 +33,9 @@ Our team was tasked with the development and design of an online language exchan
 <a href="#forum-posts" style="color: white">Forum</a> |
 <a href="#discussions-thread" style="color: white">Discussions</a> |
 <a href="#live-chat-feature" style="color: white">Live Chat</a> |
-<a href="#event-scheduler" style="color: white">Event Scheduler</a>
-<a href="#-installation-" style="color: white">Installation</a>
-<a href="#-contributors-" style="color: white">Contributors</a>
+<a href="#event-scheduler" style="color: white">Event Scheduler</a> |
+<a href="#-installation-" style="color: white">Installation</a> |
+<a href="#-contributors-" style="color: white">Contributors</a> |
 </p>
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
