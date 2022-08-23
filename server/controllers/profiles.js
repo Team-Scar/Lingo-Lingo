@@ -14,8 +14,9 @@ const addUser = (req, res) => {
 };
 
 const editProfile = (req, res) => {
-  db.editUser(req.body).then(() => {
-    res.status(201);
+  return db.editUser(req.body).then(() => {
+    console.log("This executed inside")
+    res.sendStatus(201);
   });
 }
 

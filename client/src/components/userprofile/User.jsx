@@ -24,6 +24,10 @@ const User = () => {
   const proficiencyRef = useRef();
   const [chosenLang, setChosenLan] = useState([]);
   const [chosenJargon, setChosenJargon] = useState([]);
+  const navigate = useNavigate();
+  const modalState = globalStore((state) => state.showModal);
+  const showModal = globalStore((state) => state.modalOn);
+  const hideModal = globalStore((state) => state.modalOff);
 
   const fetchLanguage = async () => {
     const res = await axios.get('/allLanguages');
@@ -47,23 +51,46 @@ const User = () => {
     });
   }, [userId]);
 
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try{
+  //   await axios.put('http://localhost:3005/profile/edit',
+  //       {id: userId,
+  //         name: nameRef.current.value,
+  //         username: userNameRef.current.value,
+  //         profile_photo: photoUrl,
+  //         bio: bioRef.current.value,
+  //         user_language: chosenLang,
+  //         user_jargon: chosenJargon,
+  //       },
+  //     )} catch (e) {
+  //       console.log('err in post to create account', e);
+  //     };
+  //   navigate('/profile');
+  // };
+
+  const handleSubmit = (e) => {
+
     e.preventDefault();
-    try {
-      await axios.post('/create-account',
-          {id: userId,
-            name: nameRef.current.value,
-            username: userNameRef.current.value,
-            profile_photo: photoUrl,
-            bio: bioRef.current.value,
-            user_language: chosenLang,
-            user_jargon: chosenJargon,
-          },
-      );
-    } catch (e) {
-      console.log('err editing user account', e);
-    };
-    navigate('/');
+    axios.put('http://localhost:3005/profile/edit',
+        {id: userId,
+          name: nameRef.current.value,
+          username: userNameRef.current.value,
+          profile_photo: photoUrl,
+          bio: bioRef.current.value,
+          user_language: chosenLang,
+          user_jargon: chosenJargon,
+        },
+    ).then((res) => {
+      axios.get(`http://localhost:3005/profile/${userId}`).then((res)=> {
+      console.log(res.data);
+      setUser(res.data);
+      });
+      // window.location.reload(false);
+      // location.href = window.location.href;
+      hideModal();
+    })
+    // navigate('/profile');
   };
 
   const AddNewLanguage = () => {
@@ -198,7 +225,7 @@ const User = () => {
 
 
   return (
-    <div style={{position: 'relative', left: '300px', bottom: '-300px'}}>
+    <div style={{'display': 'flex', 'flex-direction': 'column', 'position': 'relative', 'left': '300px', 'bottom': '-233px', 'justify-content': 'flex-start', 'align-items': 'center', 'width': '100%'}}>
       <div>This is your user profile</div>
       <div>{user && user.name}</div>
       <div>Username: {user && user.username}</div>
