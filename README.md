@@ -82,6 +82,9 @@ Users can click the multifunction button in the bottom right to submit new quest
 ![submit new questions](https://user-images.githubusercontent.com/41023883/186042457-4f97cb05-fbb6-4e34-b46b-26b719975f1b.png)
 
 
+### Discussions Thread
+The Discussions Forum is where users can talk about various topics, share useful information and, in general, help each other with any questions and curiosities they may have while learning a new language. Clicking the reply icon next to the main post or any user response will allow you to respond to that message.
+
 
 
 ### Event scheduler
