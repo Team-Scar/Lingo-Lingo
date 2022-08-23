@@ -28,12 +28,14 @@ Our team was tasked with the development and design of an online language exchan
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
 <p align="center">
-<a href="#overview" style="color: white">Overview</a> |
-<a href="#questions--answers" style="color: white">Questions & Answers</a> |
-<a href="#ratings--reviews" style="color: white">Ratings & Reviews</a> |
-<a href="#-installation-" style="color: white">Installation</a> |
-<a href="#-git-work-flow-" style="color: white">Git Work Flow</a> |
-<a href="#-testing-" style="color: white">Testing</a>
+<a href="#-components-" style="color: white">Components</a> |
+<a href="#user-authentication" style="color: white">User Authentication</a> |
+<a href="#forum-posts" style="color: white">Forum</a> |
+<a href="#discussions-thread" style="color: white">Discussions</a> |
+<a href="#live-chat-feature" style="color: white">Live Chat</a> |
+<a href="#event-scheduler" style="color: white">Event Scheduler</a>
+<a href="#-installation-" style="color: white">Installation</a>
+<a href="#-contributors-" style="color: white">Contributors</a>
 </p>
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
