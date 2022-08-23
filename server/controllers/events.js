@@ -31,6 +31,8 @@ const getAllJargons = (req, res) => {
 };
 
 const addEvent = (req, res) => {
+  console.log(req.params.userID)
+  console.log(req.body)
   queries.addEvent(req.params.userID, req.body).then(() => {
     res.sendStatus(201);
   });

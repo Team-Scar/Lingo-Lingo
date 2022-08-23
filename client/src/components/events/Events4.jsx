@@ -33,7 +33,7 @@ const localizer = dateFnsLocalizer({
 
 const Events = () => {
   //globalStore
-  const user_id = globalStore((state) => state.user_id)||2;
+  const user_id = globalStore((state) => state.user_id)||1;
   const modalState = globalStore((state) => state.showModal);
   const showModal = globalStore((state) => state.modalOn);
   const hideModal = globalStore((state) => state.modalOff);
@@ -86,7 +86,11 @@ const Events = () => {
     return (<AddEventModal startDate={date} userID={user_id} allLang={allLang} allJargon={allJargon} addEvent={(newEvent) => {
       setAllEvent([...oldEvent, newEvent]);
     }} closeModal={() => {
-      setShow(false);
+      if (!modalState) {
+        showModal();
+      } else {
+        hideModal();
+      }
     }} />);
   };
 

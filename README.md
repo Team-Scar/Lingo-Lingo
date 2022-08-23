@@ -78,6 +78,18 @@ Users can click the multifunction button in the bottom right to submit new quest
 
 
 
+
+### Event scheduler
+
+The events component gives users an overview of the events they can attend. All the events are populated in the calendar. When a user clicks on an individual event, the event detail will be displayed on the side along with the map indicating the location if the address is provided in the description. A user can respond to join an event by clicking the “Add to your event” button and retract from the attendee list by clicking the “Cancel” button. Upon clicking on the empty spot on the calendar or the multi-function button, a user can create an event where the language and jargon selection are limited by the user’s preference.
+
+
+#### screenshots
+
+<img src="./client/assets/p1.png" height="150vh">&nbsp;<img src="./client/assets/p2.png" height="150vh">
+
+<!-- some text about the above image -->
+
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
 <h2 style="color:#73E0FE"> Installation: </h2>
