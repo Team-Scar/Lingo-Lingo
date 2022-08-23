@@ -43,7 +43,7 @@ Our team was tasked with the development and design of an online language exchan
 This section provides a broad overview of just a few of the exciting functionalities our team implemented for the Lingo Lingo web platform.
 
 - <b> User authentication: </b> New end-users are required to create a user account with log-in details. Upon opening the app, the user will be prompted to provide their log-in details if not already logged in, and/or create a new user account in order to access the app’s functionalities.
-- <b> Forum Category Filtering: </b> The user will have the option to filter the topics they wish to view by category, or by clicking on any of the module tags on the module description.
+- <b> Forum Category Filtering: </b> The user will have the optserion to filter the topics they wish to view by category, or by clicking on any of the module tags on the module description.
 - <b> Viewing a Forum Post:  </b>  When users click on a post it will bring up the details of the post and associated responses, allowing the users to interact.
 - <b> Live Chat Feature: </b>  Will allow users to chat with individual users directly. Will have a log of all previous conversations and display a list of all connections.
 - <b> Events: </b> Will allow users to schedule and announce an event. Events will be clickable to display the event detail and allow the user to save it to their calendar.
@@ -78,7 +78,7 @@ The following scripts can be found in package.json
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-`npm run server-dev`
+`npm run server`
 
 <i> Launches nodemon to watch the server path and serve static files </i>
 
