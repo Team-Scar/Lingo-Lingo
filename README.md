@@ -54,9 +54,14 @@ This section provides a broad overview of just a few of the exciting functionali
 
 <!-- info about user authentication here -->
 
-#### subtitle here
-
-![gif goes here](http://giflink here)
+- The authentication section allows users to create a new account using their email and sign in if they already have an existing account.
+- On the signup page, there’s also a sign in link if the user already has an account. After signing up, the page will jump to the create account page for new users to create their account the first time. The create account pages requires users to input their information, upload a profile photo and choose their language interests.
+- After confirming the new account, the page will navigate to the home page. When a user signs in, there will be a change password button under their user name, the button takes users to a new page where they can change their password. Additionally, there is a sign out button will allow users to sign out, after signing out users will be brought back to the home page. 
+- If users already have an account, they can sign in directly, they then will be navigated to the home page. If users forget their password, there is a “forgot password” button which allows user to reset their password. When users start the reset process they will receive a link in the inbox to reset the password.There will also be a message that appears on the top of the page that will remind users to check their inbox. Additionally, the signup page also gives users the option to sign in as a visitor, after clicking it, the user will be brought to the homepage as a visitor.
+<br/>
+![sign up](https://media.giphy.com/media/kuLrkcF0EugfYxKq50/giphy.gif)
+<br/>
+![sign in](https://media.giphy.com/media/TijjulDBoBADnCiBf8/giphy.gif)
 
 <!-- some text about the above image -->
 
