@@ -22,6 +22,8 @@ const AddEventModal = (props) => {
   const [temp, setTemp] = React.useState();
   const [photo, setPhoto]=React.useState();
   const handleSubmit = () => {
+    console.log(newEvent);
+    console.log(props.userID);
     axios.post(`/addEvent/${props.userID}`, newEvent).then((result) => {
       props.addEvent();
       props.closeModal();
@@ -74,12 +76,15 @@ const AddEventModal = (props) => {
 
         <div className="eventInput">
           <input type="text" placeholder="Add Event Description" value={newEvent.description} onChange={(e) => {
-            setNewEvent({...newEvent, description: e.target.value});
+            console.log({...newEvent, description: e.target.value,title:e.target.value})
+
+            setNewEvent({...newEvent, description: e.target.value,title:e.target.value});
           }} />
         </div>
 
         <div className="eventInput">
           <input type="text" placeholder="Add Location" value={newEvent.location} onChange={(e) => {
+            console.log(e.target.value)
             setNewEvent({...newEvent, location: e.target.value});
           }} />
         </div>
@@ -133,7 +138,7 @@ const AddEventModal = (props) => {
             value={endDateTime}
             onChange={(e)=> {
               setEndDateTime(e.target.value);
-              setNewEvent({...newEvent, end: endDateTime, allDay: false});
+              setNewEvent({...newEvent, end: e.target.value, allDay: false});
             }}/>
         </div>
 

@@ -60,6 +60,35 @@ This section provides a broad overview of just a few of the exciting functionali
 
 <!-- some text about the above image -->
 
+### Forum Posts
+Users can ask questions and sort through them by language, topic, or both. Users can also navigate the site using their voice by speaking forum titles.
+
+[forum titles](https://user-images.githubusercontent.com/41023883/186042128-c1742b20-f3e8-4d97-9f5f-c456b847e4cd.png).
+
+
+### Forum Category Filtering
+Users can click on a topic in the header or in an individual forum module's link in order to filter posts by that topic.
+
+![filter posts](https://user-images.githubusercontent.com/41023883/186042316-90e8555e-607d-423d-ab50-458656eeaf95.png)
+
+### Posting
+Users can click the multifunction button in the bottom right to submit new questions to the forum.
+
+![submit new questions](https://user-images.githubusercontent.com/41023883/186042457-4f97cb05-fbb6-4e34-b46b-26b719975f1b.png)
+
+
+
+
+### Event scheduler
+
+The events component gives users an overview of the events they can attend. All the events are populated in the calendar. When a user clicks on an individual event, the event detail will be displayed on the side along with the map indicating the location if the address is provided in the description. A user can respond to join an event by clicking the “Add to your event” button and retract from the attendee list by clicking the “Cancel” button. Upon clicking on the empty spot on the calendar or the multi-function button, a user can create an event where the language and jargon selection are limited by the user’s preference.
+
+
+#### screenshots
+
+<img src="./client/assets/p1.png" height="150vh">&nbsp;<img src="./client/assets/p2.png" height="150vh">
+
+<!-- some text about the above image -->
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 

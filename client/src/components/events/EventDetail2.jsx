@@ -8,9 +8,9 @@ import MfnBtn from '../mfn_btn/MfnBtn.jsx';
 import Map4 from './Map4.jsx';
 
 
-// const user_id = 2;
+
 const EventDetail = (props) => {
-  const user_id = globalStore((state) => state.user_id);
+  const user_id = globalStore((state) => state.user_id)||1;
   const [showMap, setShowMap] = React.useState(false);
   const [goCal, setGoCal] = React.useState();
   const handleCancel = (e) => {
@@ -29,6 +29,8 @@ const EventDetail = (props) => {
 
   const handleAdd = (e) => {
     const eventID = e.target.attributes.data.value;
+    console.log(eventID)
+    console.log(user_id)
     axios.post(`/addAttend/${eventID}/${user_id}`).then(() => {
       props.add();
     });
