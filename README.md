@@ -1,34 +1,213 @@
-# Lingo-Lingo
+<!-- <div style="display: flex; flex-direction: column; justify-content: center;"> -->
+<div style="position: relative;">
 
-## update your dev branch
-git checkout dev
-git pull --rebase upstream dev
-git push origin dev
+<div style="align-self: flex-start;>
+<h1 style="color: white"> Lingo Lingo </h1>
 
-## start work on a feature
-git checkout -b feature-branch
+<div align="left">
+<img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/react" />
+<img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/webpack" />
+<img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/axios"/>
+<img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/nodemon"/>
+<img src="https://img.shields.io/badge/postgres-%5E12.12-blue">
+<img src="https://img.shields.io/badge/zustand-%5E4.0.0-blue">
+<img src="https://img.shields.io/badge/firebase-%5E9.9.2-blue">
+<img src="https://img.shields.io/badge/socket.io-%5E4.5.1-blue">
+<img src="https://img.shields.io/badge/annyang-%5E2.6.1-blue">
+<img src="https://img.shields.io/badge/googleapis-%5E105.0.0-blue">
+</div>
+<br></br>
+<div align="center">
+  <img src="client/assets/logoWhiteLettering.svg" width=200px>
+</div>
 
-## write code, commit, repeat
-git add .
-git commit
+ <h2 style="color:#73E0FE"> About: </h2>
 
-## rebase before pull request
-git pull --rebase upstream dev
+Our team was tasked with the development and design of an online language exchange platform consisting of a forum, chat feature, and event scheduler. The forum will allow the user to ask and answer questions to gain a better understanding of a new language. The chat feature allows users to directly message other users and the event calendar will allow users to schedule events.
 
-## push to a feature branch on YOUR fork
-git push origin feature-branch
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## make a pull request on GitHub
+<p align="center">
+<a href="#overview" style="color: white">Overview</a> |
+<a href="#questions--answers" style="color: white">Questions & Answers</a> |
+<a href="#ratings--reviews" style="color: white">Ratings & Reviews</a> |
+<a href="#-installation-" style="color: white">Installation</a> |
+<a href="#-git-work-flow-" style="color: white">Git Work Flow</a> |
+<a href="#-testing-" style="color: white">Testing</a>
+</p>
 
-## if pull request is rejected then fix bugs, commit
-git add .
-git commit
-git pull --rebase upstream dev
-git push origin feature-branch
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## make a pull request on GitHub
+<h2 style="color:#73E0FE"> Components </h2>
 
-## if pull request is accepted
-git checkout dev
-git pull --rebase upstream dev
-git branch -d feature-branch
+This section provides a broad overview of just a few of the exciting functionalities our team implemented for the Lingo Lingo web platform.
+
+- <b> User authentication: </b> New end-users are required to create a user account with log-in details. Upon opening the app, the user will be prompted to provide their log-in details if not already logged in, and/or create a new user account in order to access the app’s functionalities.
+- <b> Forum Category Filtering: </b> The user will have the option to filter the topics they wish to view by category, or by clicking on any of the module tags on the module description.
+- <b> Viewing a Forum Post:  </b>  When users click on a post it will bring up the details of the post and associated responses, allowing the users to interact.
+- <b> Live Chat Feature: </b>  Will allow users to chat with individual users directly. Will have a log of all previous conversations and display a list of all connections.
+- <b> Events: </b> Will allow users to schedule and announce an event. Events will be clickable to display the event detail and allow the user to save it to their calendar.
+- <b> Profiles: </b> User profiles will consist of a brief bio, languages the user wants to learn, current languages the user speaks, the topics they are interested in, and the ability to start a chat with that user. The user will have the ability to add other users to their connections list. The user will be able to modify their own profile.
+
+
+### User Authentication
+
+<!-- info about user authentication here -->
+
+#### subtitle here
+
+![gif goes here](http://giflink here)
+
+<!-- some text about the above image -->
+
+
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
+
+<h2 style="color:#73E0FE"> Installation: </h2>
+
+Getting your own copy of Project Atelier is easy!
+
+- Fork and clone this repo to your local machine
+- Run npm install to install dependencies
+- Read about the following scripts to understand their functionality
+- Enjoy!
+
+### Scripts
+
+The following scripts can be found in package.json
+
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
+
+`npm run server-dev`
+
+<i> Launches nodemon to watch the server path and serve static files </i>
+
+`npm run dev`
+
+<i> Launches webpack to bundle your webapp and watch for any changes </i>
+
+`npm run start`
+
+<i> Bundles your webpack in development mode </i>
+
+`npm run build`
+
+<i> Bundles your webpack in production mode </i>
+
+`npm run test`
+
+<i> Calls jest to run any user defined tests </i>
+
+```
+// in package.json
+
+"scripts": {
+    "server-dev": "npx nodemon --watch server server/server.js",
+    "dev": "npx webpack --watch",
+    "start": "Webpack --mode=development",
+    "build": "webpack --mode=production",
+    "test": "jest"
+  },
+```
+
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
+
+<h2 style="color:#73E0FE"> Contributors </h2>
+
+<table >
+    <td align="center">
+        <a href="https://github.com/tinyfishbigpond" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/104777892?v=4" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> David F. </span> | <span style="color: #229AEF">tinyfishbigpond</span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Atinyfishbigpond" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/livechat" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/dkroll713" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/41023883?v=4" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> David K. </span> | <span style="color: #229AEF">dkroll713</span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Adkroll713" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/forum" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/syed216" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/89633880?v=4" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> Fahad S.</span> | <span style="color: #229AEF"> syed216</span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Asyed216" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/userprofile" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/mayliang021" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/97858299?v=4?s=100" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> May L.</span> | <span style="color: #229AEF"> mayliang021</span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Amayliang021" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/userauth" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/sharonhw888" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/101309894?v=4" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> Sharon W.</span> | <span style="color: #229AEF"> sharonhw888</span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Asharonhw888" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/events" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/Symphon-y" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/90964291?v=4?s=100" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> Travis R. </span> | <span style="color: #229AEF"> Symphon-y </span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3ASymphon-y" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/sidebar" title="Component">📖</a> &nbsp;
+    </td>
+    <td align="center">
+        <a href="https://github.com/Symphon-y" style="color: white; text-decoration: none;">
+            <img src="https://avatars.githubusercontent.com/u/18475074?v=4" width="100px;" alt=""/>
+            <br />
+            <sub>
+                <b><span style="color: white"> Viren P. </span> | <span style="color: #229AEF"> vpatel89 </span></b>
+            </sub>
+        </a>
+        <br /><br>
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/issues?q=is%3Aclosed+author%3Avpatel89" title="Commits">💻</a> &nbsp;
+        <a href="https://github.com/Team-Scar/Lingo-Lingo/tree/dev/client/src/components/forum_details" title="Component">📖</a> &nbsp;
+    </td>
+<table>
+</div>
+    <div style="position: absolute; top: 150vw; left: -8vw; opacity: .04; background-image: url(Assets/leftFoot.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+        <div style="position: absolute; top: 400vw; margin-left: 90vw; opacity: .04; background-image: url(Assets/Favicon.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+        <div style="position: absolute; top: 850vw; left: -8vw; opacity: .04; background-image: url(Assets/leftFoot.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+</div>
