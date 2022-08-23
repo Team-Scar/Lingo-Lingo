@@ -68,7 +68,7 @@ This section provides a broad overview of just a few of the exciting functionali
 ### Forum Posts
 Users can ask questions and sort through them by language, topic, or both. Users can also navigate the site using their voice by speaking forum titles.
 
-[forum titles](https://user-images.githubusercontent.com/41023883/186042128-c1742b20-f3e8-4d97-9f5f-c456b847e4cd.png).
+![forum titles](https://user-images.githubusercontent.com/41023883/186042128-c1742b20-f3e8-4d97-9f5f-c456b847e4cd.png)
 
 
 ### Forum Category Filtering
@@ -91,7 +91,7 @@ The events component gives users an overview of the events they can attend. All 
 
 #### screenshots
 
-<img src="./client/assets/p1.png" height="150vh">&nbsp;<img src="./client/assets/p2.png" height="150vh">
+<img src="./client/assets/p1.png">&nbsp;<img src="./client/assets/p2.png">
 
 <!-- some text about the above image -->
 
