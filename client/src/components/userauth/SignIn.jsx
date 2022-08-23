@@ -44,7 +44,7 @@ const SignIn = () => {
       <div className='right_part'>
         <div>
       {showMessage &&
-        <h3 className='show_message'>
+        <h3 className='show_message show_error'>
           {error}  <ImCross onClick={() => setShowMessage(false)}/>
         </h3>
         }
