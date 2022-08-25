@@ -109,7 +109,7 @@ The events component gives users an overview of the events they can attend. All 
 
 <h2 style="color:#73E0FE"> Installation: </h2>
 
-Getting your own copy of Project Atelier is easy!
+Getting your own copy of Lingo Lingo is easy!
 
 - Fork and clone this repo to your local machine
 - Run npm install to install dependencies
